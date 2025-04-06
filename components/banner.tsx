@@ -21,7 +21,7 @@ export default function Banner() {
                 Download<span className="hidden sm:inline"> Commit250</span>
               </a>{' '}
               <span className="italic px-1.5">or</span>{' '}
-              <a className="font-medium hover:underline text-emerald-400" href="/commit250/" target="_blank" rel="noreferrer">
+              <a className="font-medium hover:underline text-emerald-400" href="https://commit250.com/about" target="_blank" rel="noreferrer">
                 What is Commit250?
               </a>
             </div>

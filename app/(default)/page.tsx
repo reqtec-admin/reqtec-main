@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Home - Open PRO',
-  description: 'Page description',
+  title: 'Home - REQtec',
+  description: 'Requisite Technologies (REQtec) is a software solutions firm providing consulting in Cloud, AI/ML, Mobile, and Web Based solutions for your corporations needs.',
 }
 
 import Hero from '@/components/hero'

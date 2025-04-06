@@ -1,0 +1,24 @@
+{
+    "professions": [
+      {
+        "name": "Software Engineering",
+        "democrat": 65,
+        "republican": 35
+      },
+      {
+        "name": "Data Scientists",
+        "democrat": 70,
+        "republican": 30
+      },
+      {
+        "name": "AI/ML Engineers",
+        "democrat": 68,
+        "republican": 32
+      },
+      {
+        "name": "General IT",
+        "democrat": 60,
+        "republican": 40
+      }
+    ]
+  }

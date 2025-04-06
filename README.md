@@ -8,8 +8,8 @@ Use it for whatever you want, and be sure to reach us out on [Twitter](https://t
 
 Created and maintained with ❤️ by [reqtec.com](https://reqtec.com).
 
-*Version 1.0.0 built with the Cruip CSS is available [here](https://github.com/cruip/open-react-template/releases/tag/1.0.0).*
-*Version 2.0.3 built with Tailwind CSS and React + Vite is available [here](https://github.com/cruip/open-react-template/releases/tag/2.0.3).*
+*Version 1.0.0 built with the REQtec CSS is available [here](https://github.com/REQtec/open-react-template/releases/tag/1.0.0).*
+*Version 2.0.3 built with Tailwind CSS and React + Vite is available [here](https://github.com/REQtec/open-react-template/releases/tag/2.0.3).*
 
 ## Live demo
 
@@ -77,7 +77,7 @@ For more information about what support covers, please see our (FAQs)[https://re
 ## Terms and License
 
 - Released under the [GPL](https://www.gnu.org/licenses/gpl-3.0.html).
-- Copyright 2023 [Cruip](https://reqtec.com/).
+- Copyright 2023 [REQtec](https://reqtec.com/).
 - Use it for personal and commercial projects, but please don’t republish, redistribute, or resell the template.
 - Attribution is not required, although it is really appreciated.
 

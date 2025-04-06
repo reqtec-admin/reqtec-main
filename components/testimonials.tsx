@@ -13,7 +13,7 @@ export default function Testimonials() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
             <h2 className="h2 mb-4">Don't take our word for it</h2>
-            <p className="text-xl text-gray-400">Vitae aliquet nec ullamcorper sit amet risus nullam eget felis semper quis lectus nulla at volutpat diam ut venenatis tellus—in ornare.</p>
+            <p className="text-xl text-gray-400">Hear from a few previous clients about our services.</p>
           </div>
 
           {/* Testimonials */}
@@ -29,9 +29,9 @@ export default function Testimonials() {
                   </svg>
                 </div>
               </div>
-              <blockquote className="text-lg text-gray-400 grow">— Open PRO lets me quickly get the insights I care about so that I can focus on my productive work. I've had Open PRO for about 24 hours now and I honestly don't know how I functioned without it before.</blockquote>
+              <blockquote className="text-lg text-gray-400 grow">— I am incredibly grateful to Aaron for his generous contribution of time and expertise in providing software consultancy for my new nonprofit. His deep knowledge, problem-solving skills, and commitment to excellence played a crucial role in helping us establish a strong technological foundation. He went above and beyond to ensure we had the right systems in place, offering innovative solutions that streamlined our operations and improved efficiency. </blockquote>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
-                <cite className="text-gray-200 not-italic">Anastasia Dan</cite> - <a className="text-teal-600 hover:text-gray-200 transition duration-150 ease-in-out" href="#0">UX Board</a>
+                <cite className="text-gray-200 not-italic">Gina T. </cite> - <a className="text-teal-600 hover:text-gray-200 transition duration-150 ease-in-out" href="#0">Guiding Grace</a>
               </div>
             </div>
 
@@ -45,9 +45,9 @@ export default function Testimonials() {
                   </svg>
                 </div>
               </div>
-              <blockquote className="text-lg text-gray-400 grow">— Open PRO lets me quickly get the insights I care about so that I can focus on my productive work. I've had Open PRO for about 24 hours now and I honestly don't know how I functioned without it before.</blockquote>
+              <blockquote className="text-lg text-gray-400 grow">— I have known Aaron Gilliland personally and professionally for several years.  He is one of the smartest, highly talented and most professional people I know.  He eagerly supported my campaign for the Nebraska Legislature from the very beginning. I would highly recommend Aaron to my friends, family and colleagues for any and all software- or computer-based needs. I will be forever grateful for the outstanding support Aaron provided.</blockquote>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
-                <cite className="text-gray-200 not-italic">Anastasia Dan</cite> - <a className="text-teal-600 hover:text-gray-200 transition duration-150 ease-in-out" href="#0">UX Board</a>
+                <cite className="text-gray-200 not-italic">Bob A.</cite> - <a className="text-teal-600 hover:text-gray-200 transition duration-150 ease-in-out" href="#0">NE Legislature</a>
               </div>
             </div>
 
@@ -61,9 +61,9 @@ export default function Testimonials() {
                   </svg>
                 </div>
               </div>
-              <blockquote className="text-lg text-gray-400 grow">— Open PRO lets me quickly get the insights I care about so that I can focus on my productive work. I've had Open PRO for about 24 hours now and I honestly don't know how I functioned without it before.</blockquote>
+              <blockquote className="text-lg text-gray-400 grow">— During my recent campaign for the school board, their expertise in web services, graphic design, and technical problem-solving played a key role in our success. In addition, his creativity, attention to detail, and ability to bring ideas to life were invaluable. His ability to leverage technology effectively, streamline processes, and deliver high-quality solutions was truly impressive. I have no doubt that his skills and professionalism will be a tremendous asset to any business in need of software and technology consulting.</blockquote>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
-                <cite className="text-gray-200 not-italic">Anastasia Dan</cite> - <a className="text-teal-600 hover:text-gray-200 transition duration-150 ease-in-out" href="#0">UX Board</a>
+                <cite className="text-gray-200 not-italic">Pat B.</cite> - <a className="text-teal-600 hover:text-gray-200 transition duration-150 ease-in-out" href="#0">School Board Member</a>
               </div>
             </div>
 
