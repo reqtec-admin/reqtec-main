@@ -1,8 +1,6 @@
 'use client'
 
-import { useState, useRef, Fragment } from 'react'
-import type { StaticImageData } from 'next/image'
-import { Dialog, Transition } from '@headlessui/react'
+import { StaticImageData } from 'next/image'
 import Image from 'next/image'
 
 interface ModalProps {
@@ -22,33 +20,27 @@ export default function Modal({
   fgImageWidth,
   fgImageHeight
 }: ModalProps) {
-
-
   return (
-    <div>
-
-      {/* Static Images */}
-        <div>
-            <div className="bg-cover h-screen w-screen flex place-items-center before:absolute before:h-[300px] before:w-[480px]  before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute ">
-                <Image
-                    src={bgImage}
-                    alt="Particles" 
-                    style={{ objectFit: 'cover' , fill: '100%'}}
-                    width={bgImageWidth}
-                    height={bgImageHeight}
-                    priority
-                />
-                <Image
-                    className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-                    style={{ gridArea: '1/1', placeSelf: 'center' }}
-                    src={fgImage}
-                    alt="REQtec Logo"
-                    width={fgImageWidth}
-                    height={fgImageHeight}
-                    priority
-                />
-            </div>
-        </div>
-
+    <div className="relative h-screen w-screen flex items-center justify-center">
+      {/* Background Image */}
+      <Image
+        src={bgImage}
+        alt="Background Particles"
+        style={{ objectFit: 'cover' }}
+        width={bgImageWidth}
+        height={bgImageHeight}
+        priority
+        className="absolute inset-0 w-full h-full"
+      />
+      {/* Foreground Image */}
+      <Image
+        src={fgImage}
+        alt="REQtec Logo"
+        width={fgImageWidth}
+        height={fgImageHeight}
+        priority
+        className="relative z-10"
+      />
     </div>
-)};
+  )
+}

@@ -6,9 +6,9 @@ export default function Features() {
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h2 className="h2 mb-4">Clients feel forced to use Big Tech solutions, because they are unaware of the alternatives.</h2>
+            <h2 className="h2 mb-4">Our mission is to empower businesses and individuals with reliable, ethical, and high-quality technology solutions.</h2>
             <p className="text-xl text-gray-400">
-              Across the last 20 years we have seen a dominance by large tech industry firms that have captured the technology infrastructure sector.
+              Across the last 20 years we have seen a dominance by large tech industry firms that have captured the technology infrastructure sector, while brokering your private data to offer extreme convenience. Now with the advent of Artificial Intelligence and Machine Learning it's vital to use ethical options for your data and solutions, avoiding tech capture while reducing costs.
             </p>
           </div>
 
@@ -22,9 +22,9 @@ export default function Features() {
                 <path className="stroke-current text-teal-100" d="M30 39.313l-4.18 2.197L27 34.628l-5-4.874 6.91-1.004L32 22.49l3.09 6.26L42 29.754l-3 2.924" strokeLinecap="square" strokeWidth="2" fill="none" fillRule="evenodd" />
                 <path className="stroke-current text-teal-300" d="M43 42h-9M43 37h-9" strokeLinecap="square" strokeWidth="2" />
               </svg>
-              <h4 className="h4 mb-2">Defense Minded</h4>
+              <h4 className="h4 mb-2">Defense Ethos</h4>
               <p className="text-lg text-gray-400 text-center">
-                Our team grew from the defense industry. Focused on protecting Americans from threats at home and abroad.
+                Our team has worked across an array of Defense needs ranging from User Experience to Big Data Analytics, within intelligence production and target acquisition.
               </p>
             </div>
 
@@ -35,14 +35,26 @@ export default function Features() {
                 <path className="stroke-current text-teal-100" strokeWidth="2" strokeLinecap="square" d="M21 23h22v18H21z" fill="none" fillRule="evenodd" />
                 <path className="stroke-current text-teal-300" d="M26 28h12M26 32h12M26 36h5" strokeWidth="2" strokeLinecap="square" />
               </svg>
-              <h4 className="h4 mb-2">Your Data First</h4>
+              <h4 className="h4 mb-2">Data Privacy</h4>
               <p className="text-lg text-gray-400 text-center">
                 We don't ignore real software risks of retaliation, retribution, and canacellation concerns. Adversarial environments is a modern day reality of mainstream tech solutions.
               </p>
             </div>
 
             {/* 3rd item */}
-            <div className="relative flex flex-col items-center" data-aos="fade-up" data-aos-delay="200" data-aos-anchor="[data-aos-id-blocks]">
+            <div className="relative flex flex-col items-center" data-aos="fade-up" data-aos-delay="300" data-aos-anchor="[data-aos-id-blocks]">
+              <svg className="w-16 h-16 mb-4" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <rect className="fill-current text-teal-600" width="64" height="64" rx="32" />
+                <g transform="translate(22 21)" strokeLinecap="square" strokeWidth="2" fill="none" fillRule="evenodd">
+                  <path className="stroke-current text-teal-100" d="M17 22v-6.3a8.97 8.97 0 003-6.569A9.1 9.1 0 0011.262 0 9 9 0 002 9v1l-2 5 2 1v4a2 2 0 002 2h4a5 5 0 005-5v-5" />
+                  <circle className="stroke-current text-teal-300" cx="13" cy="9" r="3" />
+                </g>
+              </svg>
+              <h4 className="h4 mb-2">AI Guidance</h4>
+              <p className="text-lg text-gray-400 text-center">We guide our clients through complex challenges where the latest tech jargon won't do, but practical revenue generating solutions are needed.</p>
+            </div>
+            {/* 4 item */}
+            {/* <div className="relative flex flex-col items-center" data-aos="fade-up" data-aos-delay="200" data-aos-anchor="[data-aos-id-blocks]">
               <svg className="w-16 h-16 mb-4" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                 <rect className="fill-current text-teal-600" width="64" height="64" rx="32" />
                 <g transform="translate(21 21)" strokeLinecap="square" strokeWidth="2" fill="none" fillRule="evenodd">
@@ -53,25 +65,15 @@ export default function Features() {
               </svg>
               <h4 className="h4 mb-2">Solutions On Target</h4>
               <p className="text-lg text-gray-400 text-center">
-                We pride ourselves on solutions that match your needs and not resume-padding trends.
+                We pride ourselves on producing targeted results, through engineering discipline avoiding costly trends.
               </p>
-            </div>
+            </div> */}
 
             {/* 4th item */}
-            <div className="relative flex flex-col items-center" data-aos="fade-up" data-aos-delay="300" data-aos-anchor="[data-aos-id-blocks]">
-              <svg className="w-16 h-16 mb-4" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                <rect className="fill-current text-teal-600" width="64" height="64" rx="32" />
-                <g transform="translate(22 21)" strokeLinecap="square" strokeWidth="2" fill="none" fillRule="evenodd">
-                  <path className="stroke-current text-teal-100" d="M17 22v-6.3a8.97 8.97 0 003-6.569A9.1 9.1 0 0011.262 0 9 9 0 002 9v1l-2 5 2 1v4a2 2 0 002 2h4a5 5 0 005-5v-5" />
-                  <circle className="stroke-current text-teal-300" cx="13" cy="9" r="3" />
-                </g>
-              </svg>
-              <h4 className="h4 mb-2">Instant Features</h4>
-              <p className="text-lg text-gray-400 text-center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.</p>
-            </div>
+
 
             {/* 5th item */}
-            <div className="relative flex flex-col items-center" data-aos="fade-up" data-aos-delay="400" data-aos-anchor="[data-aos-id-blocks]">
+            {/* <div className="relative flex flex-col items-center" data-aos="fade-up" data-aos-delay="400" data-aos-anchor="[data-aos-id-blocks]">
               <svg className="w-16 h-16 mb-4" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                 <rect className="fill-current text-teal-600" width="64" height="64" rx="32" />
                 <g strokeLinecap="square" strokeWidth="2" fill="none" fillRule="evenodd">
@@ -81,10 +83,10 @@ export default function Features() {
               </svg>
               <h4 className="h4 mb-2">Instant Features</h4>
               <p className="text-lg text-gray-400 text-center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.</p>
-            </div>
+            </div> */}
 
             {/* 6th item */}
-            <div className="relative flex flex-col items-center" data-aos="fade-up" data-aos-delay="500" data-aos-anchor="[data-aos-id-blocks]">
+            {/* <div className="relative flex flex-col items-center" data-aos="fade-up" data-aos-delay="500" data-aos-anchor="[data-aos-id-blocks]">
               <svg className="w-16 h-16 mb-4" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                 <rect className="fill-current text-teal-600" width="64" height="64" rx="32" />
                 <g transform="translate(21 22)" strokeLinecap="square" strokeWidth="2" fill="none" fillRule="evenodd">
@@ -95,7 +97,7 @@ export default function Features() {
               </svg>
               <h4 className="h4 mb-2">Instant Features</h4>
               <p className="text-lg text-gray-400 text-center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.</p>
-            </div>
+            </div> */}
 
           </div>
 
