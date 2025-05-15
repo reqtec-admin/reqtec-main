@@ -168,7 +168,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ width, height }) => {
       updateInteractionPosition(event.clientX, event.clientY);
     };
 
-    // Touch handlers
+    // Touch handlers with scroll support
     const handleTouchStart = (event: TouchEvent) => {
       const touch = event.touches[0];
       lastTouchPosition.current = { x: touch.clientX, y: touch.clientY };
@@ -176,7 +176,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ width, height }) => {
     };
 
     const handleTouchMove = (event: TouchEvent) => {
-      event.preventDefault();
+      // Don't prevent default to allow scrolling
       const touch = event.touches[0];
       lastTouchPosition.current = { x: touch.clientX, y: touch.clientY };
       updateInteractionPosition(touch.clientX, touch.clientY);
@@ -196,7 +196,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ width, height }) => {
     // Add all event listeners
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+    window.addEventListener('touchmove', handleTouchMove);
     window.addEventListener('scroll', handleScroll);
 
     // Animation loop with enhanced interaction
@@ -278,7 +278,6 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ width, height }) => {
         top: 0,
         left: 0,
         overflow: 'hidden',
-        touchAction: 'none' // Prevent default touch actions
       }} 
     />
   );
