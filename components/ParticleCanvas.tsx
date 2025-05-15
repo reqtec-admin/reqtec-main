@@ -88,7 +88,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ width, height }) => {
         positions[i + 2] = 0;
 
         const angle = Math.atan2(positions[i + 1], positions[i]);
-        const speed = 0.002 * (1 - Math.min(1, radius / 5));
+        const speed = 0.0015 * (1 - Math.min(1, radius / 5));
         velocities[i] = Math.cos(angle) * speed;
         velocities[i + 1] = Math.sin(angle) * speed;
         velocities[i + 2] = 0;
@@ -145,8 +145,8 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ width, height }) => {
       // Update both particle systems
       const updateParticles = (positions: Float32Array, velocities: Float32Array) => {
         for (let i = 0; i < positions.length; i += 3) {
-          positions[i] += velocities[i];
-          positions[i + 1] += velocities[i + 1];
+          positions[i] += velocities[i] * 0.8;
+          positions[i + 1] += velocities[i + 1] * 0.8;
 
           const dx = positions[i];
           const dy = positions[i + 1];
@@ -154,11 +154,11 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ width, height }) => {
 
           if (distanceFromCenter > frustumSize) {
             const angle = Math.random() * Math.PI * 2;
-            const newRadius = Math.random() * 0.5;
+            const newRadius = Math.random() * 1.5;
             positions[i] = Math.cos(angle) * newRadius;
             positions[i + 1] = Math.sin(angle) * newRadius;
             
-            const speed = 0.002;
+            const speed = 0.001;
             velocities[i] = Math.cos(angle) * speed;
             velocities[i + 1] = Math.sin(angle) * speed;
           }
@@ -170,7 +170,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ width, height }) => {
           const mouseDistance = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
 
           if (mouseDistance < 3) {
-            const strength = (1 - mouseDistance / 3) * 0.005;
+            const strength = (1 - mouseDistance / 3) * 0.004;
             positions[i] += dxMouse * strength;
             positions[i + 1] += dyMouse * strength;
           }
