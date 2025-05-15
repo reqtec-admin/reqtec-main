@@ -18,7 +18,7 @@ export default function Banner() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Speak to a <span className="hidden sm:inline">consultant now</span>
+                Speak to a consultant now
               </a>{' '}
               {/* <span className="italic px-1.5">or</span>{' '}
               <a className="font-medium hover:underline text-emerald-400" href="https://commit250.com/about" target="_blank" rel="noreferrer">
