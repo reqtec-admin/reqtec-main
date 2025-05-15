@@ -1,15 +1,13 @@
-import particles from '@/public/images/particles.gif'
 import logo from '@/public/images/REQtec-logo-white.png'
 import Head from 'next/head'
 import Modal from './modal'
+import ParticleCanvas from './ParticleCanvas'
 
 export default function Hero() {
   return (
     <section>
       <Modal 
-        bgImage={particles}
-        bgImageWidth={1200}
-        bgImageHeight={1080}
+        bgComponent={<ParticleCanvas width={1200} height={1080} />}
         fgImage={logo}
         fgImageWidth={1024}
         fgImageHeight={576}
