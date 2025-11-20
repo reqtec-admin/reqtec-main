@@ -20,7 +20,7 @@ const font1 = Architects_Daughter({
 
 const font2 = Adamina({
   subsets: ['latin'],
-  variable: '--font-architects-daughter',
+  variable: '--font-adamina',
   weight: '400',
   display: 'swap'
 })
@@ -37,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${font2.variable} font-inter antialiased bg-gray-900 text-gray-200 tracking-tight`}>
+      <body className={`${inter.variable} ${font1.variable} ${font2.variable} font-inter antialiased bg-gray-900 text-gray-200 tracking-tight`} suppressHydrationWarning>
         <div className="flex flex-col min-h-screen overflow-hidden">
           <Header />
           {children}
