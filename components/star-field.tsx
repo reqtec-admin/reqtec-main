@@ -8,14 +8,16 @@ interface Star {
   y: number
   radius: number
   opacity: number
-  vx: number // velocity x
-  vy: number // velocity y
+  speed: number
+  direction: number
   twinkleSpeed: number
+  baseOpacity: number
 }
 
 export default function StarField() {
   const svgRef = useRef<SVGSVGElement>(null)
   const animationFrameRef = useRef<number>()
+  const starsRef = useRef<Star[]>([])
 
   useEffect(() => {
     if (!svgRef.current) return
@@ -23,35 +25,29 @@ export default function StarField() {
     const svg = d3.select(svgRef.current)
     svg.selectAll('*').remove()
 
-    let width = window.innerWidth
-    let height = window.innerHeight
-    const numStars = 400
+    const width = window.innerWidth
+    const height = window.innerHeight
+    const numStars = 300
 
-    // Update SVG dimensions
+    // Initialize SVG
     svg.attr('width', width).attr('height', height)
 
-    // Create stars with random positions and velocities
-    // Create different layers of stars moving at different speeds for depth
-    const stars: Star[] = d3.range(numStars).map((i) => {
-      const layer = i % 3 // Create 3 layers
-      const baseSpeed = layer === 0 ? 0.15 : layer === 1 ? 0.25 : 0.35 // Different speeds per layer
-      const angle = Math.random() * Math.PI * 2 // Random direction
-      
-      return {
-        x: Math.random() * width,
-        y: Math.random() * height,
-        radius: layer === 0 ? Math.random() * 1 + 0.5 : layer === 1 ? Math.random() * 1.5 + 0.8 : Math.random() * 2 + 1,
-        opacity: layer === 0 ? Math.random() * 0.5 + 0.3 : layer === 1 ? Math.random() * 0.6 + 0.4 : Math.random() * 0.7 + 0.5,
-        vx: Math.cos(angle) * baseSpeed, // horizontal velocity
-        vy: Math.sin(angle) * baseSpeed, // vertical velocity
-        twinkleSpeed: Math.random() * 0.02 + 0.01,
-      }
-    })
+    // Create stars with random positions and movement
+    starsRef.current = d3.range(numStars).map(() => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      radius: Math.random() * 1.5 + 0.5,
+      opacity: Math.random() * 0.8 + 0.2,
+      speed: Math.random() * 0.5 + 0.1, // Movement speed
+      direction: Math.random() * Math.PI * 2, // Random direction
+      twinkleSpeed: Math.random() * 0.02 + 0.01,
+      baseOpacity: Math.random() * 0.8 + 0.2,
+    }))
 
     // Bind data and create circles
     const circles = svg
       .selectAll('circle')
-      .data(stars)
+      .data(starsRef.current)
       .enter()
       .append('circle')
       .attr('cx', (d) => d.x)
@@ -60,41 +56,53 @@ export default function StarField() {
       .attr('fill', '#38B6F0') // Your blue color
       .attr('opacity', (d) => d.opacity)
 
-    // Handle resize
-    const handleResize = () => {
-      width = window.innerWidth
-      height = window.innerHeight
-      svg.attr('width', width).attr('height', height)
-    }
-
-    window.addEventListener('resize', handleResize)
-
-    // Animation loop
+    // Animation loop for movement and twinkling
+    let time = 0
     const animate = () => {
-      circles.each(function (d: Star) {
+      time += 0.016 // ~60fps
+
+      circles.each(function (d: Star, i: number) {
         const circle = d3.select(this)
-        
-        // Update position based on velocity
-        d.x += d.vx
-        d.y += d.vy
+        const star = starsRef.current[i]
+
+        // Update position based on direction and speed
+        star.x += Math.cos(star.direction) * star.speed
+        star.y += Math.sin(star.direction) * star.speed
 
         // Wrap around edges
-        if (d.x < 0) d.x = width
-        if (d.x > width) d.x = 0
-        if (d.y < 0) d.y = height
-        if (d.y > height) d.y = 0
+        if (star.x < 0) star.x = width
+        if (star.x > width) star.x = 0
+        if (star.y < 0) star.y = height
+        if (star.y > height) star.y = 0
 
-        // Update position
-        circle.attr('cx', d.x).attr('cy', d.y)
+        // Twinkling effect
+        star.opacity = star.baseOpacity + Math.sin(time * star.twinkleSpeed) * 0.3
 
-        // Twinkle effect - subtle opacity variation
-        const twinkle = Math.sin(Date.now() * d.twinkleSpeed) * 0.3 + 0.7
-        const newOpacity = Math.max(0.2, Math.min(1, d.opacity * twinkle))
-        circle.attr('opacity', newOpacity)
+        // Update circle position and opacity
+        circle
+          .attr('cx', star.x)
+          .attr('cy', star.y)
+          .attr('opacity', Math.max(0.1, Math.min(1, star.opacity)))
       })
 
       animationFrameRef.current = requestAnimationFrame(animate)
     }
+
+    // Handle resize
+    const handleResize = () => {
+      const newWidth = window.innerWidth
+      const newHeight = window.innerHeight
+
+      svg.attr('width', newWidth).attr('height', newHeight)
+
+      // Reposition stars that are out of bounds
+      starsRef.current.forEach((star) => {
+        if (star.x > newWidth) star.x = newWidth * 0.5
+        if (star.y > newHeight) star.y = newHeight * 0.5
+      })
+    }
+
+    window.addEventListener('resize', handleResize)
 
     // Start animation
     animate()
@@ -105,7 +113,9 @@ export default function StarField() {
         cancelAnimationFrame(animationFrameRef.current)
       }
       window.removeEventListener('resize', handleResize)
-      svg.selectAll('*').remove()
+      if (svgRef.current) {
+        d3.select(svgRef.current).selectAll('*').remove()
+      }
     }
   }, [])
 
