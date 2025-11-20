@@ -51,30 +51,30 @@ export default function ModalVideo({
       {/* End: Video thumbnail */}
 
       <Dialog open={modalOpen} onClose={() => setModalOpen(false)} initialFocus={videoRef}>
-        <Transition.Child
+          <Transition.Child
           as={Fragment}
-          enter="transition ease-out duration-200"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition ease-out duration-100"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
+            enter="transition ease-out duration-200"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition ease-out duration-100"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
           afterEnter={() => videoRef.current?.play()}
         >
           {/* Modal backdrop */}
           <div className="fixed inset-0 z-[99999] bg-black bg-opacity-75" aria-hidden="true" />
         </Transition.Child>
 
-        {/* Modal dialog */}
-        <Transition.Child
+          {/* Modal dialog */}
+          <Transition.Child
           as={Fragment}
-          enter="transition ease-out duration-200"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
+            enter="transition ease-out duration-200"
+            enterFrom="opacity-0 scale-95"
+            enterTo="opacity-100 scale-100"
           leave="transition ease-out duration-200"
           leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
-        >
+            leaveTo="opacity-0 scale-95"
+          >
           <div className="fixed inset-0 z-[99999] overflow-hidden flex items-center justify-center transform px-4 sm:px-6">
             <Dialog.Panel className="w-full max-w-6xl mx-auto h-full flex items-center">
               <div className="w-full max-h-full aspect-video bg-black overflow-hidden">
@@ -83,10 +83,10 @@ export default function ModalVideo({
                   Your browser does not support the video tag.
                 </video>
               </div>
-            </Dialog.Panel>
-          </div>
-        </Transition.Child>
-      </Dialog>
+              </Dialog.Panel>
+            </div>
+          </Transition.Child>
+        </Dialog>
 
     </div>
   )

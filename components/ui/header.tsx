@@ -19,25 +19,36 @@ export default function Header() {
           </div>
 
           {/* Desktop navigation */}
-          {/* <nav className="hidden md:flex md:grow">
+          <nav className="hidden md:flex md:grow">
             <ul className="flex grow justify-end flex-wrap items-center">
               <li>
                 <Link
-                  href="/signin"
-                  className="font-medium text-teal-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
+                  href="/our-work"
+                  className="font-medium text-gray-300 hover:text-teal-400 px-4 py-3 flex items-center transition duration-150 ease-in-out"
                 >
-                  Sign in
+                  Our Work
                 </Link>
               </li>
               <li>
-                <Link href="/signup" className="btn-sm text-white bg-teal-600 hover:bg-teal-700 ml-3">
-                  Sign up
+                <Link
+                  href="/the-challenge"
+                  className="font-medium text-gray-300 hover:text-teal-400 px-4 py-3 flex items-center transition duration-150 ease-in-out"
+                >
+                  The Challenge
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/our-vision"
+                  className="font-medium text-gray-300 hover:text-teal-400 px-4 py-3 flex items-center transition duration-150 ease-in-out"
+                >
+                  Our Vision
                 </Link>
               </li>
             </ul>
-          </nav> */}
+          </nav>
 
-          {/* <MobileMenu /> */}
+          <MobileMenu />
 
         </div>
       </div>
