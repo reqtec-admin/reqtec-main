@@ -37,8 +37,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${font1.variable} ${font2.variable} font-inter antialiased bg-gray-900 text-gray-200 tracking-tight`} suppressHydrationWarning>
-        <div className="flex flex-col min-h-screen overflow-hidden">
+      <body className={`${inter.variable} ${font1.variable} ${font2.variable} font-inter antialiased text-gray-200 tracking-tight`} suppressHydrationWarning>
+        <div className="reqtec-backdrop flex flex-col min-h-screen overflow-hidden">
           <Header />
           {children}
           <Banner />
