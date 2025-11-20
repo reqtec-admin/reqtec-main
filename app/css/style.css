@@ -20,3 +20,70 @@
 [x-cloak=""] {
     display: none;
 }
+
+/* REQtec Glass Card Theme - Teal to Blue Gradients */
+:root {
+  --reqtec-bg: #000000;
+  --reqtec-surface: rgba(8, 40, 65, 0.75);
+  --reqtec-card: rgba(10, 45, 70, 0.80);
+  --reqtec-accent-teal: #14b8a6;
+  --reqtec-accent-blue: #38B6F0;
+  --reqtec-accent-cyan: #38B6F0;
+  --reqtec-text-primary: #f8fafc;
+  --reqtec-text-secondary: rgba(248, 250, 252, 0.70);
+  --reqtec-border: rgba(56, 182, 240, 0.25);
+  --reqtec-glass-gradient-a: rgba(56, 182, 240, 0.35);
+  --reqtec-glass-gradient-b: rgba(59, 130, 246, 0.30);
+  --reqtec-shadow-glass: 0 20px 45px -25px rgba(56, 182, 240, 0.45);
+  --reqtec-gradient-top: transparent;
+  --reqtec-gradient-bottom: transparent;
+}
+
+/* Background gradient backdrop - completely black */
+.reqtec-backdrop {
+  background: var(--reqtec-bg);
+  min-height: 100vh;
+}
+
+/* Glass card surface */
+.reqtec-glass-card {
+  position: relative;
+  border-radius: 1.5rem;
+  border: 1px solid var(--reqtec-border);
+  background-color: var(--reqtec-surface);
+  box-shadow: var(--reqtec-shadow-glass);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+}
+
+.reqtec-glass-card::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  background: 
+    radial-gradient(circle at top left, var(--reqtec-glass-gradient-a), transparent 60%),
+    radial-gradient(circle at bottom right, var(--reqtec-glass-gradient-b), transparent 60%);
+  z-index: 0;
+}
+
+.reqtec-glass-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Gradient border utility */
+.reqtec-gradient-border {
+  position: relative;
+}
+
+.reqtec-gradient-border::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--reqtec-accent-teal), var(--reqtec-accent-blue));
+  z-index: -1;
+  opacity: 0.6;
+}

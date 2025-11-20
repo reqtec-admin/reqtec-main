@@ -21,7 +21,7 @@ export default function DefaultLayout({
       duration: 600,
       easing: 'ease-out-sine',
     })
-  })
+  }, [])
 
   return (
     <>
