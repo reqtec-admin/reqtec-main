@@ -26,7 +26,7 @@ export default function Features() {
                 <svg className="w-6 h-6" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                   <path className="stroke-current" d="M30 39.313l-4.18 2.197L27 34.628l-5-4.874 6.91-1.004L32 22.49l3.09 6.26L42 29.754l-3 2.924" strokeLinecap="square" strokeWidth="2" fill="none" fillRule="evenodd" />
                   <path className="stroke-current" d="M43 42h-9M43 37h-9" strokeLinecap="square" strokeWidth="2" />
-                </svg>
+              </svg>
               }
               title="Defense Ethos"
             >
@@ -45,7 +45,7 @@ export default function Features() {
                 <svg className="w-6 h-6" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                   <path className="stroke-current" strokeWidth="2" strokeLinecap="square" d="M21 23h22v18H21z" fill="none" fillRule="evenodd" />
                   <path className="stroke-current" d="M26 28h12M26 32h12M26 36h5" strokeWidth="2" strokeLinecap="square" />
-                </svg>
+              </svg>
               }
               title="Data Privacy"
             >
@@ -62,11 +62,11 @@ export default function Features() {
               data-aos-anchor="[data-aos-id-blocks]"
               icon={
                 <svg className="w-6 h-6" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                  <g transform="translate(22 21)" strokeLinecap="square" strokeWidth="2" fill="none" fillRule="evenodd">
+                <g transform="translate(22 21)" strokeLinecap="square" strokeWidth="2" fill="none" fillRule="evenodd">
                     <path className="stroke-current" d="M17 22v-6.3a8.97 8.97 0 003-6.569A9.1 9.1 0 0011.262 0 9 9 0 002 9v1l-2 5 2 1v4a2 2 0 002 2h4a5 5 0 005-5v-5" />
                     <circle className="stroke-current" cx="13" cy="9" r="3" />
-                  </g>
-                </svg>
+                </g>
+              </svg>
               }
               title="AI Guidance"
             >

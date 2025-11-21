@@ -57,7 +57,7 @@ export default function OurVision() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section header */}
         <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-          <h1 className="text-4xl md:text-5xl font-light tracking-wide mb-4">Our Vision</h1>
+          <h1 className="text-4xl md:text-5xl font-light tracking-wide mb-4">OUR VISION</h1>
           <p className="text-xl text-gray-400">
             Our value proposition as an unbiased solutions provider focused on providing the most decentralized, non-Big Tech solution possible while respecting your budget and needs.
           </p>

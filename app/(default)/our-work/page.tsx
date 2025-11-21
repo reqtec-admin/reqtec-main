@@ -54,7 +54,7 @@ export default function OurWork() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section header */}
         <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-          <h1 className="text-4xl md:text-5xl font-light tracking-wide mb-4">Our Work</h1>
+          <h1 className="text-4xl md:text-5xl font-light tracking-wide mb-4">OUR WORK</h1>
           <p className="text-xl text-gray-400">
             Current and previous projects we are doing. Each includes a summary and a link if provided.
           </p>
