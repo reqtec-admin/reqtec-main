@@ -68,7 +68,7 @@ export default function BarChart({ data, options, height = 'h-64 md:h-80' }: Bar
           font: {
             size: 14,
             family: 'var(--font-inter), sans-serif',
-            weight: '500',
+            weight: 500,
           },
         },
         grid: {

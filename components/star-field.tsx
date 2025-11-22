@@ -16,7 +16,7 @@ interface Star {
 
 export default function StarField() {
   const svgRef = useRef<SVGSVGElement>(null)
-  const animationFrameRef = useRef<number>()
+  const animationFrameRef = useRef<number | undefined>(undefined)
   const starsRef = useRef<Star[]>([])
 
   useEffect(() => {
