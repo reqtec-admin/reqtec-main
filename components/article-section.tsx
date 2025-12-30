@@ -24,7 +24,7 @@ export function ArticleSection({
   const content = (
     <section
       className={cn(
-        'relative py-16 md:py-24 overflow-hidden',
+        'relative min-h-screen flex items-center justify-center py-16 md:py-24 overflow-hidden snap-start',
         className
       )}
     >
@@ -48,7 +48,7 @@ export function ArticleSection({
       )}
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 w-full">
         {children}
       </div>
     </section>
