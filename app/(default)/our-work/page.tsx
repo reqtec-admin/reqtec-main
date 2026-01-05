@@ -1,127 +1,109 @@
-import { GlassCard } from '@/components/glass-card'
+'use client'
+
 import Link from 'next/link'
-
-export const metadata = {
-  title: 'Our Work - REQtec',
-  description: 'Current and previous projects by Requisite Technologies',
-}
-
-const projects = [
-  {
-    name: 'Commit 250',
-    url: 'https://commit250.com',
-    status: 'delivered',
-    description: 'A guided health improvement experience anchored on traditional American values educating Americans on how to take charge of their health.',
-    competition: '75 Hard, BODi',
-    targetCustomer: 'Americans motivated by patriotic sentiments wanting to improve their health',
-    launch: 'July 2025',
-  },
-  {
-    name: 'Synergy Integrative',
-    url: 'https://sih.reqtec.com',
-    status: 'incubation',
-    description: 'A product vision and platform for integrative health solutions.',
-  },
-  {
-    name: 'DEALVR',
-    status: 'incubation',
-    description: 'Rideshare for delivery, the Uber of trusted community of product delivery centered on small business needs. Intended to complement services like Public Square and increase the purchasing of local products.',
-    competition: 'Amazon Prime',
-    targetCustomer: 'SMB with fulfillment chains',
-    launch: 'September 2026',
-  },
-  {
-    name: 'HANNO',
-    status: 'incubation',
-    description: 'Primarily Phone App wizard guiding customers towards Alt Tech solution avoiding Big Tech solutions.',
-    competition: 'CoolLabs LLC (potential if not partnered)',
-    targetCustomer: 'SMB and Startups with serious technical needs',
-    launch: 'March 2026',
-  },
-  {
-    name: 'STARTYR',
-    status: 'incubation',
-    description: 'Alt Tech Integrated Ecosystem that accelerates small ethically minded SMB. Based on the Coolify and Kubero Stacks with paid for enhancements to reduce the adoption curve.',
-    competition: 'CoolLabs LLC (potential if not partnered)',
-    targetCustomer: 'SMB and Startups with serious technical needs',
-    launch: 'March 2026',
-  },
-]
+import { ArticleSection } from '@/components/article-section'
+import { TypingAnimation } from '@/components/typing-animation'
+import { projects } from '@/data/projects'
 
 export default function OurWork() {
   return (
-    <section className="pt-32 pb-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Section header */}
-        <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-          <h1 className="text-4xl md:text-5xl font-light tracking-wide mb-4">OUR WORK</h1>
-          <p className="text-xl text-gray-400">
+    <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
+      {/* Fixed Background Video for entire page */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed inset-0 z-0 pointer-events-none object-cover w-full h-full"
+        style={{
+          filter: 'grayscale(100%)',
+          opacity: 0.15,
+        }}
+      >
+        <source src="/videos/particle_collision.mp4" type="video/mp4" />
+      </video>
+      {/* Dark overlay for better text readability */}
+      <div className="fixed inset-0 z-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60 pointer-events-none" />
+
+      {/* Hero Section - Full Viewport */}
+      <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 z-10 snap-start">
+        <div className="text-center max-w-4xl mx-auto px-4 sm:px-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-wide mb-6 text-gray-100">
+            <TypingAnimation 
+              text="OUR WORK" 
+              speed={80}
+              className="inline-block"
+            />
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
             Current and previous projects we are doing. Each includes a summary and a link if provided.
           </p>
         </div>
+      </section>
 
-        {/* Projects grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 items-stretch">
-          {projects.map((project, index) => (
-            <GlassCard
-              key={project.name}
-              className="h-full"
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-              title={project.name}
-              headerAction={
-                <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                  project.status === 'delivered' 
-                    ? 'bg-teal-500/20 text-teal-400 border border-teal-500/30'
-                    : 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-                }`}>
-                  {project.status}
-                </span>
-              }
-            >
-              <p className="text-base text-gray-400 mb-4">{project.description}</p>
-              
-              {project.url && (
-                <div className="mb-4">
-                  <Link
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-teal-400 hover:text-teal-300 transition duration-150 ease-in-out inline-flex items-center gap-2"
-                  >
-                    Visit Project
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </Link>
-                </div>
-              )}
+      {/* Project Sections */}
+      {projects.map((project, index) => (
+        <ArticleSection key={project.name} animationDelay={200}>
+          <div className="prose prose-invert max-w-none">
+            <div className="flex items-center gap-4 mb-6">
+              <h2 className="text-3xl md:text-4xl font-light tracking-wide text-gray-100 mb-0">
+                {project.name}
+              </h2>
+              <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                project.status === 'delivered' 
+                  ? 'bg-teal-500/20 text-teal-400 border border-teal-500/30'
+                  : 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+              }`}>
+                {project.status}
+              </span>
+            </div>
+            
+            <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
+              {project.description}
+            </p>
 
+            {project.url && (
+              <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
+                <Link
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-teal-400 hover:text-teal-300 transition duration-150 ease-in-out inline-flex items-center gap-2"
+                >
+                  Visit Project
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </Link>
+              </p>
+            )}
+
+            <div className="space-y-3 text-lg text-gray-300">
               {project.competition && (
-                <div className="mb-2">
-                  <span className="text-sm text-gray-500">Competition: </span>
-                  <span className="text-sm text-gray-300">{project.competition}</span>
-                </div>
+                <p>
+                  <span className="text-gray-500">Competition: </span>
+                  <span className="text-gray-300">{project.competition}</span>
+                </p>
               )}
 
               {project.targetCustomer && (
-                <div className="mb-2">
-                  <span className="text-sm text-gray-500">Target: </span>
-                  <span className="text-sm text-gray-300">{project.targetCustomer}</span>
-                </div>
+                <p>
+                  <span className="text-gray-500">Target Customer: </span>
+                  <span className="text-gray-300">{project.targetCustomer}</span>
+                </p>
               )}
 
               {project.launch && (
-                <div>
-                  <span className="text-sm text-gray-500">Launch: </span>
-                  <span className="text-sm text-gray-300">{project.launch}</span>
-                </div>
+                <p>
+                  <span className="text-gray-500">Launch: </span>
+                  <span className="text-gray-300">{project.launch}</span>
+                </p>
               )}
-            </GlassCard>
-          ))}
-        </div>
-      </div>
-    </section>
+            </div>
+          </div>
+        </ArticleSection>
+      ))}
+    </div>
   )
 }
 

@@ -1,7 +1,4 @@
-export const metadata = {
-  title: 'Home - REQtec',
-  description: 'Requisite Technologies (REQtec) is a software solutions firm providing consulting in Cloud, AI/ML, Mobile, and Web Based solutions for your corporations needs.',
-}
+'use client'
 
 import Hero from '@/components/hero'
 import Features from '@/components/features'
@@ -12,11 +9,30 @@ import Testimonials from '@/components/testimonials'
 export default function Home() {
   return (
     <>
-      <Hero />
-      <Features />
-      {/* <Zigzag /> */}
-      <Testimonials />
-      {/* <Newsletter /> */}
+      {/* Fixed Background Video for entire page */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed inset-0 z-0 pointer-events-none object-cover w-full h-full"
+        style={{
+          filter: 'grayscale(100%)',
+          opacity: 0.15,
+        }}
+      >
+        <source src="/videos/5187-183786465_medium.mp4" type="video/mp4" />
+      </video>
+      {/* Dark overlay for better text readability */}
+      <div className="fixed inset-0 z-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60 pointer-events-none" />
+      
+      <div className="relative z-10">
+        <Hero />
+        <Features />
+        {/* <Zigzag /> */}
+        <Testimonials />
+        {/* <Newsletter /> */}
+      </div>
     </>
   )
 }

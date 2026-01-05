@@ -3,13 +3,6 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-// Helper function to detect touch device - safe for SSR
-const isTouchDevice = () => {
-  if (typeof window === 'undefined') return false;
-  return (('ontouchstart' in window) ||
-    (navigator.maxTouchPoints > 0));
-};
-
 // Define offset constants for centering on the Q
 const OFFSET_X = -0.3; // Negative moves left
 const OFFSET_Y = 0.15;    // Adjust if needed for vertical position
@@ -21,9 +14,6 @@ interface ParticleCanvasProps {
 
 const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ width, height }) => {
   const canvasRef = useRef<HTMLDivElement>(null);
-  const mousePosition = useRef({ x: 0, y: 0 });
-  const scrollPosition = useRef(0);
-  const lastTouchPosition = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -152,53 +142,6 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ width, height }) => {
 
     camera.position.z = 5;
 
-    // Combined mouse/touch/scroll handler
-    const updateInteractionPosition = (clientX: number, clientY: number) => {
-      const rect = canvasRef.current?.getBoundingClientRect();
-      if (!rect) return;
-
-      mousePosition.current = {
-        x: ((clientX - rect.left) / rect.width) * 2 - 1,
-        y: -((clientY - rect.top) / rect.height) * 2 + 1,
-      };
-    };
-
-    // Mouse move handler
-    const handleMouseMove = (event: MouseEvent) => {
-      updateInteractionPosition(event.clientX, event.clientY);
-    };
-
-    // Touch handlers with scroll support
-    const handleTouchStart = (event: TouchEvent) => {
-      const touch = event.touches[0];
-      lastTouchPosition.current = { x: touch.clientX, y: touch.clientY };
-      updateInteractionPosition(touch.clientX, touch.clientY);
-    };
-
-    const handleTouchMove = (event: TouchEvent) => {
-      // Don't prevent default to allow scrolling
-      const touch = event.touches[0];
-      lastTouchPosition.current = { x: touch.clientX, y: touch.clientY };
-      updateInteractionPosition(touch.clientX, touch.clientY);
-    };
-
-    // Scroll handler
-    const handleScroll = () => {
-      const newScrollY = window.scrollY;
-      scrollPosition.current = newScrollY;
-      
-      // Use last known touch position or center of screen for scroll interaction
-      const interactionX = lastTouchPosition.current.x || window.innerWidth / 2;
-      const interactionY = lastTouchPosition.current.y + (newScrollY - scrollPosition.current);
-      updateInteractionPosition(interactionX, interactionY);
-    };
-
-    // Add all event listeners
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchmove', handleTouchMove);
-    window.addEventListener('scroll', handleScroll);
-
     // Animation loop with enhanced interaction
     const animate = () => {
       requestAnimationFrame(animate);
@@ -228,19 +171,6 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ width, height }) => {
             velocities[i] = Math.cos(angle) * speed;
             velocities[i + 1] = Math.sin(angle) * speed;
           }
-
-          // Mouse interaction relative to offset center
-          const mouseX = mousePosition.current.x * frustumSize + OFFSET_X;
-          const mouseY = mousePosition.current.y * frustumSize + OFFSET_Y;
-          const dxMouse = mouseX - positions[i];
-          const dyMouse = mouseY - positions[i + 1];
-          const mouseDistance = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
-
-          if (mouseDistance < 3) {
-            const strength = (1 - mouseDistance / 3) * (isTouchDevice() ? 0.006 : 0.004);
-            positions[i] += dxMouse * strength;
-            positions[i + 1] += dyMouse * strength;
-          }
         }
       };
 
@@ -257,10 +187,6 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ width, height }) => {
 
     // Cleanup
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('scroll', handleScroll);
       if (canvasRef.current) {
         canvasRef.current.removeChild(renderer.domElement);
       }

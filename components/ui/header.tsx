@@ -2,7 +2,7 @@ import Link from 'next/link'
 import MobileMenu from './mobile-menu'
 import Image from 'next/image'
 
-import logo from '@/public/images/REQtec-icon-white.png'
+import logo from '@/public/images/REQtec-logo-white.png'
 
 export default function Header() {
   return (
@@ -13,7 +13,7 @@ export default function Header() {
           <div className="shrink-0 mr-4">
             {/* Logo */}
             <Link href="/" className="block" aria-label="REQtec">
-              <Image className="rounded-full" src={logo} width={48} height={48} alt="Logo" />
+              <Image src={logo} width={120} height={48} alt="REQtec Logo" className="h-12 w-auto" />
             </Link>
 
           </div>
