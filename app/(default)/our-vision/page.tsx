@@ -2,7 +2,7 @@
 
 import { ArticleSection } from '@/components/article-section'
 import { TypingAnimation } from '@/components/typing-animation'
-import { services, plannedProducts } from '@/data/vision-data'
+import { services } from '@/data/vision-data'
 
 export default function OurVision() {
   return (
@@ -35,10 +35,15 @@ export default function OurVision() {
             />
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-            Our value proposition as an unbiased solutions provider focused on providing the most decentralized, non-Big Tech solution possible while respecting your budget and needs.
+            Unbiased tech solutions that are outside the Big Tech oligarchy.
+            <br />
+            Our team helping you and your business employ decentralized providers, avoiding Big Tech solutions as much as possible while respecting your budget and needs.
           </p>
         </div>
       </section>
+
+      {/* Divider */}
+      <div className="border-t border-teal-500/20 relative z-10" />
 
       {/* Company Description Section */}
       <ArticleSection animationDelay={200}>
@@ -53,9 +58,6 @@ export default function OurVision() {
             </p>
             <p>
               <strong className="text-gray-200">Location:</strong> Remote-first with a small headquarters in Omaha, NE
-            </p>
-            <p>
-              <strong className="text-gray-200">Legal Structure:</strong> S-Corp
             </p>
             <p className="pt-4">
               <strong className="text-gray-200">Vision:</strong> To deliver cutting-edge technology solutions that uphold traditional values and foster trust in an era dominated by big tech monopolies.
@@ -75,32 +77,6 @@ export default function OurVision() {
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
               {service.description}
             </p>
-          </div>
-        </ArticleSection>
-      ))}
-
-      {/* Planned Products Sections */}
-      {plannedProducts.map((product, index) => (
-        <ArticleSection key={product.name} animationDelay={200}>
-          <div className="prose prose-invert max-w-none">
-            <h2 className="text-3xl md:text-4xl font-light tracking-wide mb-6 text-gray-100">{product.name}</h2>
-            <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
-              {product.description}
-            </p>
-            <div className="space-y-3 text-lg text-gray-300">
-              {product.competition && (
-                <p>
-                  <span className="text-gray-500">Competition: </span>
-                  <span className="text-gray-300">{product.competition}</span>
-                </p>
-              )}
-              {product.launch && (
-                <p>
-                  <span className="text-gray-500">Launch: </span>
-                  <span className="text-gray-300">{product.launch}</span>
-                </p>
-              )}
-            </div>
           </div>
         </ArticleSection>
       ))}

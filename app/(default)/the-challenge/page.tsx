@@ -50,6 +50,9 @@ export default function TheChallenge() {
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="border-t border-teal-500/20 relative z-10" />
+
       {/* Documented Cases Section */}
       <ArticleSection animationDelay={200}>
         <div className="prose prose-invert max-w-none">

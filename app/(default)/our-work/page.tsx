@@ -41,6 +41,9 @@ export default function OurWork() {
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="border-t border-teal-500/20 relative z-10" />
+
       {/* Project Sections */}
       {projects.map((project, index) => (
         <ArticleSection key={project.name} animationDelay={200}>

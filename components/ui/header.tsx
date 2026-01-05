@@ -24,34 +24,25 @@ export default function Header() {
               <li>
                 <Link
                   href="/our-work"
-                  className="font-medium text-gray-300 hover:text-teal-400 px-4 py-3 flex items-center gap-2 transition duration-150 ease-in-out"
+                  className="font-medium text-gray-300 hover:text-teal-400 px-4 py-3 transition duration-150 ease-in-out"
                 >
-                  Our Work
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
+                  OUR work |
                 </Link>
               </li>
               <li>
                 <Link
                   href="/the-challenge"
-                  className="font-medium text-gray-300 hover:text-teal-400 px-4 py-3 flex items-center gap-2 transition duration-150 ease-in-out"
+                  className="font-medium text-gray-300 hover:text-teal-400 px-4 py-3 transition duration-150 ease-in-out"
                 >
-                  The Challenge
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
+                  THE challenge |
                 </Link>
               </li>
               <li>
                 <Link
                   href="/our-vision"
-                  className="font-medium text-gray-300 hover:text-teal-400 px-4 py-3 flex items-center gap-2 transition duration-150 ease-in-out"
+                  className="font-medium text-gray-300 hover:text-teal-400 px-4 py-3 transition duration-150 ease-in-out"
                 >
-                  Our Vision
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
+                  OUR vision |
                 </Link>
               </li>
             </ul>
