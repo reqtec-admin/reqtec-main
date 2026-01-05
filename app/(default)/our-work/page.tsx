@@ -36,7 +36,9 @@ export default function OurWork() {
             />
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-            Current and previous projects we are doing. Each includes a summary and a link if provided.
+            Our current and previous projects.
+            <br />
+            Each includes a summary and a link if provided.
           </p>
         </div>
       </section>
