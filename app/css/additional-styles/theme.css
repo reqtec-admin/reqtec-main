@@ -68,6 +68,25 @@
     animation-delay: -6000ms;
 }
 
+/* Ensure AOS elements are visible when AOS isn't initialized */
+[data-aos] {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Only apply AOS styles when AOS is actually initialized */
+html.aos-init [data-aos],
+body.aos-init [data-aos] {
+    opacity: 0;
+    visibility: hidden;
+}
+
+html.aos-init [data-aos].aos-animate,
+body.aos-init [data-aos].aos-animate {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* Custom AOS distance */
 @media screen {
     html:not(.no-js) body [data-aos=fade-up] {

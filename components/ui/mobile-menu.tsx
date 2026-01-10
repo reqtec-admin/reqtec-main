@@ -62,20 +62,19 @@ export default function MobileMenu() {
         <ul className="bg-gray-900/95 backdrop-blur-sm border border-teal-500/20 rounded-lg px-4 py-2 mt-2">
           <li>
             <Link href="/our-work" className="flex font-medium w-full text-gray-300 hover:text-teal-400 py-2 justify-center transition duration-150 ease-in-out" onClick={() => setMobileNavOpen(false)}>
-              Our Work
+              Our Work |
             </Link>
           </li>
           <li>
             <Link href="/the-challenge" className="flex font-medium w-full text-gray-300 hover:text-teal-400 py-2 justify-center transition duration-150 ease-in-out" onClick={() => setMobileNavOpen(false)}>
-              The Challenge
+              The Challenge |
             </Link>
           </li>
           <li>
             <Link href="/our-vision" className="flex font-medium w-full text-gray-300 hover:text-teal-400 py-2 justify-center transition duration-150 ease-in-out" onClick={() => setMobileNavOpen(false)}>
-              Our Vision
+              Our Vision |
             </Link>
           </li>
-          <li className="text-gray-300 py-2 text-center">|</li>
         </ul>
       </nav>
     </div>
