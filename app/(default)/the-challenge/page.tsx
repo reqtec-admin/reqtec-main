@@ -135,7 +135,7 @@ export default function TheChallenge() {
           </p>
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
             <Link href="/our-vision" className="text-teal-400 hover:text-teal-300 transition duration-150 ease-in-out inline-flex items-center gap-2">
-              Find out how
+              Find out more
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>

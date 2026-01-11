@@ -35,9 +35,10 @@ export default function OurVision() {
             />
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-            Unbiased tech solutions that are outside the Big Tech oligarchy.
+            Digital solutions that are outside the Big Tech oligarchy and immune to social contagion.
             <br />
-            Our team helping you and your business employ decentralized providers, avoiding Big Tech solutions as much as possible while respecting your budget and needs.
+            <br />
+            Our team empowers you and your business to employ alternative technology providers, avoiding Big Tech solutions, as much as possible, while respecting your budget and needs.
           </p>
         </div>
       </section>
@@ -46,7 +47,7 @@ export default function OurVision() {
       <div className="border-t border-teal-500/20 relative z-10" />
 
       {/* Company Description Section */}
-      <ArticleSection animationDelay={200}>
+      {/* <ArticleSection animationDelay={200}>
         <div className="prose prose-invert max-w-none">
           <h2 className="text-3xl md:text-4xl font-light tracking-wide mb-6 text-gray-100">Company Description</h2>
           <div className="space-y-4 text-lg text-gray-300">
@@ -67,7 +68,7 @@ export default function OurVision() {
             </p>
           </div>
         </div>
-      </ArticleSection>
+      </ArticleSection> */}
 
       {/* Products and Services Sections */}
       {services.map((service, index) => (
