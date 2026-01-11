@@ -127,7 +127,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ width, height }) => {
     });
 
     const tealParticleMaterial = new THREE.PointsMaterial({
-      color: 0x14B8A6, // Tailwind teal-600
+      color: 0xFFFFFF, // Tailwind teal-600
       size: 0.01,
       transparent: true,
       opacity: 0.4,

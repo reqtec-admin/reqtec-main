@@ -53,7 +53,7 @@ export default function StarField() {
       .attr('cx', (d) => d.x)
       .attr('cy', (d) => d.y)
       .attr('r', (d) => d.radius)
-      .attr('fill', '#38B6F0') // Your blue color
+      .attr('fill', '#FEFEFE') // Your blue color
       .attr('opacity', (d) => d.opacity)
 
     // Animation loop for movement and twinkling

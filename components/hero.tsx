@@ -18,7 +18,7 @@ export default function Hero() {
         <div className="max-w-3xl mx-auto text-center pt-32 pb-10 md:pt-40 md:pb-16">
           <h1 className="text-4xl md:text-5xl font-light tracking-wide mb-4" data-aos="fade-up">REQUISITE TECHNOLOGIES</h1>
           <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">
-            Engineers chasing solutions, not trends.
+            Technology with a Clear Conscience.
           </p>
           <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
             <div data-aos="fade-up" data-aos-delay="400">
