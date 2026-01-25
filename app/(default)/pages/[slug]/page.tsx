@@ -30,6 +30,16 @@ function getAccessCookieName(slug: string) {
   return `page-access-${safeSlug}`
 }
 
+function getAccessCodeForSlug(slug: string) {
+  const directMatch = process.env[slug]
+  if (directMatch) {
+    return directMatch
+  }
+
+  const normalized = slug.replace(/[^a-z0-9]/gi, '_').toUpperCase()
+  return process.env[`PAGE_ACCESS_CODE_${normalized}`]
+}
+
 function splitMarkdownByH2(markdown: string) {
   const lines = markdown.split('\n')
   const intro: string[] = []
@@ -92,11 +102,11 @@ export default async function MarkdownPage({ params }: { params: Promise<{ slug:
   }
 
   const backgroundImage = page.metadata.image || DEFAULT_BACKGROUND
-  const ctaLabel = page.metadata.ctaLabel || DEFAULT_CTA_LABEL
-  const ctaHref = page.metadata.ctaHref || DEFAULT_CTA_HREF
+  const ctaLabel = page.metadata.ctaLabel || ''
+  const ctaHref = page.metadata.ctaHref || ''
   const ctaIsExternal = isExternalUrl(ctaHref) || isMailto(ctaHref)
   const { intro, sections } = splitMarkdownByH2(page.content)
-  const isProtected = Boolean(page.metadata.protected)
+  const isProtected = Boolean(getAccessCodeForSlug(page.slug))
   const cookieStore = cookies()
   const hasAccess = !isProtected || cookieStore.get(getAccessCookieName(page.slug))?.value === 'true'
 
@@ -119,7 +129,7 @@ export default async function MarkdownPage({ params }: { params: Promise<{ slug:
       <div className="fixed inset-0 z-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60 pointer-events-none" />
 
       {/* Floating CTA */}
-      {hasAccess && (
+      {hasAccess && ctaLabel && ctaHref && (
         <div className="fixed bottom-6 right-6 z-20">
           {ctaIsExternal ? (
             <a

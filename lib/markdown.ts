@@ -4,6 +4,29 @@ import matter from 'gray-matter'
 
 const pagesDirectory = path.join(process.cwd(), 'content/pages')
 
+function extractTitleFromContent(content: string) {
+  const lines = content.split('\n')
+  for (let i = 0; i < lines.length; i += 1) {
+    const match = lines[i].match(/^#\s+(.+)$/)
+    if (match) {
+      const title = match[1].trim()
+      lines.splice(i, 1)
+      if (lines[i] === '') {
+        lines.splice(i, 1)
+      }
+      return {
+        title,
+        content: lines.join('\n').trimStart(),
+      }
+    }
+  }
+
+  return {
+    title: '',
+    content,
+  }
+}
+
 export interface PageMetadata {
   title: string
   date: string
@@ -43,11 +66,17 @@ export function getPageBySlug(slug: string): MarkdownPage | null {
 
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
+  const { title: contentTitle, content: contentWithoutTitle } = extractTitleFromContent(content)
+  const resolvedTitle = contentTitle || (data.title as string | undefined) || slug
 
   return {
     slug,
     metadata: data as PageMetadata,
-    content,
+    content: contentWithoutTitle,
+    metadata: {
+      ...(data as PageMetadata),
+      title: resolvedTitle,
+    },
   }
 }
 
