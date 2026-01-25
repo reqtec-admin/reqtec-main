@@ -71,7 +71,6 @@ export function getPageBySlug(slug: string): MarkdownPage | null {
 
   return {
     slug,
-    metadata: data as PageMetadata,
     content: contentWithoutTitle,
     metadata: {
       ...(data as PageMetadata),

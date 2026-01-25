@@ -107,11 +107,11 @@ export default async function MarkdownPage({ params }: { params: Promise<{ slug:
   const ctaIsExternal = isExternalUrl(ctaHref) || isMailto(ctaHref)
   const { intro, sections } = splitMarkdownByH2(page.content)
   const isProtected = Boolean(getAccessCodeForSlug(page.slug))
-  const cookieStore = cookies()
+  const cookieStore = await cookies()
   const hasAccess = !isProtected || cookieStore.get(getAccessCookieName(page.slug))?.value === 'true'
 
   return (
-    <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
+    <div className="min-h-screen">
       {/* Fixed Background Image for entire page */}
       <div
         className="fixed inset-0 z-0 pointer-events-none"
@@ -243,14 +243,15 @@ export default async function MarkdownPage({ params }: { params: Promise<{ slug:
                     </span>
                   )
                 },
-                code: ({ inline, ...props }) => {
+                code: (props: any) => {
+                  const { inline, ...rest } = props
                   if (inline) {
-                    return <code className="bg-gray-800 px-2 py-1 rounded text-teal-400 text-sm" {...props} />
+                    return <code className="bg-gray-800 px-2 py-1 rounded text-teal-400 text-sm" {...rest} />
                   }
 
                   return (
                     <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto my-6">
-                      <code className="text-gray-300 text-sm" {...props} />
+                      <code className="text-gray-300 text-sm" {...rest} />
                     </pre>
                   )
                 },
@@ -331,14 +332,15 @@ export default async function MarkdownPage({ params }: { params: Promise<{ slug:
                           </span>
                         )
                       },
-                      code: ({ inline, ...props }) => {
+                      code: (props: any) => {
+                        const { inline, ...rest } = props
                         if (inline) {
-                          return <code className="bg-gray-800 px-2 py-1 rounded text-teal-400 text-sm" {...props} />
+                          return <code className="bg-gray-800 px-2 py-1 rounded text-teal-400 text-sm" {...rest} />
                         }
 
                         return (
                           <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto my-6">
-                            <code className="text-gray-300 text-sm" {...props} />
+                            <code className="text-gray-300 text-sm" {...rest} />
                           </pre>
                         )
                       },

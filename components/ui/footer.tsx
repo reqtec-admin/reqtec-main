@@ -1,130 +1,295 @@
-import React from 'react'
-import Link from 'next/link'
+'use client'
+
+import { useState } from 'react'
 import Image from 'next/image'
-import logo from '@/public/images/REQtec-icon-white.png'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
+
+const footerIcon = '/images/REQtec-icon-white.png'
 
 export default function Footer() {
+  const [aboutOpen, setAboutOpen] = useState(false)
+  const [careersOpen, setCareersOpen] = useState(false)
+  const [privacyOpen, setPrivacyOpen] = useState(false)
+  const [termsOpen, setTermsOpen] = useState(false)
+  const [complianceOpen, setComplianceOpen] = useState(false)
+
   return (
-    <footer>
-      <div className="py-12 md:py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-
-          {/* Top area: Blocks */}
-          <div className="grid md:grid-cols-12 gap-8 lg:gap-20 mb-8 md:mb-12">
-
-            {/* 1st block */}
-            <div className="md:col-span-4 lg:col-span-5">
-              <div className="mb-2">
-                <Link href="/" className="block" aria-label="REQtec">
-                  <Image className="rounded-full" src={logo} width={48} height={48} alt="Logo" />
-                </Link>
-
-              </div>
-              <div className="text-gray-400">Unauthorized reproduction of any of Requisite Technologies copyright materials or use may result in civil and criminal penalties under applicable copyright laws, including the U.S. Copyright Act (17 U.S.C. § 101 et seq.).</div>
+    <>
+      <footer className="border-t border-white/10 bg-black/50 backdrop-blur-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8 text-center md:text-left">
+            <div>
+              <p className="text-xs text-white/50 font-mono mb-4">PRODUCT</p>
+              <ul className="space-y-2">
+                <li>
+                  <a href="/our-work" className="text-sm text-white/70 hover:text-white transition">
+                    Our Work
+                  </a>
+                </li>
+                <li>
+                  <a href="/the-challenge" className="text-sm text-white/70 hover:text-white transition">
+                    The Challenge
+                  </a>
+                </li>
+                <li>
+                  <a href="/our-vision" className="text-sm text-white/70 hover:text-white transition">
+                    Our Vision
+                  </a>
+                </li>
+              </ul>
             </div>
-
-            {/* 2nd, 3rd and 4th blocks */}
-            {/* <div className="md:col-span-8 lg:col-span-7 grid sm:grid-cols-3 gap-8"> */}
-
-              {/* 2nd block */}
-              {/* <div className="text-sm">
-                <h6 className="text-gray-200 font-medium mb-1">Products</h6>
-                <ul>
-                  <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Web Studio</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">DynamicBox Flex</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Programming Forms</Link>
-                  </li>
-                </ul>
-              </div> */}
-
-              {/* 3rd block */}
-              {/* <div className="text-sm">
-                <h6 className="text-gray-200 font-medium mb-1">Resources</h6>
-                <ul>
-                  <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Nostrud exercitation</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Visual mockups</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Nostrud exercitation</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Visual mockups</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Nostrud exercitation</Link>
-                  </li>
-                </ul>
-              </div> */}
-
-              {/* 4th block */}
-              {/* <div className="text-sm">
-                <h6 className="text-gray-200 font-medium mb-1">Company</h6>
-                <ul>
-                  <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Consectetur adipiscing</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Labore et dolore</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Consectetur adipiscing</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Labore et dolore</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Consectetur adipiscing</Link>
-                  </li>
-                </ul>
-              </div> 
-
-            </div>*/}
-
+            <div>
+              <p className="text-xs text-white/50 font-mono mb-4">COMPANY</p>
+              <ul className="space-y-2">
+                <li>
+                  <button
+                    onClick={() => setAboutOpen(true)}
+                    className="text-sm text-white/70 hover:text-white transition"
+                  >
+                    About
+                  </button>
+                </li>
+                <li>
+                  <a href="/pages" className="text-sm text-white/70 hover:text-white transition">
+                    Articles
+                  </a>
+                </li>
+                <li>
+                  <button
+                    onClick={() => setCareersOpen(true)}
+                    className="text-sm text-white/70 hover:text-white transition"
+                  >
+                    Careers
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-xs text-white/50 font-mono mb-4">LEGAL</p>
+              <ul className="space-y-2">
+                <li>
+                  <button
+                    onClick={() => setPrivacyOpen(true)}
+                    className="text-sm text-white/70 hover:text-white transition"
+                  >
+                    Privacy
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => setTermsOpen(true)}
+                    className="text-sm text-white/70 hover:text-white transition"
+                  >
+                    Terms
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => setComplianceOpen(true)}
+                    className="text-sm text-white/70 hover:text-white transition"
+                  >
+                    Compliance
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-xs text-white/50 font-mono mb-4">CONNECT</p>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="https://x.com/reqtecX"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-white/70 hover:text-white transition"
+                  >
+                    X
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://linkedin.com/company/reqtec"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-white/70 hover:text-white transition"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:info@reqtec.com"
+                    className="text-sm text-white/70 hover:text-white transition"
+                  >
+                    Email
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          {/* Bottom area */}
-          <div className="md:flex md:items-center md:justify-between">
-
-            {/* Social links */}
-            <ul className="flex mb-4 md:order-1 md:ml-4 md:mb-0">
-              <li>
-                <Link href="https://x.com/ReqTecX" className="flex justify-center items-center text-teal-400 bg-teal-500/10 border border-teal-500/30 hover:text-teal-300 hover:bg-teal-500/20 rounded-full transition duration-150 ease-in-out" aria-label="X">
-                  <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                    <path d="m13.063 9 3.495 4.475L20.601 9h2.454l-5.359 5.931L24 23h-4.938l-3.866-4.893L10.771 23H8.316l5.735-6.342L8 9h5.063Zm-.74 1.347h-1.457l8.875 11.232h1.36l-8.778-11.232Z" />
-                  </svg>
-                </Link>
-              </li>
-              <li className="ml-4">
-                <Link href="https://github.com/ReqTec" className="flex justify-center items-center text-teal-400 bg-teal-500/10 border border-teal-500/30 hover:text-teal-300 hover:bg-teal-500/20 rounded-full transition duration-150 ease-in-out" aria-label="Github">
-                  <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16 8.2c-4.4 0-8 3.6-8 8 0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4V22c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.7 3.9.3.4.6.9.6 1.6v2.2c0 .2.1.5.6.4 3.2-1.1 5.5-4.1 5.5-7.6-.1-4.4-3.7-8-8.1-8z" />
-                  </svg>
-                </Link>
-              </li>
-              <li className="ml-4">
-                <Link href="https://linkedin.com/company/reqtec" className="flex justify-center items-center text-teal-400 bg-teal-500/10 border border-teal-500/30 hover:text-teal-300 hover:bg-teal-500/20 rounded-full transition duration-150 ease-in-out" aria-label="Linkedin">
-                  <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M23.3 8H8.7c-.4 0-.7.3-.7.7v14.7c0 .3.3.6.7.6h14.7c.4 0 .7-.3.7-.7V8.7c-.1-.4-.4-.7-.8-.7zM12.7 21.6h-2.3V14h2.4v7.6h-.1zM11.6 13c-.8 0-1.4-.7-1.4-1.4 0-.8.6-1.4 1.4-1.4.8 0 1.4.6 1.4 1.4-.1.7-.7 1.4-1.4 1.4zm10 8.6h-2.4v-3.7c0-.9 0-2-1.2-2s-1.4 1-1.4 2v3.8h-2.4V14h2.3v1c.3-.6 1.1-1.2 2.2-1.2 2.4 0 2.8 1.6 2.8 3.6v4.2h.1z" />
-                  </svg>
-                </Link>
-              </li>
-            </ul>
-
-            {/* Copyrights note */}
-            <div className="text-gray-400 text-sm mr-4">&copy; 2025 Requisite Technologies. All rights reserved.</div>
-
+          <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center">
+            <a href="/" className="flex items-center gap-2 mb-4 md:mb-0">
+              <Image
+                src={footerIcon}
+                alt="REQtec"
+                width={24}
+                height={24}
+                className="w-6 h-6"
+              />
+              <span className="font-mono text-sm font-bold text-white">REQtec.com</span>
+            </a>
+            <p className="text-xs text-white/50 text-center md:text-right">
+              © 2025 Requisite Technologies. All rights reserved.
+            </p>
           </div>
-
         </div>
-      </div>
-    </footer>
+      </footer>
+
+      <Dialog open={aboutOpen} onOpenChange={setAboutOpen}>
+        <DialogContent className="bg-black border-white/20 text-white max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-white font-mono">About</DialogTitle>
+          </DialogHeader>
+          <div className="text-white/70 mt-4">
+            REQtec is a technology company delivering cloud, AI/ML, mobile, and web solutions for modern businesses.
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={careersOpen} onOpenChange={setCareersOpen}>
+        <DialogContent className="bg-black border-white/20 text-white max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-white font-mono">Careers</DialogTitle>
+          </DialogHeader>
+          <div className="text-white/70 mt-4">Coming Soon</div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={privacyOpen} onOpenChange={setPrivacyOpen}>
+        <DialogContent className="bg-black/90 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl relative">
+          <div className="flex items-start justify-between gap-4">
+            <DialogHeader className="mb-0">
+              <DialogTitle className="text-white">Privacy Policy</DialogTitle>
+            </DialogHeader>
+            <button
+              type="button"
+              onClick={() => setPrivacyOpen(false)}
+              className="text-white/60 hover:text-white transition text-xl leading-none"
+              aria-label="Close"
+            >
+              ×
+            </button>
+          </div>
+          <div className="text-white/70 mt-4 space-y-4 text-sm">
+            <div>
+              This Privacy Policy describes how REQtec ("we", "our", or "us") collects, uses, and protects your information.
+            </div>
+            <div>
+              <strong>Information Collection:</strong> We collect information that you provide directly to us, including contact information and project-related data.
+            </div>
+            <div>
+              <strong>Use of Information:</strong> We use the information we collect to provide, maintain, and improve our services, communicate with you, and comply with legal obligations.
+            </div>
+            <div>
+              <strong>Data Security:</strong> We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.
+            </div>
+            <div>
+              <strong>Your Rights:</strong> You have the right to access, correct, or delete your personal information. Please contact us to exercise these rights.
+            </div>
+            <div className="pt-4 border-t border-white/10">
+              © 2025 Requisite Technologies. All rights reserved.
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={termsOpen} onOpenChange={setTermsOpen}>
+        <DialogContent className="bg-black/90 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl relative">
+          <div className="flex items-start justify-between gap-4">
+            <DialogHeader className="mb-0">
+              <DialogTitle className="text-white">Terms & Definitions</DialogTitle>
+            </DialogHeader>
+            <button
+              type="button"
+              onClick={() => setTermsOpen(false)}
+              className="text-white/60 hover:text-white transition text-xl leading-none"
+              aria-label="Close"
+            >
+              ×
+            </button>
+          </div>
+          <div className="text-white/70 mt-4 space-y-4 text-sm">
+            <div>
+              <strong className="text-white">Intellectual Property (IP):</strong> Refers to creations of the mind, such as inventions, literary and artistic works, designs, symbols, names, and images used in commerce. This includes patents, copyrights, trademarks, and trade secrets.
+            </div>
+            <div>
+              <strong className="text-white">Proprietary Data:</strong> Information that is owned by a company or individual and is not publicly available. This data is protected by confidentiality agreements and trade secret laws.
+            </div>
+            <div>
+              <strong className="text-white">Source Code:</strong> Human-readable instructions written in a programming language that define how software operates. Source code is protected by copyright law.
+            </div>
+            <div>
+              <strong className="text-white">Trade Secret:</strong> Confidential business information that provides a competitive advantage. Trade secrets are protected as long as they remain secret and have commercial value.
+            </div>
+            <div>
+              <strong className="text-white">Work Product:</strong> Materials, documents, code, and other deliverables created during the course of a project. Ownership and usage rights are typically defined in service agreements.
+            </div>
+            <div>
+              <strong className="text-white">Non-Disclosure Agreement (NDA):</strong> A legal contract that establishes confidentiality between parties, preventing the disclosure of proprietary or confidential information.
+            </div>
+            <div>
+              <strong className="text-white">License:</strong> A legal permission to use intellectual property under specified conditions. Licenses can be exclusive, non-exclusive, or limited in scope.
+            </div>
+            <div className="pt-4 border-t border-white/10">
+              These terms are provided for informational purposes. For specific legal definitions and implications, please consult with qualified legal counsel.
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={complianceOpen} onOpenChange={setComplianceOpen}>
+        <DialogContent className="bg-black/90 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl relative">
+          <div className="flex items-start justify-between gap-4">
+            <DialogHeader className="mb-0">
+              <DialogTitle className="text-white">Compliance & Security</DialogTitle>
+            </DialogHeader>
+            <button
+              type="button"
+              onClick={() => setComplianceOpen(false)}
+              className="text-white/60 hover:text-white transition text-xl leading-none"
+              aria-label="Close"
+            >
+              ×
+            </button>
+          </div>
+          <div className="text-white/70 mt-4 space-y-4 text-sm">
+            <div>
+              REQtec is committed to meeting high standards of security and compliance for client projects and data.
+            </div>
+            <div>
+              <strong className="text-white">Planned Compliance Standards:</strong>
+              <ul className="list-disc list-inside mt-2 space-y-1 ml-4">
+                <li><strong>SOC 2 Type II:</strong> Service Organization Control 2 certification ensuring security, availability, processing integrity, confidentiality, and privacy of customer data.</li>
+                <li><strong>Industry Standards:</strong> Alignment with relevant industry regulations and data protection requirements.</li>
+                <li><strong>Data Security:</strong> Encryption, access controls, audit logging, and secure data handling practices.</li>
+                <li><strong>Regulatory Compliance:</strong> Adherence to applicable regulations and best practices.</li>
+              </ul>
+            </div>
+            <div>
+              Security architecture is designed with compliance in mind from the ground up, incorporating zero‑trust principles, comprehensive audit trails, and data protection measures that meet or exceed industry standards.
+            </div>
+            <div className="pt-4 border-t border-white/10 text-xs">
+              Note: Compliance certifications and audits will be conducted as part of product development and deployment.
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
   )
 }

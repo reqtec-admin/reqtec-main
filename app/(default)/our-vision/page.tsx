@@ -6,7 +6,7 @@ import { services } from '@/data/vision-data'
 
 export default function OurVision() {
   return (
-    <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
+    <div className="min-h-screen">
       {/* Fixed Background Video for entire page */}
       <video
         autoPlay

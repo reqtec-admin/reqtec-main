@@ -7,7 +7,7 @@ import { projects } from '@/data/projects'
 
 export default function OurWork() {
   return (
-    <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
+    <div className="min-h-screen">
       {/* Fixed Background Video for entire page */}
       <video
         autoPlay
