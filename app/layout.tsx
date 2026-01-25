@@ -42,7 +42,9 @@ export default function RootLayout({
         <StarField />
         <div className="reqtec-backdrop flex flex-col min-h-screen overflow-hidden relative z-10">
           <Header />
-          {children}
+          <div className="pt-20">
+            {children}
+          </div>
           <Banner />
         </div>
       </body>
