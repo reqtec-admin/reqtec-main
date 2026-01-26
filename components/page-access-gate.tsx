@@ -42,7 +42,7 @@ export default function PageAccessGate({ slug, title, description }: PageAccessG
   }
 
   return (
-    <div className="reqtec-glass-card reqtec-gradient-border p-8 md:p-10">
+    <div className="rounded-2xl border border-white/10 bg-black/60 p-8 shadow-2xl backdrop-blur-xl md:p-10">
       <div className="text-center">
         <h2 className="text-2xl md:text-3xl font-light tracking-wide mb-3 text-gray-100">
           {title}
@@ -62,7 +62,7 @@ export default function PageAccessGate({ slug, title, description }: PageAccessG
             type="password"
             value={code}
             onChange={(event) => setCode(event.target.value)}
-            className="form-input w-full bg-gray-900/70 border border-white/10 text-gray-100"
+            className="form-input w-full bg-black/50 border border-white/10 text-gray-100 focus:border-sky-400/60 focus:ring-sky-400/30"
             placeholder="Enter passcode"
             autoComplete="current-password"
             required
