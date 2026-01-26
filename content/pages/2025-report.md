@@ -64,6 +64,14 @@ Priority initiatives for REQtec in 2026:
 - **Legal Efficiency**: Lower external legal spend through in‑house readiness and vetted providers. Prior trademark work highlighted the need for tighter vendor controls and clearer scopes. Future engagements will prioritize fixed‑fee structures, internal templates, and pre‑reviewed counsel to protect margins.
 - **Consulting Leverage**: Continue high‑margin consulting as a near‑term growth engine, while reinvesting those gains into product scale and market expansion. Consulting relationships also serve as enterprise‑grade validation for REQtec’s expertise, strengthening credibility in investor conversations.
 
+## Proposals
+
+### Synergy Integrative (sih.reqtec.com)
+An integrative health platform that elevates both practitioners and clients with a structured six‑month delivery plan. The program features bi‑weekly stakeholder syncs and monthly release windows, plus a compliance‑first roadmap (HIPAA/SOC 2) from day one. The proposal includes a practitioner console experience, a product plan, and a roadmap that sequences discovery, architecture setup, and core mobile experience for patient engagement.
+
+### Enthous.IO (enthous.reqtec.com)
+A financial ML research platform designed to validate and scale trading strategies within a secure R&D environment. Enthous.IO delivers a 12‑week phased program backed by secure data handling (10TB+), zero‑trust access controls, and reproducible pipelines for model calibration. The proposal outlines enterprise‑grade infrastructure, a three‑sprint roadmap, and evidence‑driven deliverables to de‑risk production deployment.
+
 ## Overall Summary
 
 REQtec delivered a high‑velocity year across product execution and business infrastructure. Commit250 matured into a launch‑ready platform, while the company’s operational stack was strengthened for scale, compliance, and partner growth.

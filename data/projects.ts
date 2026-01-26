@@ -25,6 +25,12 @@ export const projects: Project[] = [
     description: 'An integrative health platform designed to elevate both practitioners and clients through a unified care experience. The program includes a six‑month delivery roadmap, practitioner console demos, and a compliance‑first plan (HIPAA/SOC 2) integrated from day one to support secure clinical operations.',
   },
   {
+    name: 'Enthous.IO',
+    url: 'https://enthous.reqtec.com',
+    status: 'incubation',
+    description: 'A financial ML research platform for validating and scaling trading strategies. Enthous.IO provides a secure R&D environment for sensitive data, reproducible model testing, and evidence‑driven calibration before production deployment.',
+  },
+  {
     name: 'DEALVR',
     status: 'incubation',
     description: 'A trusted community delivery network built for small businesses, positioning local commerce to compete with big‑box logistics. DEALVR is designed to complement marketplace ecosystems and increase local purchasing through reliable, values‑aligned fulfillment.',

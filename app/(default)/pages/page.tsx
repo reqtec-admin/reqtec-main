@@ -16,7 +16,7 @@ export default function PagesIndex() {
       <div
         className="fixed inset-0 z-0 pointer-events-none"
         style={{
-          backgroundImage: 'url(/images/the-challenge-1.png)',
+          backgroundImage: 'url(/images/developers-table.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

@@ -67,6 +67,34 @@ export default function Footer() {
                     Careers
                   </button>
                 </li>
+                <li>
+                  <a
+                    href="https://dev.reqtec.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-white/70 hover:text-white transition"
+                  >
+                    Code
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://n8n.reqtec.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-white/70 hover:text-white transition"
+                  >
+                    Work Flows
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://billing.stripe.com/p/login/bJe8wP8lubS7fMW6m97kc00"
+                    className="text-sm text-white/70 hover:text-white transition"
+                  >
+                    Billing
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
@@ -127,6 +155,16 @@ export default function Footer() {
                     className="text-sm text-white/70 hover:text-white transition"
                   >
                     Email
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://cal.com/reqtec"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-white/70 hover:text-white transition"
+                  >
+                    Schedule a Meeting
                   </a>
                 </li>
               </ul>
