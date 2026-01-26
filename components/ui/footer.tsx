@@ -90,6 +90,8 @@ export default function Footer() {
                 <li>
                   <a
                     href="https://billing.stripe.com/p/login/bJe8wP8lubS7fMW6m97kc00"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-sm text-white/70 hover:text-white transition"
                   >
                     Billing
