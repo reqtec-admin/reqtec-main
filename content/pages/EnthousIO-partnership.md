@@ -1,3 +1,14 @@
+---
+date: "2025-12-01"
+description: "Partnering in Financial ML to deliver optimized models for small and medium traders."
+author: "REQtec Team"
+tags: ["business", "review", "2025"]
+image: "/images/2025-report.png"
+# ctaLabel: "Contact Us"
+# ctaHref: "mailto:info@reqtec.com"
+---
+
+
 # Partnership in Cutting-Edge Financial ML
 
 **Requisite Technologies Partners with FinML to Launch Cutting-Edge R&D Platform**
