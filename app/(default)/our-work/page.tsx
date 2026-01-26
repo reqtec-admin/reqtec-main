@@ -84,13 +84,6 @@ export default function OurWork() {
             )}
 
             <div className="space-y-3 text-lg text-gray-300">
-              {project.competition && (
-                <p>
-                  <span className="text-gray-500">Competition: </span>
-                  <span className="text-gray-300">{project.competition}</span>
-                </p>
-              )}
-
               {project.targetCustomer && (
                 <p>
                   <span className="text-gray-500">Target Customer: </span>

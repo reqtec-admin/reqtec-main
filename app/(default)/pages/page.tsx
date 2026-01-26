@@ -29,13 +29,13 @@ export default function PagesIndex() {
       <div className="fixed inset-0 z-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60 pointer-events-none" />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 z-10 snap-start">
+      <section className="relative min-h-screen flex items-center justify-center pt-32 pb- z-10 snap-start">
         <div className="text-center max-w-4xl mx-auto px-4 sm:px-6">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-wide mb-6 text-gray-100">
-            Pages
+            Stay Up to Date
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-            Long-form articles, updates, and reports from REQtec.
+            Long-form updates from REQtec.
           </p>
         </div>
       </section>
