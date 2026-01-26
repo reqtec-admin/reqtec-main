@@ -17,7 +17,7 @@ import {
 
 export default function TheChallenge() {
   return (
-    <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
+    <div className="min-h-screen">
       {/* Fixed Background Image for entire page */}
       <div
         className="fixed inset-0 z-0 pointer-events-none"
