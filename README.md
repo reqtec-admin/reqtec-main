@@ -1,6 +1,6 @@
 # REQtec Website
 
-### Getting Started
+## Getting Started
 
 First, run the development server:
 
@@ -10,6 +10,14 @@ npm run dev
 yarn dev
 # or
 pnpm dev
+```
+
+## Production Builds
+
+Run production builds using `npx`
+
+```bash
+npx next build
 ```
 
 ## How To Create a Post
