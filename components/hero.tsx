@@ -20,11 +20,7 @@ export default function Hero() {
           <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">
             Technology with a Clear Conscience.
           </p>
-          <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
-            <div data-aos="fade-up" data-aos-delay="400">
-              <a className="btn btn-gradient w-full mb-4 sm:w-auto sm:mb-0" href="mailto:info@reqtec.com">Contact Us</a>
-            </div>
-          </div>
+          {/* Contact button hidden for now */}
         </div>
       </div>
     </section>

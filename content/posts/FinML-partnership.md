@@ -3,7 +3,7 @@ date: "2025-12-01"
 description: "Partnering in Financial ML to deliver optimized models for small and medium traders."
 author: "REQtec Team"
 tags: ["business", "review", "2025", "Press Release"]
-image: "/images/2025-report.png"
+image: "/images/financials.jpg"
 # ctaLabel: "Contact Us"
 # ctaHref: "mailto:info@reqtec.com"
 ---
