@@ -1,5 +1,5 @@
 ---
-date: "2025-01-25"
+date: "2026-01-25"
 description: "A comprehensive review of REQtec's progress in 2025."
 author: "REQtec Team"
 tags: ["business", "review", "2025"]

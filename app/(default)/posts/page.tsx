@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ArticleSection } from '@/components/article-section'
-import { getAllPosts } from '@/lib/markdown'
+import { formatPostDate, getAllPosts } from '@/lib/markdown'
 
 export const metadata = {
   title: 'Posts - REQtec',
@@ -60,15 +60,7 @@ export default function PostsIndex() {
                   <p className="text-lg text-gray-300 mb-3">{post.metadata.description}</p>
                 )}
                 <div className="flex items-center gap-4 text-sm text-gray-500">
-                  {post.metadata.date && (
-                    <time>
-                      {new Date(post.metadata.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </time>
-                  )}
+                  {post.metadata.date && <time>{formatPostDate(post.metadata.date)}</time>}
                   {post.metadata.author && <span>By {post.metadata.author}</span>}
                 </div>
                 {post.metadata.tags && post.metadata.tags.length > 0 && (

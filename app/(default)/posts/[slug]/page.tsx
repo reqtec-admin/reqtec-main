@@ -6,7 +6,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { MarkdownSection } from '@/components/markdown-section'
 import { ScrollAnimate } from '@/components/scroll-animate'
-import { getPostBySlug, getPostSlugs } from '@/lib/markdown'
+import { formatPostDate, getPostBySlug, getPostSlugs } from '@/lib/markdown'
 import PostAccessGate from '@/components/post-access-gate'
 
 const DEFAULT_BACKGROUND = '/images/the-challenge-1.png'
@@ -208,15 +208,7 @@ export default async function MarkdownPost({ params }: { params: Promise<{ slug:
               {post.metadata.description}
             </p>
           )}
-          {post.metadata.date && (
-            <p className="text-base text-gray-400 mt-4">
-              {new Date(post.metadata.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </p>
-          )}
+          {post.metadata.date && <p className="text-base text-gray-400 mt-4">{formatPostDate(post.metadata.date)}</p>}
         </div>
       </section>
 

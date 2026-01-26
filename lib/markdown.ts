@@ -86,8 +86,41 @@ export function getAllPosts(): MarkdownPost[] {
     .filter((post): post is MarkdownPost => post !== null)
 
   return posts.sort((a, b) => {
-    const dateA = new Date(a.metadata.date).getTime()
-    const dateB = new Date(b.metadata.date).getTime()
+    const dateA = parsePostDate(a.metadata.date)
+    const dateB = parsePostDate(b.metadata.date)
     return dateB - dateA
+  })
+}
+
+const DATE_ONLY_PATTERN = /^(\d{4})-(\d{2})-(\d{2})$/
+
+export function parsePostDate(dateValue?: string) {
+  if (!dateValue) {
+    return 0
+  }
+
+  const match = DATE_ONLY_PATTERN.exec(dateValue)
+  if (match) {
+    const year = Number.parseInt(match[1], 10)
+    const month = Number.parseInt(match[2], 10) - 1
+    const day = Number.parseInt(match[3], 10)
+    return Date.UTC(year, month, day)
+  }
+
+  const parsed = Date.parse(dateValue)
+  return Number.isNaN(parsed) ? 0 : parsed
+}
+
+export function formatPostDate(dateValue?: string) {
+  const timestamp = parsePostDate(dateValue)
+  if (!timestamp) {
+    return ''
+  }
+
+  return new Date(timestamp).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
   })
 }
