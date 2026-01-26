@@ -218,6 +218,7 @@ export default async function MarkdownPage({ params }: { params: Promise<{ slug:
                 ),
                 img: ({ src, alt }) => {
                   if (!src) return null
+                  if (typeof src !== 'string') return null
 
                   if (isExternalUrl(src)) {
                     return (
@@ -307,6 +308,7 @@ export default async function MarkdownPage({ params }: { params: Promise<{ slug:
                       ),
                       img: ({ src, alt }) => {
                         if (!src) return null
+                        if (typeof src !== 'string') return null
 
                         if (isExternalUrl(src)) {
                           return (
