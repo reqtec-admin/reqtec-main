@@ -55,7 +55,7 @@ export default function Footer() {
                   </button>
                 </li>
                 <li>
-                  <a href="/pages" className="text-sm text-white/70 hover:text-white transition">
+                  <a href="/posts" className="text-sm text-white/70 hover:text-white transition">
                     Articles
                   </a>
                 </li>

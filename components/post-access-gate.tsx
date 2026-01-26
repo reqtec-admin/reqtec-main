@@ -2,13 +2,13 @@
 
 import { useState } from 'react'
 
-interface PageAccessGateProps {
+interface PostAccessGateProps {
   slug: string
   title: string
   description?: string
 }
 
-export default function PageAccessGate({ slug, title, description }: PageAccessGateProps) {
+export default function PostAccessGate({ slug, title, description }: PostAccessGateProps) {
   const [code, setCode] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState('')
@@ -19,7 +19,7 @@ export default function PageAccessGate({ slug, title, description }: PageAccessG
     setError('')
 
     try {
-      const response = await fetch('/api/page-access', {
+      const response = await fetch('/api/post-access', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,11 +54,11 @@ export default function PageAccessGate({ slug, title, description }: PageAccessG
 
       <form onSubmit={handleSubmit} className="mt-8 space-y-4">
         <div>
-          <label className="block text-sm text-gray-300 mb-2" htmlFor="page-access-code">
+          <label className="block text-sm text-gray-300 mb-2" htmlFor="post-access-code">
             Access code
           </label>
           <input
-            id="page-access-code"
+            id="post-access-code"
             type="password"
             value={code}
             onChange={(event) => setCode(event.target.value)}

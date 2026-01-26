@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-const pagesDirectory = path.join(process.cwd(), 'content/pages')
+const postsDirectory = path.join(process.cwd(), 'content/posts')
 
 function extractTitleFromContent(content: string) {
   const lines = content.split('\n')
@@ -27,7 +27,7 @@ function extractTitleFromContent(content: string) {
   }
 }
 
-export interface PageMetadata {
+export interface PostMetadata {
   title: string
   date: string
   description?: string
@@ -40,25 +40,25 @@ export interface PageMetadata {
   [key: string]: unknown
 }
 
-export interface MarkdownPage {
+export interface MarkdownPost {
   slug: string
-  metadata: PageMetadata
+  metadata: PostMetadata
   content: string
 }
 
-export function getPageSlugs(): string[] {
-  if (!fs.existsSync(pagesDirectory)) {
+export function getPostSlugs(): string[] {
+  if (!fs.existsSync(postsDirectory)) {
     return []
   }
 
-  const fileNames = fs.readdirSync(pagesDirectory)
+  const fileNames = fs.readdirSync(postsDirectory)
   return fileNames
     .filter((name) => name.endsWith('.md'))
     .map((name) => name.replace(/\.md$/, ''))
 }
 
-export function getPageBySlug(slug: string): MarkdownPage | null {
-  const fullPath = path.join(pagesDirectory, `${slug}.md`)
+export function getPostBySlug(slug: string): MarkdownPost | null {
+  const fullPath = path.join(postsDirectory, `${slug}.md`)
 
   if (!fs.existsSync(fullPath)) {
     return null
@@ -73,19 +73,19 @@ export function getPageBySlug(slug: string): MarkdownPage | null {
     slug,
     content: contentWithoutTitle,
     metadata: {
-      ...(data as PageMetadata),
+      ...(data as PostMetadata),
       title: resolvedTitle,
     },
   }
 }
 
-export function getAllPages(): MarkdownPage[] {
-  const slugs = getPageSlugs()
-  const pages = slugs
-    .map((slug) => getPageBySlug(slug))
-    .filter((page): page is MarkdownPage => page !== null)
+export function getAllPosts(): MarkdownPost[] {
+  const slugs = getPostSlugs()
+  const posts = slugs
+    .map((slug) => getPostBySlug(slug))
+    .filter((post): post is MarkdownPost => post !== null)
 
-  return pages.sort((a, b) => {
+  return posts.sort((a, b) => {
     const dateA = new Date(a.metadata.date).getTime()
     const dateB = new Date(b.metadata.date).getTime()
     return dateB - dateA
