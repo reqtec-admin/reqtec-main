@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { cookies } from 'next/headers'
+import { cookies, headers } from 'next/headers'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { MarkdownSection } from '@/components/markdown-section'
@@ -72,6 +72,16 @@ function splitMarkdownByH2(markdown: string) {
   }
 }
 
+async function getBaseUrl() {
+  const headerStore = await headers()
+  const host = headerStore.get('x-forwarded-host') ?? headerStore.get('host')
+  const proto = headerStore.get('x-forwarded-proto') ?? 'https'
+  if (!host) {
+    return 'https://reqtec.com'
+  }
+  return `${proto}://${host}`
+}
+
 export async function generateStaticParams() {
   const slugs = getPostSlugs()
   return slugs.map((slug) => ({ slug }))
@@ -110,6 +120,11 @@ export default async function MarkdownPost({ params }: { params: Promise<{ slug:
   const cookieStore = await cookies()
   const accessCookieNames = getAccessCookieNames(post.slug)
   const hasAccess = !isProtected || accessCookieNames.some((name) => cookieStore.get(name)?.value === 'true')
+  const postUrl = `${await getBaseUrl()}/posts/${post.slug}`
+  const encodedUrl = encodeURIComponent(postUrl)
+  const encodedTitle = encodeURIComponent(post.metadata.title)
+  const xShareUrl = `https://x.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`
+  const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`
 
   return (
     <div className="min-h-screen">
@@ -149,6 +164,36 @@ export default async function MarkdownPost({ params }: { params: Promise<{ slug:
               {ctaLabel}
             </Link>
           )}
+        </div>
+      )}
+
+      {hasAccess && (
+        <div className="fixed bottom-6 left-1/2 z-20 -translate-x-1/2">
+          <div className="share-bounce flex items-center gap-3 rounded-full border border-white/10 bg-black/60 px-4 py-2 text-sm text-gray-300 shadow-lg backdrop-blur">
+            <span className="uppercase tracking-widest text-xs text-gray-400">Share</span>
+            <a
+              href={xShareUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-white/10 bg-black/50 text-gray-100 transition hover:border-sky-400/60 hover:text-white"
+              aria-label="Share on X"
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true" fill="currentColor">
+                <path d="M13.46 10.74 20.8 2h-1.74l-6.36 7.57L7.62 2H2.5l7.7 11.19L2.5 22h1.74l6.71-7.98L16.38 22h5.12l-8.04-11.26Zm-2.35 2.79-.78-1.11L4.66 3.8h2.33l4.58 6.5.78 1.11 5.96 8.45h-2.33l-4.87-6.33Z" />
+              </svg>
+            </a>
+            <a
+              href={linkedinShareUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-white/10 bg-black/50 text-gray-100 transition hover:border-sky-400/60 hover:text-white"
+              aria-label="Share on LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true" fill="currentColor">
+                <path d="M20.45 20.45h-3.55v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85v5.5H9.47V9h3.41v1.56h.05c.48-.9 1.65-1.85 3.4-1.85 3.63 0 4.3 2.39 4.3 5.5v6.24ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm-1.78 13.02h3.55V9H3.56v11.45Z" />
+              </svg>
+            </a>
+          </div>
         </div>
       )}
 
