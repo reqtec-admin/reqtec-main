@@ -149,26 +149,36 @@ export default async function MarkdownPost({ params }: { params: Promise<{ slug:
         <div className="fixed bottom-6 right-6 z-20">
           {ctaIsExternal ? (
             <a
-              className="btn btn-gradient px-6 py-3 shadow-lg hover:shadow-xl transition duration-150 ease-in-out"
+              className="reqtec-modal-glow flex items-center gap-3 rounded-full border border-white/10 bg-black/60 px-4 py-2 text-sm text-gray-300 shadow-lg backdrop-blur transition hover:border-sky-400/60 hover:text-white"
               href={ctaHref}
               rel={ctaHref.startsWith('http') ? 'noopener noreferrer' : undefined}
               target={ctaHref.startsWith('http') ? '_blank' : undefined}
             >
-              {ctaLabel}
+              <span className="uppercase tracking-widest text-xs text-gray-400">{ctaLabel}</span>
+              <span className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-white/10 bg-black/50 text-gray-100 transition hover:border-sky-400/60 hover:text-white">
+                <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true" fill="currentColor">
+                  <path d="M13.5 5.5 12.09 6.91l4.09 4.09H4.5v2h11.68l-4.09 4.09 1.41 1.41 6.5-6.5-6.5-6.5Z" />
+                </svg>
+              </span>
             </a>
           ) : (
             <Link
-              className="btn btn-gradient px-6 py-3 shadow-lg hover:shadow-xl transition duration-150 ease-in-out"
+              className="reqtec-modal-glow flex items-center gap-3 rounded-full border border-white/10 bg-black/60 px-4 py-2 text-sm text-gray-300 shadow-lg backdrop-blur transition hover:border-sky-400/60 hover:text-white"
               href={ctaHref}
             >
-              {ctaLabel}
+              <span className="uppercase tracking-widest text-xs text-gray-400">{ctaLabel}</span>
+              <span className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-white/10 bg-black/50 text-gray-100 transition hover:border-sky-400/60 hover:text-white">
+                <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true" fill="currentColor">
+                  <path d="M13.5 5.5 12.09 6.91l4.09 4.09H4.5v2h11.68l-4.09 4.09 1.41 1.41 6.5-6.5-6.5-6.5Z" />
+                </svg>
+              </span>
             </Link>
           )}
         </div>
       )}
 
       {hasAccess && (
-        <div className="fixed bottom-6 left-1/2 z-20 -translate-x-1/2">
+        <div className="fixed bottom-24 md:bottom-6 left-1/2 z-20 -translate-x-1/2">
           <div className="reqtec-modal-glow share-bounce flex items-center gap-3 rounded-full border border-white/10 bg-black/60 px-4 py-2 text-sm text-gray-300 shadow-lg backdrop-blur">
             <span className="uppercase tracking-widest text-xs text-gray-400">Share</span>
             <a
