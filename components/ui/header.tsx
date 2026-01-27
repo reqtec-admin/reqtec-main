@@ -24,7 +24,7 @@ export default function Header() {
               <li>
                 <Link
                   href="/our-work"
-                  className="font-medium text-gray-300 hover:text-teal-400 px-4 py-3 transition duration-150 ease-in-out"
+                  className="px-4 py-3 text-xs uppercase tracking-widest text-gray-400 transition duration-150 ease-in-out hover:text-gray-200"
                 >
                   OUR work |
                 </Link>
@@ -32,7 +32,7 @@ export default function Header() {
               <li>
                 <Link
                   href="/the-challenge"
-                  className="font-medium text-gray-300 hover:text-teal-400 px-4 py-3 transition duration-150 ease-in-out"
+                  className="px-4 py-3 text-xs uppercase tracking-widest text-gray-400 transition duration-150 ease-in-out hover:text-gray-200"
                 >
                   THE challenge |
                 </Link>
@@ -40,7 +40,7 @@ export default function Header() {
               <li>
                 <Link
                   href="/our-vision"
-                  className="font-medium text-gray-300 hover:text-teal-400 px-4 py-3 transition duration-150 ease-in-out"
+                  className="px-4 py-3 text-xs uppercase tracking-widest text-gray-400 transition duration-150 ease-in-out hover:text-gray-200"
                 >
                   OUR vision |
                 </Link>

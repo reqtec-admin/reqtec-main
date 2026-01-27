@@ -24,7 +24,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8 text-center md:text-left">
             <div>
-              <p className="text-xs text-white/50 font-mono mb-4">PRODUCT</p>
+              <p className="text-xs uppercase tracking-widest text-gray-400 mb-4">PRODUCT</p>
               <ul className="space-y-2">
                 <li>
                   <a href="/our-work" className="text-sm text-white/70 hover:text-white transition">
@@ -44,7 +44,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <p className="text-xs text-white/50 font-mono mb-4">COMPANY</p>
+              <p className="text-xs uppercase tracking-widest text-gray-400 mb-4">COMPANY</p>
               <ul className="space-y-2">
                 <li>
                   <button
@@ -100,7 +100,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <p className="text-xs text-white/50 font-mono mb-4">LEGAL</p>
+              <p className="text-xs uppercase tracking-widest text-gray-400 mb-4">LEGAL</p>
               <ul className="space-y-2">
                 <li>
                   <button
@@ -129,7 +129,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <p className="text-xs text-white/50 font-mono mb-4">CONNECT</p>
+              <p className="text-xs uppercase tracking-widest text-gray-400 mb-4">CONNECT</p>
               <ul className="space-y-2">
                 <li>
                   <a
