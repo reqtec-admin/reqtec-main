@@ -39,6 +39,9 @@ export default function OurVision() {
             <br />
             <br />
             Our team empowers you and your business to employ alternative technology providers, avoiding Big Tech solutions, as much as possible, while respecting your budget and needs.
+            We prioritize tech freedom and practical independence so your roadmap is not dictated by closed platforms or shifting cultural pressures.
+            Our approach helps independent-minded owners bring ideas to market faster without taking on unnecessary platform risk.
+            The goal is durable systems, clear ownership, and the confidence to build outside the normal groupthink.
           </p>
         </div>
       </section>
