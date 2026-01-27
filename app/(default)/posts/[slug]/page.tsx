@@ -169,7 +169,7 @@ export default async function MarkdownPost({ params }: { params: Promise<{ slug:
 
       {hasAccess && (
         <div className="fixed bottom-6 left-1/2 z-20 -translate-x-1/2">
-          <div className="share-bounce flex items-center gap-3 rounded-full border border-white/10 bg-black/60 px-4 py-2 text-sm text-gray-300 shadow-lg backdrop-blur">
+          <div className="reqtec-modal-glow share-bounce flex items-center gap-3 rounded-full border border-white/10 bg-black/60 px-4 py-2 text-sm text-gray-300 shadow-lg backdrop-blur">
             <span className="uppercase tracking-widest text-xs text-gray-400">Share</span>
             <a
               href={xShareUrl}

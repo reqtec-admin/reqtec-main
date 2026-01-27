@@ -63,10 +63,14 @@
   position: relative;
   border-radius: 1.5rem;
   border: 1px solid var(--reqtec-border);
-  background-color: var(--reqtec-surface);
-  box-shadow: var(--reqtec-shadow-glass);
+  background-color: rgba(6, 30, 50, 0.82);
+  box-shadow:
+    0 26px 60px -34px rgba(56, 182, 240, 0.6),
+    0 0 0 1px rgba(56, 182, 240, 0.18),
+    0 18px 40px -26px rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(32px);
   -webkit-backdrop-filter: blur(32px);
+  isolation: isolate;
 }
 
 .reqtec-glass-card::before {
@@ -76,12 +80,49 @@
   inset: 0;
   border-radius: 1.5rem;
   background: 
-    radial-gradient(circle at top left, var(--reqtec-glass-gradient-a), transparent 60%),
-    radial-gradient(circle at bottom right, var(--reqtec-glass-gradient-b), transparent 60%);
+    radial-gradient(circle at top left, rgba(56, 182, 240, 0.2), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.16), transparent 60%);
+  z-index: 0;
+}
+
+.reqtec-glass-card::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.45), transparent 60%);
   z-index: 0;
 }
 
 .reqtec-glass-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Modal glass glow */
+.reqtec-modal-glow {
+  position: relative;
+  box-shadow:
+    0 26px 60px -34px rgba(56, 182, 240, 0.6),
+    0 0 0 1px rgba(56, 182, 240, 0.18),
+    0 18px 40px -26px rgba(0, 0, 0, 0.65);
+  isolation: isolate;
+}
+
+.reqtec-modal-glow::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at top left, rgba(56, 182, 240, 0.2), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.16), transparent 60%);
+  z-index: 0;
+}
+
+.reqtec-modal-glow > * {
   position: relative;
   z-index: 1;
 }

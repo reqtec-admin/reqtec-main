@@ -192,27 +192,51 @@ export default function Footer() {
       </footer>
 
       <Dialog open={aboutOpen} onOpenChange={setAboutOpen}>
-        <DialogContent className="bg-black border-white/20 text-white max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-white font-mono">About</DialogTitle>
-          </DialogHeader>
-          <div className="text-white/70 mt-4">
-            REQtec is a technology company delivering cloud, AI/ML, mobile, and web solutions for modern businesses.
+        <DialogContent className="reqtec-modal-glow bg-black/80 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl shadow-black/60 relative backdrop-blur-xl ring-1 ring-white/10">
+          <div className="flex items-start justify-between gap-4">
+            <DialogHeader className="mb-0">
+              <DialogTitle className="text-white">About</DialogTitle>
+            </DialogHeader>
+            <button
+              type="button"
+              onClick={() => setAboutOpen(false)}
+              className="text-white/60 hover:text-white transition text-xl leading-none"
+              aria-label="Close"
+            >
+              ×
+            </button>
+          </div>
+          <div className="text-white/70 mt-4 space-y-4 text-sm">
+            <div>
+              REQtec is a technology company delivering cloud, AI/ML, mobile, and web solutions for modern businesses.
+            </div>
           </div>
         </DialogContent>
       </Dialog>
 
       <Dialog open={careersOpen} onOpenChange={setCareersOpen}>
-        <DialogContent className="bg-black border-white/20 text-white max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-white font-mono">Careers</DialogTitle>
-          </DialogHeader>
-          <div className="text-white/70 mt-4">Coming Soon</div>
+        <DialogContent className="reqtec-modal-glow bg-black/80 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl shadow-black/60 relative backdrop-blur-xl ring-1 ring-white/10">
+          <div className="flex items-start justify-between gap-4">
+            <DialogHeader className="mb-0">
+              <DialogTitle className="text-white">Careers</DialogTitle>
+            </DialogHeader>
+            <button
+              type="button"
+              onClick={() => setCareersOpen(false)}
+              className="text-white/60 hover:text-white transition text-xl leading-none"
+              aria-label="Close"
+            >
+              ×
+            </button>
+          </div>
+          <div className="text-white/70 mt-4 space-y-4 text-sm">
+            <div>Coming Soon</div>
+          </div>
         </DialogContent>
       </Dialog>
 
       <Dialog open={privacyOpen} onOpenChange={setPrivacyOpen}>
-        <DialogContent className="bg-black/90 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl relative">
+        <DialogContent className="reqtec-modal-glow bg-black/80 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl shadow-black/60 relative backdrop-blur-xl ring-1 ring-white/10">
           <div className="flex items-start justify-between gap-4">
             <DialogHeader className="mb-0">
               <DialogTitle className="text-white">Privacy Policy</DialogTitle>
@@ -250,7 +274,7 @@ export default function Footer() {
       </Dialog>
 
       <Dialog open={termsOpen} onOpenChange={setTermsOpen}>
-        <DialogContent className="bg-black/90 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl relative">
+        <DialogContent className="reqtec-modal-glow bg-black/80 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl shadow-black/60 relative backdrop-blur-xl ring-1 ring-white/10">
           <div className="flex items-start justify-between gap-4">
             <DialogHeader className="mb-0">
               <DialogTitle className="text-white">Terms & Definitions</DialogTitle>
@@ -294,7 +318,7 @@ export default function Footer() {
       </Dialog>
 
       <Dialog open={complianceOpen} onOpenChange={setComplianceOpen}>
-        <DialogContent className="bg-black/90 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl relative">
+        <DialogContent className="reqtec-modal-glow bg-black/80 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl shadow-black/60 relative backdrop-blur-xl ring-1 ring-white/10">
           <div className="flex items-start justify-between gap-4">
             <DialogHeader className="mb-0">
               <DialogTitle className="text-white">Compliance & Security</DialogTitle>
