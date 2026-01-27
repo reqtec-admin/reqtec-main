@@ -9,7 +9,7 @@ image: "/images/financials.jpg"
 ---
 
 
-# The Cutting-Edge of Financial Machine Learning
+# The Cutting-Edge in FinML
 
 ## Requisite Technologies Partners with FinML to Launch Cutting-Edge R&D Platform
 

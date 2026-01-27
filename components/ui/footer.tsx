@@ -192,7 +192,7 @@ export default function Footer() {
       </footer>
 
       <Dialog open={aboutOpen} onOpenChange={setAboutOpen}>
-        <DialogContent className="reqtec-modal-glow bg-black/80 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl shadow-black/60 relative backdrop-blur-xl ring-1 ring-white/10">
+        <DialogContent className="reqtec-modal-glow bg-black/60 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl shadow-black/60 relative backdrop-blur-xl ring-1 ring-white/10">
           <div className="flex items-start justify-between gap-4">
             <DialogHeader className="mb-0">
               <DialogTitle className="text-white">About</DialogTitle>
@@ -215,7 +215,7 @@ export default function Footer() {
       </Dialog>
 
       <Dialog open={careersOpen} onOpenChange={setCareersOpen}>
-        <DialogContent className="reqtec-modal-glow bg-black/80 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl shadow-black/60 relative backdrop-blur-xl ring-1 ring-white/10">
+        <DialogContent className="reqtec-modal-glow bg-black/60 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl shadow-black/60 relative backdrop-blur-xl ring-1 ring-white/10">
           <div className="flex items-start justify-between gap-4">
             <DialogHeader className="mb-0">
               <DialogTitle className="text-white">Careers</DialogTitle>
@@ -236,7 +236,7 @@ export default function Footer() {
       </Dialog>
 
       <Dialog open={privacyOpen} onOpenChange={setPrivacyOpen}>
-        <DialogContent className="reqtec-modal-glow bg-black/80 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl shadow-black/60 relative backdrop-blur-xl ring-1 ring-white/10">
+        <DialogContent className="reqtec-modal-glow bg-black/60 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl shadow-black/60 relative backdrop-blur-xl ring-1 ring-white/10">
           <div className="flex items-start justify-between gap-4">
             <DialogHeader className="mb-0">
               <DialogTitle className="text-white">Privacy Policy</DialogTitle>
@@ -274,7 +274,7 @@ export default function Footer() {
       </Dialog>
 
       <Dialog open={termsOpen} onOpenChange={setTermsOpen}>
-        <DialogContent className="reqtec-modal-glow bg-black/80 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl shadow-black/60 relative backdrop-blur-xl ring-1 ring-white/10">
+        <DialogContent className="reqtec-modal-glow bg-black/60 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl shadow-black/60 relative backdrop-blur-xl ring-1 ring-white/10">
           <div className="flex items-start justify-between gap-4">
             <DialogHeader className="mb-0">
               <DialogTitle className="text-white">Terms & Definitions</DialogTitle>
@@ -318,7 +318,7 @@ export default function Footer() {
       </Dialog>
 
       <Dialog open={complianceOpen} onOpenChange={setComplianceOpen}>
-        <DialogContent className="reqtec-modal-glow bg-black/80 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl shadow-black/60 relative backdrop-blur-xl ring-1 ring-white/10">
+        <DialogContent className="reqtec-modal-glow bg-black/60 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl shadow-black/60 relative backdrop-blur-xl ring-1 ring-white/10">
           <div className="flex items-start justify-between gap-4">
             <DialogHeader className="mb-0">
               <DialogTitle className="text-white">Compliance & Security</DialogTitle>
