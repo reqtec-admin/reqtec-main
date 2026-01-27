@@ -35,10 +35,10 @@ export default function OurVision() {
             />
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-            Digital solutions that are outside the Big Tech oligarchy and immune to social contagion.
+            Digital solutions outside the Big Tech oligarchy and resistant to social contagion.
             <br />
             <br />
-            Our team empowers you and your business to employ alternative technology providers, avoiding Big Tech solutions, as much as possible, while respecting your budget and needs.
+            Our team empowers you and your business to employ alternative technology providers while respecting your budget and needs.
             We prioritize tech freedom and practical independence so your roadmap is not dictated by closed platforms or shifting cultural pressures.
             Our approach helps independent-minded owners bring ideas to market faster without taking on unnecessary platform risk.
             The goal is durable systems, clear ownership, and the confidence to build outside the normal groupthink.
@@ -79,7 +79,17 @@ export default function OurVision() {
           <div className="prose prose-invert max-w-none">
             <h2 className="text-3xl md:text-4xl font-light tracking-wide mb-6 text-gray-100">{service.title}</h2>
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-              {service.description}
+              {service.description.split('\n\n').map((paragraph, paragraphIndex) => (
+                <span key={`${service.title}-${paragraphIndex}`}>
+                  {paragraph}
+                  {paragraphIndex < service.description.split('\n\n').length - 1 && (
+                    <>
+                      <br />
+                      <br />
+                    </>
+                  )}
+                </span>
+              ))}
             </p>
           </div>
         </ArticleSection>
