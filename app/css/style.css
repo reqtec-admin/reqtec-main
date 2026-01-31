@@ -30,23 +30,7 @@
 }
 
 .cta-unroll-text {
-  max-width: 0;
-  opacity: 0;
-  overflow: hidden;
   white-space: nowrap;
-  transition: max-width 1280ms ease, opacity 1200ms ease;
-}
-
-.cta-unroll:hover .cta-unroll-text {
-  max-width: 360px;
-  opacity: 1;
-}
-
-@media (max-width: 768px) {
-  .cta-unroll-text {
-    max-width: 360px;
-    opacity: 1;
-  }
 }
 
 /* See Alpine.js: https://github.com/alpinejs/alpine#x-cloak */

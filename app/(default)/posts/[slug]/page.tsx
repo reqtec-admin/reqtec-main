@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { cookies, headers } from 'next/headers'
 import ReactMarkdown from 'react-markdown'
@@ -8,6 +7,7 @@ import { MarkdownSection } from '@/components/markdown-section'
 import { ScrollAnimate } from '@/components/scroll-animate'
 import { formatPostDate, getPostBySlug, getPostSlugs } from '@/lib/markdown'
 import PostAccessGate from '@/components/post-access-gate'
+import PostFloatingActions from '@/components/post-floating-actions'
 
 const DEFAULT_BACKGROUND = '/images/the-challenge-1.png'
 const DEFAULT_CTA_LABEL = 'Contact Us'
@@ -144,86 +144,15 @@ export default async function MarkdownPost({ params }: { params: Promise<{ slug:
       {/* Dark overlay for better text readability */}
       <div className="fixed inset-0 z-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60 pointer-events-none" />
 
-      {/* Floating CTA */}
-      {hasAccess && ctaLabel && ctaHref && (
-        <div className="fixed bottom-6 right-6 z-20">
-          {ctaIsExternal ? (
-            <a
-              className="reqtec-modal-glow flex items-center gap-3 rounded-full border border-white/10 bg-black/60 px-4 py-2 text-sm text-gray-300 shadow-lg backdrop-blur transition hover:border-sky-400/60 hover:text-white"
-              href={ctaHref}
-              rel={ctaHref.startsWith('http') ? 'noopener noreferrer' : undefined}
-              target={ctaHref.startsWith('http') ? '_blank' : undefined}
-            >
-              <span className="uppercase tracking-widest text-xs text-gray-400">{ctaLabel}</span>
-              <span className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-white/10 bg-black/50 text-gray-100 transition hover:border-sky-400/60 hover:text-white">
-                <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true" fill="currentColor">
-                  <path d="M13.5 5.5 12.09 6.91l4.09 4.09H4.5v2h11.68l-4.09 4.09 1.41 1.41 6.5-6.5-6.5-6.5Z" />
-                </svg>
-              </span>
-            </a>
-          ) : (
-            <Link
-              className="reqtec-modal-glow flex items-center gap-3 rounded-full border border-white/10 bg-black/60 px-4 py-2 text-sm text-gray-300 shadow-lg backdrop-blur transition hover:border-sky-400/60 hover:text-white"
-              href={ctaHref}
-            >
-              <span className="uppercase tracking-widest text-xs text-gray-400">{ctaLabel}</span>
-              <span className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-white/10 bg-black/50 text-gray-100 transition hover:border-sky-400/60 hover:text-white">
-                <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true" fill="currentColor">
-                  <path d="M13.5 5.5 12.09 6.91l4.09 4.09H4.5v2h11.68l-4.09 4.09 1.41 1.41 6.5-6.5-6.5-6.5Z" />
-                </svg>
-              </span>
-            </Link>
-          )}
-        </div>
-      )}
-
       {hasAccess && (
-        <>
-          <div className="fixed bottom-24 left-0 w-full md:bottom-6 md:left-12 md:w-auto z-20 px-4 md:px-0 flex justify-center md:justify-start">
-            <Link
-              className="reqtec-modal-glow cta-unroll flex flex-row-reverse items-center justify-center gap-0 rounded-full border border-white/10 bg-black/60 px-4 py-2 text-sm text-gray-300 shadow-lg backdrop-blur transition-all hover:gap-3 hover:border-sky-400/60 hover:text-white"
-              href="/posts"
-            >
-              <span className="cta-unroll-text uppercase tracking-widest text-xs text-gray-400 text-right">
-                Back to Posts
-              </span>
-              <span className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-white/10 bg-black/50 text-gray-100 transition hover:border-sky-400/60 hover:text-white">
-                <svg viewBox="0 0 24 24" className="h-4 w-4 rotate-180" aria-hidden="true" fill="currentColor">
-                  <path d="M13.5 5.5 12.09 6.91l4.09 4.09H4.5v2h11.68l-4.09 4.09 1.41 1.41 6.5-6.5-6.5-6.5Z" />
-                </svg>
-              </span>
-            </Link>
-          </div>
-          {!isProtected && (
-            <div className="fixed bottom-24 md:bottom-6 left-1/2 z-20 -translate-x-1/2">
-              <div className="reqtec-modal-glow share-bounce flex items-center gap-3 rounded-full border border-white/10 bg-black/60 px-4 py-2 text-sm text-gray-300 shadow-lg backdrop-blur">
-                <span className="uppercase tracking-widest text-xs text-gray-400">Share</span>
-                <a
-                  href={xShareUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-white/10 bg-black/50 text-gray-100 transition hover:border-sky-400/60 hover:text-white"
-                  aria-label="Share on X"
-                >
-                  <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true" fill="currentColor">
-                    <path d="M13.46 10.74 20.8 2h-1.74l-6.36 7.57L7.62 2H2.5l7.7 11.19L2.5 22h1.74l6.71-7.98L16.38 22h5.12l-8.04-11.26Zm-2.35 2.79-.78-1.11L4.66 3.8h2.33l4.58 6.5.78 1.11 5.96 8.45h-2.33l-4.87-6.33Z" />
-                  </svg>
-                </a>
-                <a
-                  href={linkedinShareUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-white/10 bg-black/50 text-gray-100 transition hover:border-sky-400/60 hover:text-white"
-                  aria-label="Share on LinkedIn"
-                >
-                  <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true" fill="currentColor">
-                    <path d="M20.45 20.45h-3.55v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85v5.5H9.47V9h3.41v1.56h.05c.48-.9 1.65-1.85 3.4-1.85 3.63 0 4.3 2.39 4.3 5.5v6.24ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm-1.78 13.02h3.55V9H3.56v11.45Z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          )}
-        </>
+        <PostFloatingActions
+          ctaLabel={ctaLabel}
+          ctaHref={ctaHref}
+          ctaIsExternal={ctaIsExternal}
+          showShare={!isProtected}
+          xShareUrl={xShareUrl}
+          linkedinShareUrl={linkedinShareUrl}
+        />
       )}
 
       {/* Hero Section */}

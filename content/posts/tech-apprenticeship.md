@@ -3,7 +3,7 @@ date: "2025-10-01"
 description: "Embracing Apprenticeship in Technology Fields."
 author: "REQtec Team"
 tags: ["apprenticeship", "innovation", "2025", "change"]
-image: "/images/developers-table.png"
+image: "/images/developers-table.jpg"
 # ctaLabel: "Contact Us"
 # ctaHref: "mailto:info@reqtec.com"
 ---

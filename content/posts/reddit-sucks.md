@@ -2,7 +2,7 @@
 date: "2025-09-01"
 description: "Reddit as a Prime Example of an Echo Chamber Gone Wild."
 author: "REQtec Team"
-tags: ["business", "review", "2025", "Press Release"]
+tags: ["business", "review", "2025", "reddit"]
 image: "/images/reddit-sucks.jpg"
 # ctaLabel: "Contact Us"
 # ctaHref: "mailto:info@reqtec.com"
