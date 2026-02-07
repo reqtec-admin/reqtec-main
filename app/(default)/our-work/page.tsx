@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { ArticleSection } from '@/components/article-section'
 import { TypingAnimation } from '@/components/typing-animation'
-import { projects } from '@/data/projects'
+import { projects } from '@/data/products'
 
 export default function OurWork() {
   return (

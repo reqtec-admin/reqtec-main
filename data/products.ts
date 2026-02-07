@@ -1,6 +1,7 @@
-export interface Project {
+export interface Product {
   name: string
   url?: string
+  image?: string
   status: 'delivered' | 'incubation'
   description: string
   competition?: string
@@ -8,7 +9,7 @@ export interface Project {
   launch?: string
 }
 
-export const projects: Project[] = [
+export const products: Product[] = [
   {
     name: 'Commit 250',
     url: 'https://commit250.com',
@@ -44,7 +45,7 @@ export const projects: Project[] = [
     description: 'A mobile‑first guidance platform that helps organizations transition away from Big Tech dependencies. HANNO curates vetted alternative technology stacks and provides a step‑by‑step migration path tailored to business needs. It pairs decision frameworks with practical tooling so teams can replace core services without losing reliability, security, or productivity. The experience is designed to make sovereign tech choices feel achievable, not overwhelming. Each recommendation includes tradeoffs, cost estimates, and timelines so leaders can make informed decisions quickly. Migration playbooks break the work into phases with rollback options and clear success criteria. A lightweight assessment captures current stack risks and maps them to recommended alternatives. The result is a confident path to independence that minimizes disruption.',
     competition: 'CoolLabs LLC (potential if not partnered)',
     targetCustomer: 'SMB and Startups with serious technical needs',
-    launch: 'March 2026',
+    launch: 'July 2026',
   },
   {
     name: 'STARTYR',
@@ -52,7 +53,7 @@ export const projects: Project[] = [
     description: 'An integrated Alt‑Tech ecosystem that accelerates ethically minded SMBs with secure hosting, automation, and streamlined ops. Built on proven infrastructure with paid enhancements to shorten adoption time and reduce operational overhead. STARTYR provides a curated bundle of services, templates, and managed support so teams can modernize their stack without hiring a full DevOps function. The focus is sustainable scale: dependable systems, lower vendor lock-in, and better control over data and operations. Onboarding starts with a reference architecture and a ready-to-run toolkit that covers hosting, identity, and backups. Automation handles routine maintenance so small teams can focus on product and customers. Support is structured around clear SLAs and pragmatic guidance instead of open-ended consulting. The ecosystem is designed to help founders move fast while still building on solid infrastructure.',
     competition: 'CoolLabs LLC (potential if not partnered)',
     targetCustomer: 'SMB and Startups with serious technical needs',
-    launch: 'March 2026',
+    launch: 'September 2026',
   },
 ]
 

@@ -2,7 +2,7 @@
 
 import { ArticleSection } from '@/components/article-section'
 import { TypingAnimation } from '@/components/typing-animation'
-import { services } from '@/data/vision-data'
+import { services } from '@/data/services'
 
 export default function OurVision() {
   return (

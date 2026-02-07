@@ -32,11 +32,6 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="/the-challenge" className="text-sm text-white/70 hover:text-white transition">
-                    The Challenge
-                  </a>
-                </li>
-                <li>
                   <a href="/our-vision" className="text-sm text-white/70 hover:text-white transition">
                     Our Vision
                   </a>
