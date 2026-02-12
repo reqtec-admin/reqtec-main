@@ -247,9 +247,11 @@ export default async function MarkdownPost({ params }: { params: Promise<{ slug:
                       }
 
                       return (
-                        <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto my-6">
-                          <code className="text-gray-300 text-sm" {...rest} />
-                        </pre>
+                        <div className="my-6">
+                          <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto">
+                            <code className="text-gray-300 text-sm" {...rest} />
+                          </pre>
+                        </div>
                       )
                     },
                     blockquote: (props) => (
@@ -337,9 +339,11 @@ export default async function MarkdownPost({ params }: { params: Promise<{ slug:
                         }
 
                         return (
-                          <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto my-6">
-                            <code className="text-gray-300 text-sm" {...rest} />
-                          </pre>
+                          <div className="my-6">
+                            <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto">
+                              <code className="text-gray-300 text-sm" {...rest} />
+                            </pre>
+                          </div>
                         )
                       },
                       blockquote: (props) => (
