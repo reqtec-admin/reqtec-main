@@ -1,4 +1,4 @@
-mm---
+---
 date: "2025-07-01"
 description: "The Revolution of Cross-Platform Mobile Development: Why Expo and EAS Are Game-Changers"
 author: "REQtec Team"
