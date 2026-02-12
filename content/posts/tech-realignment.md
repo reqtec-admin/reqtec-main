@@ -1,4 +1,3 @@
-
 ---
 date: "2025-02-01"
 description: "Big Tech's Market Turmoil and the Rise of Agentic AI."
