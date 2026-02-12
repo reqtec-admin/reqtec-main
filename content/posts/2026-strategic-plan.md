@@ -1,5 +1,5 @@
 ---
-date: "2026-02-26"
+date: "2026-02-15"
 description: "REQtec's 2026 Strategic Plan: Empowering SMBs with Practical Agentic Automation."
 author: "REQtec Team"
 tags: ["business", "plan", "agentic", "ai", "2026"]
