@@ -24,7 +24,7 @@ export default function Modal({
   fgImageHeight
 }: ModalProps) {
   return (
-    <div className="relative h-screen w-screen flex items-center justify-center pointer-events-none">
+    <div className="relative h-screen w-full flex items-center justify-center pointer-events-none">
       {/* Background */}
       {bgImage ? (
         <Image

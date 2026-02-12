@@ -103,7 +103,7 @@ export default function PostFloatingActions({
           breathing
           openMaxWidthClassName="max-w-[160px]"
           iconContainerClassName="gap-2"
-          wrapperClassName="fixed bottom-[10rem] right-0 w-full md:bottom-6 md:left-1/2 md:-translate-x-1/2 md:w-auto z-20 px-4 md:px-0"
+          wrapperClassName="fixed bottom-[10rem] inset-x-0 md:bottom-6 z-20 px-4 md:px-0 justify-center"
         >
           <a
             href={xShareUrl}

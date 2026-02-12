@@ -41,7 +41,7 @@ export default function DefaultLayout({
 
   return (
     <>
-      <main className="grow h-screen overflow-y-auto">
+      <main>
         <PageIllustration />
         {children}
         <Footer />
