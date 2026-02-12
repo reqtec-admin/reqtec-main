@@ -59,6 +59,7 @@ Ready to dive in? Getting started with Expo is straightforward and requires mini
 3. **Run the App**: Navigate to your project folder (`cd my-awesome-app`) and type `expo start`. This launches the Expo Dev Tools in your browser. Scan the QR code with the Expo Go app on your phone (download from App Store or Google Play). Voilà—your app runs live on iOS or Android without emulators!
 
 4. **Add Features**: Install modules via npm. For example, `expo install expo-camera` adds camera access. In `App.js`, import and use it:
+
    ```jsx
    import { Camera } from 'expo-camera';
    // Then in your component: <Camera style={{ flex: 1 }} type={Camera.Constants.Type.back} />
@@ -74,6 +75,7 @@ Pro Tip: Use TypeScript for type safety—Expo supports it out of the box. For c
 ## Advanced Guidance with EAS: Scaling Your Cross-Platform Empire
 
 Once hooked on Expo, EAS unlocks next-level awesome. For instance, in a bare workflow, eject with `expo eject`, then use EAS to build custom configs. Define `eas.json` for build profiles:
+
 ```json
 {
   "build": {
