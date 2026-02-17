@@ -1,5 +1,5 @@
 ---
-date: "2025-02-01"
+date: "2026-02-01"
 description: "Big Tech's Market Turmoil and the Rise of Agentic AI."
 author: "REQtec Team"
 tags: ["big tech", "turmoil", "agents", "agentic", "AI"]
