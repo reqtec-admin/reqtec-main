@@ -240,18 +240,27 @@ export default async function MarkdownPost({ params }: { params: Promise<{ slug:
                         </span>
                       )
                     },
+                    pre: (props) => (
+                      <div className="my-6">
+                        <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto" {...props} />
+                      </div>
+                    ),
                     code: (props: any) => {
-                      const { inline, ...rest } = props
-                      if (inline) {
-                        return <code className="bg-gray-800 px-2 py-1 rounded text-teal-400 text-sm" {...rest} />
+                      const { className, children, ...rest } = props
+                      const isBlock = typeof className === 'string' && className.includes('language-')
+
+                      if (isBlock) {
+                        return (
+                          <code className={`text-gray-300 text-sm ${className}`} {...rest}>
+                            {children}
+                          </code>
+                        )
                       }
 
                       return (
-                        <div className="my-6">
-                          <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto">
-                            <code className="text-gray-300 text-sm" {...rest} />
-                          </pre>
-                        </div>
+                        <code className="bg-gray-800 px-2 py-1 rounded text-teal-400 text-sm" {...rest}>
+                          {children}
+                        </code>
                       )
                     },
                     blockquote: (props) => (
@@ -332,18 +341,27 @@ export default async function MarkdownPost({ params }: { params: Promise<{ slug:
                           </span>
                         )
                       },
+                      pre: (props) => (
+                        <div className="my-6">
+                          <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto" {...props} />
+                        </div>
+                      ),
                       code: (props: any) => {
-                        const { inline, ...rest } = props
-                        if (inline) {
-                          return <code className="bg-gray-800 px-2 py-1 rounded text-teal-400 text-sm" {...rest} />
+                        const { className, children, ...rest } = props
+                        const isBlock = typeof className === 'string' && className.includes('language-')
+
+                        if (isBlock) {
+                          return (
+                            <code className={`text-gray-300 text-sm ${className}`} {...rest}>
+                              {children}
+                            </code>
+                          )
                         }
 
                         return (
-                          <div className="my-6">
-                            <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto">
-                              <code className="text-gray-300 text-sm" {...rest} />
-                            </pre>
-                          </div>
+                          <code className="bg-gray-800 px-2 py-1 rounded text-teal-400 text-sm" {...rest}>
+                            {children}
+                          </code>
                         )
                       },
                       blockquote: (props) => (
