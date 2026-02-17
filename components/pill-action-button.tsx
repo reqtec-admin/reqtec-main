@@ -44,9 +44,9 @@ export default function PillActionButton({
     <div className={`flex ${alignmentClass} ${wrapperClassName ?? ''}`.trim()}>
       <button
         type="button"
-        className={`reqtec-modal-glow cta-unroll flex items-center gap-3 rounded-full border border-white/10 bg-black/60 px-4 py-2 text-sm text-gray-300 shadow-lg backdrop-blur transition hover:border-sky-400/60 hover:text-white ${
-          reverse ? 'flex-row-reverse' : ''
-        } ${breathing ? 'share-bounce' : ''} ${buttonClassName ?? ''}`.trim()}
+        className={`reqtec-modal-glow cta-unroll flex items-center rounded-full border border-white/10 bg-black/60 px-4 py-2 text-sm text-gray-300 shadow-lg backdrop-blur transition hover:border-sky-400/60 hover:text-white ${
+          isOpen ? 'justify-start gap-3' : 'justify-center gap-0'
+        } ${reverse ? 'flex-row-reverse' : ''} ${breathing ? 'share-bounce' : ''} ${buttonClassName ?? ''}`.trim()}
         onClick={onToggleAction}
         aria-expanded={isOpen}
         aria-controls={controlsId}
@@ -57,7 +57,7 @@ export default function PillActionButton({
         <span
           id={controlsId}
           className={`flex items-center overflow-hidden transition-all duration-[800ms] ease-out ${
-            isOpen ? `${openMaxWidthClassName} opacity-100` : 'max-w-0 opacity-0 pointer-events-none'
+            isOpen ? `${openMaxWidthClassName} opacity-100` : 'max-w-0 min-w-0 opacity-0 pointer-events-none'
           } ${iconContainerClassName ?? ''}`.trim()}
           aria-hidden={!isOpen}
         >

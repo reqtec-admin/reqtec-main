@@ -198,8 +198,8 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ width, height }) => {
     <div 
       ref={canvasRef} 
       style={{ 
-        width: '100vw', 
-        height: '100vh',
+        width: '100%', 
+        height: '100%',
         position: 'absolute',
         top: 0,
         left: 0,

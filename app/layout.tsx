@@ -5,6 +5,7 @@ import { Inter, Architects_Daughter, Adamina } from 'next/font/google'
 import Header from '@/components/ui/header'
 import Banner from '@/components/banner'
 import StarField from '@/components/star-field'
+import ScrollIndicator from '@/components/scroll-indicator'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -37,16 +38,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${font1.variable} ${font2.variable} font-inter antialiased text-gray-200 tracking-tight`} suppressHydrationWarning>
+    <html lang="en" className="overflow-x-hidden reqtec-scrollbar">
+      <body className={`${inter.variable} ${font1.variable} ${font2.variable} font-inter antialiased text-gray-200 tracking-tight overflow-x-hidden`} suppressHydrationWarning>
         <StarField />
-        <div className="reqtec-backdrop flex flex-col min-h-screen overflow-hidden relative z-10">
+        <div className="reqtec-backdrop flex flex-col min-h-screen relative z-10">
           <Header />
           <div className="pt-20">
             {children}
           </div>
           <Banner />
         </div>
+        <ScrollIndicator />
       </body>
     </html>
   )
