@@ -1,9 +1,30 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArticleSection } from '@/components/article-section'
 
-export const metadata = {
-  title: 'Careers - REQtec',
-  description: 'Open opportunities at REQtec.',
+export const metadata: Metadata = {
+  title: 'Careers — Agentic AI & Alternative Technology Jobs',
+  description:
+    'Join REQtec and build alternative technology independent from Big Tech. Open roles in agentic AI, social media, and engineering. Own stock, own what you build, and work with a balanced, politically neutral team.',
+  keywords: [
+    'agentic AI jobs',
+    'alternative technology careers',
+    'tech jobs no politics',
+    'neutral tech company jobs',
+    'agentic intern',
+    'startup careers',
+    'technology accelerator jobs',
+    'independent tech careers',
+  ],
+  openGraph: {
+    title: 'Careers at REQtec — Build Alternative Technology',
+    description:
+      'Open roles in agentic AI, social media, and engineering. Join a balanced, independent tech team building outside Big Tech.',
+    url: 'https://reqtec.com/careers',
+  },
+  alternates: {
+    canonical: 'https://reqtec.com/careers',
+  },
 }
 
 export default function CareersPage() {
@@ -112,6 +133,26 @@ export default function CareersPage() {
             </Link>
           </p>
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed">We are building the future.</p>
+        </div>
+      </ArticleSection>
+
+      <ArticleSection animationDelay={200}>
+        <div className="prose prose-invert max-w-none">
+          <h2 className="text-3xl md:text-4xl font-light tracking-wide mb-6 text-gray-100">Learn More About REQtec</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Link href="/our-vision" className="block p-6 border border-white/10 rounded-lg hover:border-teal-500/40 transition no-underline">
+              <h3 className="text-xl font-light text-gray-100 mb-2">Our Vision</h3>
+              <p className="text-base text-gray-400">Alternative technology services and consulting independent from Big Tech.</p>
+            </Link>
+            <Link href="/our-work" className="block p-6 border border-white/10 rounded-lg hover:border-teal-500/40 transition no-underline">
+              <h3 className="text-xl font-light text-gray-100 mb-2">Our Work</h3>
+              <p className="text-base text-gray-400">Products and platforms we have built and are building.</p>
+            </Link>
+            <Link href="/the-challenge" className="block p-6 border border-white/10 rounded-lg hover:border-teal-500/40 transition no-underline">
+              <h3 className="text-xl font-light text-gray-100 mb-2">The Challenge</h3>
+              <p className="text-base text-gray-400">Why politically neutral, balanced technology matters.</p>
+            </Link>
+          </div>
         </div>
       </ArticleSection>
     </div>

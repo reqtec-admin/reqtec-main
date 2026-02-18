@@ -23,8 +23,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: `${industry.name} - REQtec`,
-    description: industry.tagline || industry.description || '',
+    title: `${industry.name} Technology Solutions — Alternative to Big Tech`,
+    description: `${industry.tagline} REQtec serves the ${industry.name.toLowerCase()} sector with alternative technology solutions independent of dominant cloud providers.`,
+    keywords: [
+      `${industry.name.toLowerCase()} technology`,
+      `${industry.name.toLowerCase()} software`,
+      'alternative technology',
+      'alternative to Big Tech',
+      'neutral technology provider',
+      'independent tech solutions',
+    ],
+    openGraph: {
+      title: `${industry.name} Technology Solutions | REQtec`,
+      description: industry.tagline,
+      url: `https://reqtec.com/industries/${slug}`,
+    },
+    alternates: {
+      canonical: `https://reqtec.com/industries/${slug}`,
+    },
   }
 }
 

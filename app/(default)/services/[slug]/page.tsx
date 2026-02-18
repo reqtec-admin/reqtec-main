@@ -23,8 +23,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: `${service.name} - REQtec`,
-    description: service.tagline,
+    title: `${service.name} — Alternative Technology Services`,
+    description: `${service.tagline} REQtec delivers ${service.name.toLowerCase()} as an alternative to Big Tech, with neutral, balanced service and no vendor lock-in.`,
+    keywords: [
+      service.name.toLowerCase(),
+      'alternative technology',
+      'alternative to Big Tech',
+      'neutral technology provider',
+      'independent tech services',
+    ],
+    openGraph: {
+      title: `${service.name} | REQtec Services`,
+      description: service.tagline,
+      url: `https://reqtec.com/services/${slug}`,
+    },
+    alternates: {
+      canonical: `https://reqtec.com/services/${slug}`,
+    },
   }
 }
 

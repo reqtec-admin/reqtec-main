@@ -1,9 +1,30 @@
+import type { Metadata } from 'next'
+import Link from 'next/link'
 import { ArticleSection } from '@/components/article-section'
 
-export const metadata = {
-  title: 'Investor Relations - REQtec',
+export const metadata: Metadata = {
+  title: 'Investor Relations — Seed Funding for Alternative Technology Accelerator',
   description:
-    'Investor information for Requisite Technologies. Learn about our growth trajectory, product portfolio, and seed funding opportunity.',
+    'REQtec is seeking seed funding to scale an alternative technology accelerator delivering agentic AI, SaaS products, and cloud migration services independent of Big Tech. Capital-efficient, growing, and positioned in a disrupter market.',
+  keywords: [
+    'alternative technology investment',
+    'seed funding technology',
+    'technology accelerator investment',
+    'tech disrupter startup',
+    'agentic AI startup',
+    'alternative to Big Tech investment',
+    'SMB technology company',
+    'SaaS startup funding',
+  ],
+  openGraph: {
+    title: 'Investor Relations — REQtec Alternative Technology Accelerator',
+    description:
+      'Seed funding opportunity for a capital-efficient alternative technology company building agentic AI, SaaS products, and cloud migration services.',
+    url: 'https://reqtec.com/investor-relations',
+  },
+  alternates: {
+    canonical: 'https://reqtec.com/investor-relations',
+  },
 }
 
 export default function InvestorRelationsPage() {
@@ -114,29 +135,29 @@ export default function InvestorRelationsPage() {
           </p>
           <ul className="space-y-4 text-lg text-gray-300 ml-6 list-disc">
             <li>
-              <strong className="text-gray-200">Commit250</strong> — A guided health improvement experience launched
+              <Link href="/products/commit-250" className="text-teal-400 hover:text-teal-300 transition no-underline"><strong className="text-teal-400">Commit250</strong></Link> — A guided health improvement experience launched
               in 2025, now mature and market-ready with a fully tested engagement system and cross-platform delivery via
               Expo and EAS.
             </li>
             <li>
-              <strong className="text-gray-200">Synergy Integrative</strong> — An integrative health platform unifying
+              <Link href="/products/synergy-integrative" className="text-teal-400 hover:text-teal-300 transition no-underline"><strong className="text-teal-400">Synergy Integrative</strong></Link> — An integrative health platform unifying
               scheduling, secure data exchange, and practitioner tools with a HIPAA/SOC 2 compliance-first roadmap.
             </li>
             <li>
-              <strong className="text-gray-200">Enthous.io</strong> — A financial ML research platform developed in
+              <Link href="/products/enthous-io" className="text-teal-400 hover:text-teal-300 transition no-underline"><strong className="text-teal-400">Enthous.io</strong></Link> — A financial ML research platform developed in
               partnership with FinML, providing an independent, secure R&amp;D environment for trading strategy
               validation.
             </li>
             <li>
-              <strong className="text-gray-200">DEALVR</strong> — A local delivery optimization platform with automated
+              <Link href="/products/dealvr" className="text-teal-400 hover:text-teal-300 transition no-underline"><strong className="text-teal-400">DEALVR</strong></Link> — A local delivery optimization platform with automated
               inventory, routing, and tracking to help SMB merchants compete with large logistics networks.
             </li>
             <li>
-              <strong className="text-gray-200">HANNO</strong> — Migration playbooks and risk assessments guiding
+              <Link href="/products/hanno" className="text-teal-400 hover:text-teal-300 transition no-underline"><strong className="text-teal-400">HANNO</strong></Link> — Migration playbooks and risk assessments guiding
               businesses away from dominant tech stacks toward sovereign alternatives.
             </li>
             <li>
-              <strong className="text-gray-200">STARTYR</strong> — An integrated ecosystem of alternative tools with
+              <Link href="/products/startyr" className="text-teal-400 hover:text-teal-300 transition no-underline"><strong className="text-teal-400">STARTYR</strong></Link> — An integrated ecosystem of alternative tools with
               managed support and automation, easing the transition to lower-cost, ethical infrastructure.
             </li>
           </ul>

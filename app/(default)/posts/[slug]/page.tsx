@@ -98,8 +98,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: `${post.metadata.title} - REQtec`,
-    description: post.metadata.description || '',
+    title: post.metadata.title,
+    description: post.metadata.description || `${post.metadata.title} — insights from REQtec on alternative technology, agentic AI, and building independent of Big Tech.`,
+    ...(post.metadata.tags ? { keywords: post.metadata.tags } : {}),
+    openGraph: {
+      title: `${post.metadata.title} | REQtec`,
+      description: post.metadata.description || '',
+      url: `https://reqtec.com/posts/${slug}`,
+      type: 'article',
+      ...(post.metadata.date ? { publishedTime: post.metadata.date } : {}),
+      ...(post.metadata.author ? { authors: [post.metadata.author] } : {}),
+    },
+    alternates: {
+      canonical: `https://reqtec.com/posts/${slug}`,
+    },
   }
 }
 

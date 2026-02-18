@@ -28,8 +28,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: `${product.name} - REQtec`,
-    description: product.tagline,
+    title: `${product.name} — Alternative Technology Product`,
+    description: `${product.tagline} Built by REQtec on independent, alternative technology stacks free from Big Tech dependencies.`,
+    keywords: [
+      product.name.toLowerCase(),
+      'alternative technology product',
+      'independent tech',
+      'SMB technology',
+      'agentic solutions',
+    ],
+    openGraph: {
+      title: `${product.name} | REQtec Products`,
+      description: product.tagline,
+      url: `https://reqtec.com/products/${slug}`,
+    },
+    alternates: {
+      canonical: `https://reqtec.com/products/${slug}`,
+    },
   }
 }
 
