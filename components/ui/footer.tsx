@@ -35,7 +35,6 @@ function ExternalLinkIndicator() {
 
 export default function Footer() {
   const [aboutOpen, setAboutOpen] = useState(false)
-  const [careersOpen, setCareersOpen] = useState(false)
   const [privacyOpen, setPrivacyOpen] = useState(false)
   const [termsOpen, setTermsOpen] = useState(false)
   const [complianceOpen, setComplianceOpen] = useState(false)
@@ -77,12 +76,14 @@ export default function Footer() {
                   </button>
                 </li>
                 <li>
-                  <button
-                    onClick={() => setCareersOpen(true)}
-                    className="text-sm text-white/70 hover:text-white transition"
-                  >
+                  <a href="/careers" className="text-sm text-white/70 hover:text-white transition">
                     Careers
-                  </button>
+                  </a>
+                </li>
+                <li>
+                  <a href="/investor-relations" className="text-sm text-white/70 hover:text-white transition">
+                    Investor Relations
+                  </a>
                 </li>
                 <li>
                   <a
@@ -234,27 +235,6 @@ export default function Footer() {
             <div>
               REQtec is a technology company delivering cloud, AI/ML, mobile, and web solutions for modern businesses.
             </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      <Dialog open={careersOpen} onOpenChange={setCareersOpen}>
-        <DialogContent className="reqtec-modal-glow bg-black/60 border-white/30 text-white max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl shadow-black/60 relative backdrop-blur-xl ring-1 ring-white/10">
-          <div className="flex items-start justify-between gap-4">
-            <DialogHeader className="mb-0">
-              <DialogTitle className="text-white">Careers</DialogTitle>
-            </DialogHeader>
-            <button
-              type="button"
-              onClick={() => setCareersOpen(false)}
-              className="text-white/60 hover:text-white transition text-xl leading-none"
-              aria-label="Close"
-            >
-              ×
-            </button>
-          </div>
-          <div className="text-white/70 mt-4 space-y-4 text-sm">
-            <div>Coming Soon</div>
           </div>
         </DialogContent>
       </Dialog>
