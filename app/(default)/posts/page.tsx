@@ -1,10 +1,30 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArticleSection } from '@/components/article-section'
 import { formatPostDate, getAllPosts } from '@/lib/markdown'
 
-export const metadata = {
-  title: 'Posts - REQtec',
-  description: 'Read our latest long-form posts and articles.',
+export const metadata: Metadata = {
+  title: 'Posts — Insights on Alternative Technology, Agentic AI & Independence from Big Tech',
+  description:
+    'Long-form articles from REQtec on alternative technology strategy, agentic AI adoption, cloud migration away from Google Cloud and AWS, and building balanced, politically neutral technology solutions.',
+  keywords: [
+    'alternative technology blog',
+    'agentic AI articles',
+    'Big Tech alternatives',
+    'cloud migration insights',
+    'independent technology',
+    'neutral technology thought leadership',
+    'tech independence',
+  ],
+  openGraph: {
+    title: 'Posts — Technology Insights | REQtec',
+    description:
+      'Long-form articles on alternative technology, agentic AI, cloud migration, and building outside Big Tech.',
+    url: 'https://reqtec.com/posts',
+  },
+  alternates: {
+    canonical: 'https://reqtec.com/posts',
+  },
 }
 
 export default function PostsIndex() {

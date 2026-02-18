@@ -1,38 +1,41 @@
-'use client'
+import type { Metadata } from 'next'
+import HomeContent from './home-content'
 
-import Hero from '@/components/hero'
-import Features from '@/components/features'
-import Newsletter from '@/components/newsletter'
-import Zigzag from '@/components/zigzag'
-import Testimonials from '@/components/testimonials'
+export const metadata: Metadata = {
+  title: 'REQtec — Alternative Technology Solutions | Agentic AI, Cloud Migrations, Custom Software',
+  description:
+    'Requisite Technologies (REQtec) is an alternative technology accelerator delivering agentic AI, cloud migrations off Google Cloud, AWS, and Azure, custom software, and mobile apps. Politically neutral, balanced, and independent from Big Tech — technology with a clear conscience.',
+  keywords: [
+    'alternative technology company',
+    'alternative to Big Tech',
+    'alternatives to Google Cloud',
+    'alternatives to AWS',
+    'alternatives to Azure',
+    'agentic AI solutions',
+    'technology accelerator',
+    'tech disrupter',
+    'neutral technology',
+    'balanced technology provider',
+    'politically neutral',
+    'no political baggage',
+    'cloud migration services',
+    'custom software development',
+    'mobile app development',
+    'ethical AI',
+    'independent tech company',
+    'SMB technology solutions',
+  ],
+  openGraph: {
+    title: 'REQtec — Alternative Technology Solutions | Independent from Big Tech',
+    description:
+      'Agentic AI, cloud migrations, custom software, and mobile apps — built independent of Big Tech. Technology with a clear conscience.',
+    url: 'https://reqtec.com',
+  },
+  alternates: {
+    canonical: 'https://reqtec.com',
+  },
+}
 
 export default function Home() {
-  return (
-    <>
-      {/* Fixed Background Video for entire page */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="fixed inset-0 z-0 pointer-events-none object-cover w-full h-full"
-        style={{
-          filter: 'grayscale(100%)',
-          opacity: 0.15,
-        }}
-      >
-        <source src="/videos/5187-183786465_medium.mp4" type="video/mp4" />
-      </video>
-      {/* Dark overlay for better text readability */}
-      <div className="fixed inset-0 z-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60 pointer-events-none" />
-      
-      <div className="relative z-10">
-        <Hero />
-        <Features />
-        {/* <Zigzag /> */}
-        <Testimonials />
-        {/* <Newsletter /> */}
-      </div>
-    </>
-  )
+  return <HomeContent />
 }
