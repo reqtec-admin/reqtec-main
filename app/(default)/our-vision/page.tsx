@@ -74,13 +74,14 @@ export default function OurVision() {
       </ArticleSection> */}
 
       {/* Products and Services Sections */}
-      {services.map((service, index) => (
-        <ArticleSection key={service.title} animationDelay={200}>
+      {services.map((service) => (
+        <ArticleSection key={service.name} animationDelay={200}>
           <div className="prose prose-invert max-w-none">
-            <h2 className="text-3xl md:text-4xl font-light tracking-wide mb-6 text-gray-100">{service.title}</h2>
+            <h2 className="text-3xl md:text-4xl font-light tracking-wide mb-6 text-gray-100">{service.name}</h2>
+            <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">{service.tagline}</p>
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
               {service.description.split('\n\n').map((paragraph, paragraphIndex) => (
-                <span key={`${service.title}-${paragraphIndex}`}>
+                <span key={`${service.name}-${paragraphIndex}`}>
                   {paragraph}
                   {paragraphIndex < service.description.split('\n\n').length - 1 && (
                     <>

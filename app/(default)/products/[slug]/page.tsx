@@ -5,6 +5,11 @@ import { products } from '@/data/products'
 import { toSlug } from '@/lib/slug'
 
 const DEFAULT_BACKGROUND = '/images/developers-table.jpg'
+const STATUS_LABELS = {
+  delivered: 'Delivered',
+  incubation: 'Incubation',
+  development: 'Development',
+} as const
 
 export async function generateStaticParams() {
   return products.map((product) => ({
@@ -24,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   return {
     title: `${product.name} - REQtec`,
-    description: product.description,
+    description: product.tagline,
   }
 }
 
@@ -37,11 +42,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   }
 
   const backgroundImage = product.image || DEFAULT_BACKGROUND
-  const statusLabel = product.status === 'delivered' ? 'Delivered' : 'Incubation'
+  const statusLabel = STATUS_LABELS[product.status]
   const details: string[] = [
     `Status: ${statusLabel}`,
     product.targetCustomer ? `Target Customer: ${product.targetCustomer}` : '',
-    product.competition ? `Competition: ${product.competition}` : '',
     product.launch ? `Launch: ${product.launch}` : '',
   ].filter(Boolean)
 
@@ -49,11 +53,15 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     <DetailPage
       eyebrow="Products"
       title={product.name}
-      description={product.description}
+      description={product.tagline}
       backgroundImage={backgroundImage}
       link={product.url ? { href: product.url, label: 'Visit Website' } : undefined}
-      sections={
-        details.length > 0
+      sections={[
+        {
+          title: 'Overview',
+          content: <p className="text-lg text-gray-300 leading-relaxed">{product.description}</p>,
+        },
+        ...(details.length > 0
           ? [
               {
                 title: 'Product Details',
@@ -66,8 +74,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 ),
               },
             ]
-          : []
-      }
+          : []),
+      ]}
     />
   )
 }

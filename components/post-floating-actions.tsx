@@ -82,7 +82,7 @@ export default function PostFloatingActions({
         reverse
         textClassName="text-right"
         openMaxWidthClassName="max-w-[140px]"
-        wrapperClassName="fixed bottom-[5.5rem] left-0 w-full md:bottom-6 md:left-12 md:w-auto z-[60] px-4 md:px-0 pointer-events-auto"
+        wrapperClassName="fixed bottom-6 left-6 z-20 pointer-events-auto"
       >
         <Link
           className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-white/10 bg-black/50 text-gray-100 transition hover:border-sky-400/60 hover:text-white"

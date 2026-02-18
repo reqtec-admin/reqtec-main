@@ -14,8 +14,8 @@ export default function Header() {
     href: `/products/${toSlug(product.name)}`,
   }))
   const serviceLinks = services.map((service) => ({
-    label: service.title,
-    href: `/services/${toSlug(service.title)}`,
+    label: service.name,
+    href: `/services/${toSlug(service.name)}`,
   }))
   const industryLinks = industries.map((industry) => ({
     label: industry.name,
@@ -45,19 +45,38 @@ export default function Header() {
                 >
                   Products |
                 </button>
-                <div className="absolute right-0 mt-2 w-64 rounded-lg border border-white/10 bg-black/90 backdrop-blur-lg shadow-lg overflow-hidden opacity-0 max-h-0 translate-y-1 pointer-events-none transition-all duration-[800ms] ease-out group-hover:opacity-100 group-hover:max-h-96 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:max-h-96 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
-                  <ul className="py-2">
-                    {productLinks.map((item) => (
-                      <li key={item.href}>
-                        <Link
-                          href={item.href}
-                          className="block px-4 py-2 text-sm text-gray-300 hover:text-teal-300 hover:bg-white/5 transition"
-                        >
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="absolute right-0 top-full w-64 pt-2 opacity-0 max-h-0 translate-y-1 pointer-events-none transition-all duration-[800ms] ease-out group-hover:opacity-100 group-hover:max-h-96 group-hover:translate-y-0 group-hover:pointer-events-auto">
+                  <div className="rounded-lg border border-white/10 bg-black/90 backdrop-blur-lg shadow-lg overflow-hidden">
+                    <ul className="py-2">
+                      {productLinks.map((item) => (
+                        <li key={item.href} className="group/item">
+                          <Link
+                            href={item.href}
+                            className="flex items-center justify-between gap-3 px-4 py-2 text-sm text-gray-300 hover:text-gray-100 hover:bg-white/5 transition"
+                          >
+                            <span>{item.label}</span>
+                            <svg
+                              width="10"
+                              height="16"
+                              viewBox="0 0 12 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="text-white/70 opacity-0 -translate-x-1 transition-all duration-150 ease-out group-hover/item:opacity-100 group-hover/item:translate-x-0"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M2 2L10 10L2 18"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </li>
               <li className="relative group">
@@ -67,19 +86,38 @@ export default function Header() {
                 >
                   Services |
                 </button>
-                <div className="absolute right-0 mt-2 w-64 rounded-lg border border-white/10 bg-black/90 backdrop-blur-lg shadow-lg overflow-hidden opacity-0 max-h-0 translate-y-1 pointer-events-none transition-all duration-[800ms] ease-out group-hover:opacity-100 group-hover:max-h-96 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:max-h-96 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
-                  <ul className="py-2">
-                    {serviceLinks.map((item) => (
-                      <li key={item.href}>
-                        <Link
-                          href={item.href}
-                          className="block px-4 py-2 text-sm text-gray-300 hover:text-teal-300 hover:bg-white/5 transition"
-                        >
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="absolute right-0 top-full w-64 pt-2 opacity-0 max-h-0 translate-y-1 pointer-events-none transition-all duration-[800ms] ease-out group-hover:opacity-100 group-hover:max-h-96 group-hover:translate-y-0 group-hover:pointer-events-auto">
+                  <div className="rounded-lg border border-white/10 bg-black/90 backdrop-blur-lg shadow-lg overflow-hidden">
+                    <ul className="py-2">
+                      {serviceLinks.map((item) => (
+                        <li key={item.href} className="group/item">
+                          <Link
+                            href={item.href}
+                            className="flex items-center justify-between gap-3 px-4 py-2 text-sm text-gray-300 hover:text-gray-100 hover:bg-white/5 transition"
+                          >
+                            <span>{item.label}</span>
+                            <svg
+                              width="10"
+                              height="16"
+                              viewBox="0 0 12 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="text-white/70 opacity-0 -translate-x-1 transition-all duration-150 ease-out group-hover/item:opacity-100 group-hover/item:translate-x-0"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M2 2L10 10L2 18"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </li>
               <li className="relative group">
@@ -89,19 +127,38 @@ export default function Header() {
                 >
                   Sectors |
                 </button>
-                <div className="absolute right-0 mt-2 w-64 rounded-lg border border-white/10 bg-black/90 backdrop-blur-lg shadow-lg overflow-hidden opacity-0 max-h-0 translate-y-1 pointer-events-none transition-all duration-[800ms] ease-out group-hover:opacity-100 group-hover:max-h-96 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:max-h-96 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
-                  <ul className="py-2">
-                    {industryLinks.map((item) => (
-                      <li key={item.href}>
-                        <Link
-                          href={item.href}
-                          className="block px-4 py-2 text-sm text-gray-300 hover:text-teal-300 hover:bg-white/5 transition"
-                        >
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="absolute right-0 top-full w-64 pt-2 opacity-0 max-h-0 translate-y-1 pointer-events-none transition-all duration-[800ms] ease-out group-hover:opacity-100 group-hover:max-h-96 group-hover:translate-y-0 group-hover:pointer-events-auto">
+                  <div className="rounded-lg border border-white/10 bg-black/90 backdrop-blur-lg shadow-lg overflow-hidden">
+                    <ul className="py-2">
+                      {industryLinks.map((item) => (
+                        <li key={item.href} className="group/item">
+                          <Link
+                            href={item.href}
+                            className="flex items-center justify-between gap-3 px-4 py-2 text-sm text-gray-300 hover:text-gray-100 hover:bg-white/5 transition"
+                          >
+                            <span>{item.label}</span>
+                            <svg
+                              width="10"
+                              height="16"
+                              viewBox="0 0 12 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="text-white/70 opacity-0 -translate-x-1 transition-all duration-150 ease-out group-hover/item:opacity-100 group-hover/item:translate-x-0"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M2 2L10 10L2 18"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </li>
             </ul>
@@ -113,8 +170,6 @@ export default function Header() {
       </div>
     </header>
   )
-}
-
 }
 
 

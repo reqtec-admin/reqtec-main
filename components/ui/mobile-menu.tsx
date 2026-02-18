@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { products } from '@/data/products'
 import { services } from '@/data/services'
 import { industries } from '@/data/industries'
@@ -9,20 +10,20 @@ import { toSlug } from '@/lib/slug'
 
 export default function MobileMenu() {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
-  const [productsOpen, setProductsOpen] = useState<boolean>(false)
-  const [servicesOpen, setServicesOpen] = useState<boolean>(false)
-  const [industriesOpen, setIndustriesOpen] = useState<boolean>(false)
+  const [openSection, setOpenSection] = useState<'products' | 'services' | 'industries' | null>(null)
 
   const trigger = useRef<HTMLButtonElement>(null)
   const mobileNav = useRef<HTMLDivElement>(null)
+  const pathname = usePathname()
 
   // close the mobile menu on click outside
   useEffect(() => {
     const clickHandler = ({ target }: { target: EventTarget | null }): void => {
-      if (!mobileNav.current || !trigger.current) return;
-      if (!mobileNavOpen || mobileNav.current.contains(target as Node) || trigger.current.contains(target as Node)) return;
+      if (!mobileNav.current || !trigger.current) return
+      if (!mobileNavOpen || mobileNav.current.contains(target as Node) || trigger.current.contains(target as Node)) return
       setMobileNavOpen(false)
-    };
+      setOpenSection(null)
+    }
     document.addEventListener('click', clickHandler)
     return () => document.removeEventListener('click', clickHandler)
   }, [mobileNavOpen])
@@ -30,12 +31,31 @@ export default function MobileMenu() {
   // close the mobile menu if the esc key is pressed
   useEffect(() => {
     const keyHandler = ({ keyCode }: { keyCode: number }): void => {
-      if (!mobileNavOpen || keyCode !== 27) return;
+      if (!mobileNavOpen || keyCode !== 27) return
       setMobileNavOpen(false)
-    };
+      setOpenSection(null)
+    }
     document.addEventListener('keydown', keyHandler)
     return () => document.removeEventListener('keydown', keyHandler)
   }, [mobileNavOpen])
+
+  // close mobile nav and reset accordions after route changes
+  useEffect(() => {
+    setMobileNavOpen(false)
+    setOpenSection(null)
+  }, [pathname])
+
+  const toggleMenu = () => {
+    setMobileNavOpen((open) => {
+      const nextOpen = !open
+      if (!nextOpen) setOpenSection(null)
+      return nextOpen
+    })
+  }
+
+  const toggleSection = (section: 'products' | 'services' | 'industries') => {
+    setOpenSection((current) => (current === section ? null : section))
+  }
 
   return (
     <div className="md:hidden">
@@ -45,7 +65,7 @@ export default function MobileMenu() {
         className={`hamburger ${mobileNavOpen && 'active'}`}
         aria-controls="mobile-nav"
         aria-expanded={mobileNavOpen}
-        onClick={() => setMobileNavOpen(!mobileNavOpen)}
+        onClick={toggleMenu}
       >
         <span className="sr-only">Menu</span>
         <svg
@@ -63,81 +83,198 @@ export default function MobileMenu() {
       <nav
         id="mobile-nav"
         ref={mobileNav}
-        className="absolute top-full z-20 left-0 w-full px-4 sm:px-6 overflow-hidden transition-all duration-[800ms] ease-out"
-        style={mobileNavOpen ? { maxHeight: '1000px', opacity: 1 } : { maxHeight: 0, opacity: 0.8 }}
+        className="absolute top-full z-20 left-0 w-full px-4 sm:px-6 overflow-hidden transition-all duration-300 ease-out"
+        style={mobileNavOpen ? { maxHeight: '1000px', opacity: 1 } : { maxHeight: 0, opacity: 0 }}
       >
-        <ul className="bg-gray-900/95 backdrop-blur-sm border border-teal-500/20 rounded-lg px-4 py-2 mt-2">
-          <li>
+        <ul className="mt-2 rounded-lg border border-white/10 bg-gray-900/95 backdrop-blur-sm px-3 py-2">
+          <li className="border-b border-white/10 last:border-b-0">
             <button
               type="button"
-              className="flex items-center justify-center gap-2 font-medium w-full text-gray-300 hover:text-teal-400 py-2 transition duration-150 ease-in-out"
-              onClick={() => setProductsOpen((open) => !open)}
+              className="flex w-full items-center justify-between py-2.5 px-1 text-left text-xs uppercase tracking-widest text-gray-400 hover:text-gray-200 transition duration-150 ease-in-out"
+              onClick={() => toggleSection('products')}
+              aria-expanded={openSection === 'products'}
+              aria-controls="mobile-products-menu"
             >
               Products
-              <span className="text-xs text-gray-500">{productsOpen ? '–' : '+'}</span>
+              <svg
+                width="16"
+                height="10"
+                viewBox="0 0 20 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className={`text-white/70 transition-transform duration-200 ${openSection === 'products' ? 'rotate-180' : ''}`}
+                aria-hidden="true"
+              >
+                <path
+                  d="M2 2L10 10L18 2"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </button>
             <div
-              className="mt-1 mb-2 rounded-md border border-white/10 bg-black/40 overflow-hidden transition-all duration-[800ms] ease-out"
-              style={productsOpen ? { maxHeight: '600px', opacity: 1 } : { maxHeight: 0, opacity: 0 }}
+              id="mobile-products-menu"
+              className="mb-2 overflow-hidden rounded-md border border-white/10 bg-black/40 transition-all duration-300 ease-out"
+              style={openSection === 'products' ? { maxHeight: '600px', opacity: 1 } : { maxHeight: 0, opacity: 0 }}
             >
               {products.map((product) => (
                 <Link
                   key={product.name}
                   href={`/products/${toSlug(product.name)}`}
-                  className="block px-4 py-2 text-sm text-gray-300 hover:text-teal-300 hover:bg-white/5 transition"
-                  onClick={() => setMobileNavOpen(false)}
+                  className="group flex items-center justify-between gap-3 px-4 py-2.5 text-sm text-gray-300 hover:text-gray-100 hover:bg-white/5 transition"
+                  onClick={() => {
+                    setMobileNavOpen(false)
+                    setOpenSection(null)
+                  }}
                 >
-                  {product.name}
+                  <span>{product.name}</span>
+                  <svg
+                    width="10"
+                    height="16"
+                    viewBox="0 0 12 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="text-white/70 opacity-0 -translate-x-1 transition-all duration-150 ease-out group-hover:opacity-100 group-hover:translate-x-0"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2 2L10 10L2 18"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </Link>
               ))}
             </div>
           </li>
-          <li>
+          <li className="border-b border-white/10 last:border-b-0">
             <button
               type="button"
-              className="flex items-center justify-center gap-2 font-medium w-full text-gray-300 hover:text-teal-400 py-2 transition duration-150 ease-in-out"
-              onClick={() => setServicesOpen((open) => !open)}
+              className="flex w-full items-center justify-between py-2.5 px-1 text-left text-xs uppercase tracking-widest text-gray-400 hover:text-gray-200 transition duration-150 ease-in-out"
+              onClick={() => toggleSection('services')}
+              aria-expanded={openSection === 'services'}
+              aria-controls="mobile-services-menu"
             >
               Services
-              <span className="text-xs text-gray-500">{servicesOpen ? '–' : '+'}</span>
+              <svg
+                width="16"
+                height="10"
+                viewBox="0 0 20 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className={`text-white/70 transition-transform duration-200 ${openSection === 'services' ? 'rotate-180' : ''}`}
+                aria-hidden="true"
+              >
+                <path
+                  d="M2 2L10 10L18 2"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </button>
             <div
-              className="mt-1 mb-2 rounded-md border border-white/10 bg-black/40 overflow-hidden transition-all duration-[800ms] ease-out"
-              style={servicesOpen ? { maxHeight: '600px', opacity: 1 } : { maxHeight: 0, opacity: 0 }}
+              id="mobile-services-menu"
+              className="mb-2 overflow-hidden rounded-md border border-white/10 bg-black/40 transition-all duration-300 ease-out"
+              style={openSection === 'services' ? { maxHeight: '600px', opacity: 1 } : { maxHeight: 0, opacity: 0 }}
             >
               {services.map((service) => (
                 <Link
-                  key={service.title}
-                  href={`/services/${toSlug(service.title)}`}
-                  className="block px-4 py-2 text-sm text-gray-300 hover:text-teal-300 hover:bg-white/5 transition"
-                  onClick={() => setMobileNavOpen(false)}
+                  key={service.name}
+                  href={`/services/${toSlug(service.name)}`}
+                  className="group flex items-center justify-between gap-3 px-4 py-2.5 text-sm text-gray-300 hover:text-gray-100 hover:bg-white/5 transition"
+                  onClick={() => {
+                    setMobileNavOpen(false)
+                    setOpenSection(null)
+                  }}
                 >
-                  {service.title}
+                  <span>{service.name}</span>
+                  <svg
+                    width="10"
+                    height="16"
+                    viewBox="0 0 12 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="text-white/70 opacity-0 -translate-x-1 transition-all duration-150 ease-out group-hover:opacity-100 group-hover:translate-x-0"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2 2L10 10L2 18"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </Link>
               ))}
             </div>
           </li>
-          <li>
+          <li className="last:border-b-0">
             <button
               type="button"
-              className="flex items-center justify-center gap-2 font-medium w-full text-gray-300 hover:text-teal-400 py-2 transition duration-150 ease-in-out"
-              onClick={() => setIndustriesOpen((open) => !open)}
+              className="flex w-full items-center justify-between py-2.5 px-1 text-left text-xs uppercase tracking-widest text-gray-400 hover:text-gray-200 transition duration-150 ease-in-out"
+              onClick={() => toggleSection('industries')}
+              aria-expanded={openSection === 'industries'}
+              aria-controls="mobile-industries-menu"
             >
               Sectors
-              <span className="text-xs text-gray-500">{industriesOpen ? '–' : '+'}</span>
+              <svg
+                width="16"
+                height="10"
+                viewBox="0 0 20 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className={`text-white/70 transition-transform duration-200 ${openSection === 'industries' ? 'rotate-180' : ''}`}
+                aria-hidden="true"
+              >
+                <path
+                  d="M2 2L10 10L18 2"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </button>
             <div
-              className="mt-1 mb-2 rounded-md border border-white/10 bg-black/40 overflow-hidden transition-all duration-[800ms] ease-out"
-              style={industriesOpen ? { maxHeight: '600px', opacity: 1 } : { maxHeight: 0, opacity: 0 }}
+              id="mobile-industries-menu"
+              className="mb-2 overflow-hidden rounded-md border border-white/10 bg-black/40 transition-all duration-300 ease-out"
+              style={openSection === 'industries' ? { maxHeight: '600px', opacity: 1 } : { maxHeight: 0, opacity: 0 }}
             >
               {industries.map((industry) => (
                 <Link
                   key={industry.name}
                   href={`/industries/${toSlug(industry.name)}`}
-                  className="block px-4 py-2 text-sm text-gray-300 hover:text-teal-300 hover:bg-white/5 transition"
-                  onClick={() => setMobileNavOpen(false)}
+                  className="group flex items-center justify-between gap-3 px-4 py-2.5 text-sm text-gray-300 hover:text-gray-100 hover:bg-white/5 transition"
+                  onClick={() => {
+                    setMobileNavOpen(false)
+                    setOpenSection(null)
+                  }}
                 >
-                  {industry.name}
+                  <span>{industry.name}</span>
+                  <svg
+                    width="10"
+                    height="16"
+                    viewBox="0 0 12 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="text-white/70 opacity-0 -translate-x-1 transition-all duration-150 ease-out group-hover:opacity-100 group-hover:translate-x-0"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2 2L10 10L2 18"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </Link>
               ))}
             </div>

@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   return {
     title: `${industry.name} - REQtec`,
-    description: industry.description || '',
+    description: industry.tagline || industry.description || '',
   }
 }
 
@@ -42,26 +42,18 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
     <DetailPage
       eyebrow="Sectors"
       title={industry.name}
-      description={industry.description}
+      description={industry.tagline}
       backgroundImage={backgroundImage}
-      sections={[
-        {
-          title: 'Why Trusted Providers Matter',
-          content: (
-            <>
-              {industry.trustedProviderNote && (
-                <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
-                  {industry.trustedProviderNote}
-                </p>
-              )}
-              <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                REQtec prioritizes disciplined architecture, transparent decision-making, and resilient delivery models
-                so your organization can move forward with confidence.
-              </p>
-            </>
-          ),
-        },
-      ]}
+      sections={
+        industry.description
+          ? [
+              {
+                title: 'Overview',
+                content: <p className="text-lg text-gray-300 leading-relaxed">{industry.description}</p>,
+              },
+            ]
+          : []
+      }
     />
   )
 }
