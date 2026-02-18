@@ -11,6 +11,28 @@ import {
 
 const footerIcon = '/images/REQtec-icon-white.png'
 
+function ExternalLinkIndicator() {
+  return (
+    <svg
+      width="8"
+      height="12"
+      viewBox="0 0 12 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="inline-block align-super -rotate-45 text-white/60 group-hover:text-white transition"
+      aria-hidden="true"
+    >
+      <path
+        d="M2 2L10 10L2 18"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
 export default function Footer() {
   const [aboutOpen, setAboutOpen] = useState(false)
   const [careersOpen, setCareersOpen] = useState(false)
@@ -24,7 +46,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8 text-center md:text-left">
             <div>
-              <p className="text-xs uppercase tracking-widest text-gray-400 mb-4">PRODUCT</p>
+              <p className="text-xs uppercase tracking-widest text-gray-400 mb-4">R E Q | t e c</p>
               <ul className="space-y-2">
                 <li>
                   <a href="/our-work" className="text-sm text-white/70 hover:text-white transition">
@@ -32,13 +54,13 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="/the-challenge" className="text-sm text-white/70 hover:text-white transition">
-                    The Challenge
+                  <a href="/our-vision" className="text-sm text-white/70 hover:text-white transition">
+                    Our Vision
                   </a>
                 </li>
                 <li>
-                  <a href="/our-vision" className="text-sm text-white/70 hover:text-white transition">
-                    Our Vision
+                  <a href="/posts" className="text-sm text-white/70 hover:text-white transition">
+                    Our Thoughts
                   </a>
                 </li>
               </ul>
@@ -55,11 +77,6 @@ export default function Footer() {
                   </button>
                 </li>
                 <li>
-                  <a href="/posts" className="text-sm text-white/70 hover:text-white transition">
-                    Articles
-                  </a>
-                </li>
-                <li>
                   <button
                     onClick={() => setCareersOpen(true)}
                     className="text-sm text-white/70 hover:text-white transition"
@@ -72,9 +89,10 @@ export default function Footer() {
                     href="https://dev.reqtec.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/70 hover:text-white transition"
+                    className="group inline-flex items-start gap-1 text-sm text-white/70 hover:text-white transition"
                   >
                     Code
+                    <ExternalLinkIndicator />
                   </a>
                 </li>
                 <li>
@@ -82,9 +100,10 @@ export default function Footer() {
                     href="https://n8n.reqtec.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/70 hover:text-white transition"
+                    className="group inline-flex items-start gap-1 text-sm text-white/70 hover:text-white transition"
                   >
                     Work Flows
+                    <ExternalLinkIndicator />
                   </a>
                 </li>
                 <li>
@@ -92,9 +111,10 @@ export default function Footer() {
                     href="https://billing.stripe.com/p/login/bJe8wP8lubS7fMW6m97kc00"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/70 hover:text-white transition"
+                    className="group inline-flex items-start gap-1 text-sm text-white/70 hover:text-white transition"
                   >
                     Billing
+                    <ExternalLinkIndicator />
                   </a>
                 </li>
               </ul>
@@ -136,9 +156,10 @@ export default function Footer() {
                     href="https://x.com/reqtecX"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/70 hover:text-white transition"
+                    className="group inline-flex items-start gap-1 text-sm text-white/70 hover:text-white transition"
                   >
                     X
+                    <ExternalLinkIndicator />
                   </a>
                 </li>
                 <li>
@@ -146,17 +167,19 @@ export default function Footer() {
                     href="https://linkedin.com/company/reqtec"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/70 hover:text-white transition"
+                    className="group inline-flex items-start gap-1 text-sm text-white/70 hover:text-white transition"
                   >
                     LinkedIn
+                    <ExternalLinkIndicator />
                   </a>
                 </li>
                 <li>
                   <a
                     href="mailto:info@reqtec.com"
-                    className="text-sm text-white/70 hover:text-white transition"
+                    className="group inline-flex items-start gap-1 text-sm text-white/70 hover:text-white transition"
                   >
                     Email
+                    <ExternalLinkIndicator />
                   </a>
                 </li>
                 <li>
@@ -164,9 +187,10 @@ export default function Footer() {
                     href="https://cal.com/reqtec"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/70 hover:text-white transition"
+                    className="group inline-flex items-start gap-1 text-sm text-white/70 hover:text-white transition"
                   >
                     Schedule a Meeting
+                    <ExternalLinkIndicator />
                   </a>
                 </li>
               </ul>

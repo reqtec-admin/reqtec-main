@@ -3,7 +3,13 @@
 import Link from 'next/link'
 import { ArticleSection } from '@/components/article-section'
 import { TypingAnimation } from '@/components/typing-animation'
-import { projects } from '@/data/projects'
+import { products } from '@/data/products'
+
+const STATUS_LABELS = {
+  delivered: 'Delivered',
+  incubation: 'Incubation',
+  development: 'Development',
+} as const
 
 export default function OurWork() {
   return (
@@ -47,7 +53,7 @@ export default function OurWork() {
       <div className="border-t border-teal-500/20 relative z-10" />
 
       {/* Project Sections */}
-      {projects.map((project, index) => (
+      {products.map((project) => (
         <ArticleSection key={project.name} animationDelay={200}>
           <div className="prose prose-invert max-w-none">
             <div className="flex items-center gap-4 mb-6">
@@ -59,7 +65,7 @@ export default function OurWork() {
                   ? 'bg-teal-500/20 text-teal-400 border border-teal-500/30'
                   : 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
               }`}>
-                {project.status}
+                {STATUS_LABELS[project.status]}
               </span>
             </div>
             
