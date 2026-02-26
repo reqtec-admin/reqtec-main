@@ -29,6 +29,9 @@ const font2 = Adamina({
 })
 
 const BASE_URL = 'https://reqtec.com'
+// Use absolute URL so X/Facebook/LinkedIn crawlers can fetch the image. Use an image with
+// visible contrast (not white-on-transparent) so the card preview isn’t blank/white.
+const OG_IMAGE_URL = `${BASE_URL}/images/REQtec-teal-black.png`
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -75,7 +78,7 @@ export const metadata: Metadata = {
     title: 'REQtec — Alternative Technology Solutions | Independent from Big Tech',
     description:
       'Alternative technology company delivering agentic AI, cloud migrations, custom software, and mobile apps. Neutral, balanced, and free from Big Tech dependencies.',
-    images: [{ url: '/images/REQtec-logo-white.png', width: 1200, height: 630, alt: 'REQtec Logo' }],
+    images: [{ url: OG_IMAGE_URL, width: 1200, height: 630, alt: 'REQtec Logo' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -84,7 +87,7 @@ export const metadata: Metadata = {
     title: 'REQtec — Alternative Technology Solutions',
     description:
       'Agentic AI, cloud migrations, and custom software built independent of Big Tech. Neutral technology with no political baggage.',
-    images: ['/images/REQtec-logo-white.png'],
+    images: [OG_IMAGE_URL],
   },
   robots: {
     index: true,
