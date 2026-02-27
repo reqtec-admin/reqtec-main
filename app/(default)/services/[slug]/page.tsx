@@ -4,6 +4,7 @@ import { DetailPage } from '@/components/detail-page'
 import { services } from '@/data/services'
 import { toSlug } from '@/lib/slug'
 
+const SITE_URL = 'https://reqtec.com'
 const DEFAULT_BACKGROUND = '/images/financials.jpg'
 
 export async function generateStaticParams() {
@@ -22,6 +23,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
   }
 
+  const imagePath = service.image || DEFAULT_BACKGROUND
+  const ogImageUrl =
+    imagePath.startsWith('http://') || imagePath.startsWith('https://') ? imagePath : `${SITE_URL}${imagePath}`
+
   return {
     title: `${service.name} — Alternative Technology Services`,
     description: `${service.tagline} REQtec delivers ${service.name.toLowerCase()} as an alternative to Big Tech, with neutral, balanced service and no vendor lock-in.`,
@@ -36,6 +41,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: `${service.name} | REQtec Services`,
       description: service.tagline,
       url: `https://reqtec.com/services/${slug}`,
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: service.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${service.name} | REQtec Services`,
+      description: service.tagline,
+      images: [ogImageUrl],
     },
     alternates: {
       canonical: `https://reqtec.com/services/${slug}`,

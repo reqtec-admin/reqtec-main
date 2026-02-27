@@ -97,6 +97,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
   }
 
+  // Use request host (e.g. www.reqtec.com) so OG image and URL match the shared link; avoids broken previews when shared with www
+  const baseUrl = await getBaseUrl()
+  const imagePath = post.metadata.image || DEFAULT_BACKGROUND
+  const ogImageUrl = imagePath.startsWith('http://') || imagePath.startsWith('https://')
+    ? imagePath
+    : `${baseUrl}${imagePath}`
+
+  const pageUrl = `${baseUrl}/posts/${slug}`
+
   return {
     title: post.metadata.title,
     description: post.metadata.description || `${post.metadata.title} — insights from REQtec on alternative technology, agentic AI, and building independent of Big Tech.`,
@@ -104,13 +113,29 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: `${post.metadata.title} | REQtec`,
       description: post.metadata.description || '',
-      url: `https://reqtec.com/posts/${slug}`,
+      url: pageUrl,
       type: 'article',
+      // Explicit primary og:image URL (string) so validators see og:image; then full metadata for size/alt
+      images: [
+        ogImageUrl,
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.metadata.title,
+        },
+      ],
       ...(post.metadata.date ? { publishedTime: post.metadata.date } : {}),
       ...(post.metadata.author ? { authors: [post.metadata.author] } : {}),
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${post.metadata.title} | REQtec`,
+      description: post.metadata.description || `${post.metadata.title} — insights from REQtec on alternative technology, agentic AI, and building independent of Big Tech.`,
+      images: [ogImageUrl],
+    },
     alternates: {
-      canonical: `https://reqtec.com/posts/${slug}`,
+      canonical: pageUrl,
     },
   }
 }

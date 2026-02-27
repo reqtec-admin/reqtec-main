@@ -4,6 +4,7 @@ import { DetailPage } from '@/components/detail-page'
 import { industries } from '@/data/industries'
 import { toSlug } from '@/lib/slug'
 
+const SITE_URL = 'https://reqtec.com'
 const DEFAULT_BACKGROUND = '/images/financials.jpg'
 
 export async function generateStaticParams() {
@@ -22,6 +23,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
   }
 
+  const imagePath = industry.image || DEFAULT_BACKGROUND
+  const ogImageUrl =
+    imagePath.startsWith('http://') || imagePath.startsWith('https://') ? imagePath : `${SITE_URL}${imagePath}`
+
   return {
     title: `${industry.name} Technology Solutions — Alternative to Big Tech`,
     description: `${industry.tagline} REQtec serves the ${industry.name.toLowerCase()} sector with alternative technology solutions independent of dominant cloud providers.`,
@@ -37,6 +42,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: `${industry.name} Technology Solutions | REQtec`,
       description: industry.tagline,
       url: `https://reqtec.com/industries/${slug}`,
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: industry.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${industry.name} Technology Solutions | REQtec`,
+      description: industry.tagline,
+      images: [ogImageUrl],
     },
     alternates: {
       canonical: `https://reqtec.com/industries/${slug}`,

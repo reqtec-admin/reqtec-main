@@ -26,6 +26,14 @@ export const metadata: Metadata = {
     description:
       'Digital solutions outside the Big Tech oligarchy. Alternative cloud, AI, mobile, and web technology with no political baggage.',
     url: 'https://reqtec.com/our-vision',
+    images: [
+      {
+        url: 'https://reqtec.com/images/developers-table.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Our Vision — REQtec',
+      },
+    ],
   },
   alternates: {
     canonical: 'https://reqtec.com/our-vision',

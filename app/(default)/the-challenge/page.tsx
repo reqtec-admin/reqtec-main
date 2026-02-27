@@ -25,6 +25,14 @@ export const metadata: Metadata = {
     description:
       'The political bias in Big Tech creates real risks for businesses. REQtec offers balanced, neutral technology alternatives with no political baggage.',
     url: 'https://reqtec.com/the-challenge',
+    images: [
+      {
+        url: 'https://reqtec.com/images/the-challenge-1.png',
+        width: 1200,
+        height: 630,
+        alt: 'The Challenge — REQtec',
+      },
+    ],
   },
   alternates: {
     canonical: 'https://reqtec.com/the-challenge',

@@ -24,6 +24,14 @@ export const metadata: Metadata = {
     description:
       'Products and platforms built on alternative technology stacks — independent, practical, and free from Big Tech lock-in.',
     url: 'https://reqtec.com/our-work',
+    images: [
+      {
+        url: 'https://reqtec.com/images/commit250.png',
+        width: 1200,
+        height: 630,
+        alt: 'Our Work — REQtec',
+      },
+    ],
   },
   alternates: {
     canonical: 'https://reqtec.com/our-work',

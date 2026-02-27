@@ -21,6 +21,14 @@ export const metadata: Metadata = {
     description:
       'Long-form articles on alternative technology, agentic AI, cloud migration, and building outside Big Tech.',
     url: 'https://reqtec.com/posts',
+    images: [
+      {
+        url: 'https://reqtec.com/images/developers-table.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'REQtec Posts',
+      },
+    ],
   },
   alternates: {
     canonical: 'https://reqtec.com/posts',

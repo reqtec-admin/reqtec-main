@@ -4,6 +4,7 @@ import { DetailPage } from '@/components/detail-page'
 import { products } from '@/data/products'
 import { toSlug } from '@/lib/slug'
 
+const SITE_URL = 'https://reqtec.com'
 const DEFAULT_BACKGROUND = '/images/developers-table.jpg'
 const STATUS_LABELS = {
   delivered: 'Delivered',
@@ -27,6 +28,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
   }
 
+  const imagePath = product.image || DEFAULT_BACKGROUND
+  const ogImageUrl =
+    imagePath.startsWith('http://') || imagePath.startsWith('https://') ? imagePath : `${SITE_URL}${imagePath}`
+
   return {
     title: `${product.name} — Alternative Technology Product`,
     description: `${product.tagline} Built by REQtec on independent, alternative technology stacks free from Big Tech dependencies.`,
@@ -41,6 +46,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: `${product.name} | REQtec Products`,
       description: product.tagline,
       url: `https://reqtec.com/products/${slug}`,
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: product.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.name} | REQtec Products`,
+      description: product.tagline,
+      images: [ogImageUrl],
     },
     alternates: {
       canonical: `https://reqtec.com/products/${slug}`,
