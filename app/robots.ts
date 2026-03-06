@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/signin', '/signup', '/reset-password'],
+      disallow: ['/api/', '/signin', '/signup', '/reset-password', '/__media__/', '/*.php$'],
     },
     sitemap: 'https://reqtec.com/sitemap.xml',
   }
