@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { getPostSlugs, getPostBySlug } from '@/lib/markdown'
+import { getAccessCodeForSlug } from '@/lib/post-access'
 import { services } from '@/data/services'
 import { products } from '@/data/products'
 import { industries } from '@/data/industries'
@@ -40,7 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const postRoutes: MetadataRoute.Sitemap = postSlugs
     .map((slug) => {
       const post = getPostBySlug(slug)
-      if (!post || post.metadata.protected) return null
+      if (!post || getAccessCodeForSlug(slug)) return null
       return {
         url: `${BASE_URL}/posts/${slug}`,
         ...(post.metadata.date ? { lastModified: new Date(post.metadata.date) } : {}),

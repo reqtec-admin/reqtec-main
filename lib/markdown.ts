@@ -36,7 +36,6 @@ export interface PostMetadata {
   image?: string
   ctaLabel?: string
   ctaHref?: string
-  protected?: boolean
   [key: string]: unknown
 }
 

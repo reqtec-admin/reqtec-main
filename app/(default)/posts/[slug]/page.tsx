@@ -1,17 +1,19 @@
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { cookies, headers } from 'next/headers'
+import { cookies } from 'next/headers'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { MarkdownSection } from '@/components/markdown-section'
 import { ScrollAnimate } from '@/components/scroll-animate'
 import { formatPostDate, getPostBySlug, getPostSlugs } from '@/lib/markdown'
+import { getAccessCodeForSlug, getAccessCookieName, hasValidAccessCookie } from '@/lib/post-access'
 import PostAccessGate from '@/components/post-access-gate'
 import PostFloatingActions from '@/components/post-floating-actions'
 
 const DEFAULT_BACKGROUND = '/images/the-challenge-1.png'
 const DEFAULT_CTA_LABEL = 'Contact Us'
 const DEFAULT_CTA_HREF = 'mailto:info@reqtec.com'
+const SITE_URL = 'https://reqtec.com'
 
 function isExternalUrl(url: string) {
   return url.startsWith('http://') || url.startsWith('https://') || url.startsWith('//')
@@ -23,21 +25,6 @@ function isMailto(url: string) {
 
 function isLocalPublicAsset(url: string) {
   return url.startsWith('/') && !url.startsWith('//')
-}
-
-function getAccessCookieNames(slug: string) {
-  const safeSlug = slug.replace(/[^a-z0-9_-]/gi, '')
-  return [`post-access-${safeSlug}`, `page-access-${safeSlug}`]
-}
-
-function getAccessCodeForSlug(slug: string) {
-  const directMatch = process.env[slug]
-  if (directMatch) {
-    return directMatch
-  }
-
-  const normalized = slug.replace(/[^a-z0-9]/gi, '_').toUpperCase()
-  return process.env[`POST_ACCESS_CODE_${normalized}`] || process.env[`PAGE_ACCESS_CODE_${normalized}`]
 }
 
 function splitMarkdownByH2(markdown: string) {
@@ -72,19 +59,101 @@ function splitMarkdownByH2(markdown: string) {
   }
 }
 
-async function getBaseUrl() {
-  const headerStore = await headers()
-  const host = headerStore.get('x-forwarded-host') ?? headerStore.get('host')
-  const proto = headerStore.get('x-forwarded-proto') ?? 'https'
-  if (!host) {
-    return 'https://reqtec.com'
-  }
-  return `${proto}://${host}`
+const markdownComponents = {
+  h1: (props: React.ComponentPropsWithoutRef<'h1'>) => (
+    <h1 className="text-3xl md:text-4xl font-light tracking-wide mb-6 text-gray-100" {...props} />
+  ),
+  h2: (props: React.ComponentPropsWithoutRef<'h2'>) => (
+    <h2 className="text-2xl md:text-3xl font-light tracking-wide mb-4 text-gray-100 mt-8" {...props} />
+  ),
+  h3: (props: React.ComponentPropsWithoutRef<'h3'>) => (
+    <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-100 mt-6" {...props} />
+  ),
+  h4: (props: React.ComponentPropsWithoutRef<'h4'>) => (
+    <h4 className="text-lg md:text-xl font-semibold mb-2 text-gray-100 mt-4" {...props} />
+  ),
+  p: (props: React.ComponentPropsWithoutRef<'p'>) => (
+    <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6" {...props} />
+  ),
+  ul: (props: React.ComponentPropsWithoutRef<'ul'>) => (
+    <ul className="space-y-3 text-lg text-gray-300 ml-6 list-disc mb-6" {...props} />
+  ),
+  ol: (props: React.ComponentPropsWithoutRef<'ol'>) => (
+    <ol className="space-y-3 text-lg text-gray-300 ml-6 list-decimal mb-6" {...props} />
+  ),
+  li: (props: React.ComponentPropsWithoutRef<'li'>) => <li className="text-gray-300" {...props} />,
+  a: (props: React.ComponentPropsWithoutRef<'a'>) => (
+    <a className="text-teal-400 hover:text-teal-300 transition duration-150 ease-in-out underline" {...props} />
+  ),
+  img: ({ src, alt }: { src?: string | Blob; alt?: string }) => {
+    if (!src) return null
+    if (typeof src !== 'string') return null
+
+    if (isExternalUrl(src)) {
+      return (
+        <span className="block my-8">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={src} alt={alt || ''} className="max-w-full h-auto rounded-lg mx-auto" />
+        </span>
+      )
+    }
+
+    const localSrc = isLocalPublicAsset(src) ? src : `/${src}`
+
+    return (
+      <span className="block my-8">
+        <Image
+          src={localSrc}
+          alt={alt || ''}
+          width={1200}
+          height={800}
+          className="w-full h-auto max-w-4xl rounded-lg mx-auto"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+        />
+      </span>
+    )
+  },
+  pre: (props: React.ComponentPropsWithoutRef<'pre'>) => (
+    <div className="my-6">
+      <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto" {...props} />
+    </div>
+  ),
+  code: (props: React.ComponentPropsWithoutRef<'code'>) => {
+    const { className, children, ...rest } = props
+    const isBlock = typeof className === 'string' && className.includes('language-')
+
+    if (isBlock) {
+      return (
+        <code className={`text-gray-300 text-sm ${className}`} {...rest}>
+          {children}
+        </code>
+      )
+    }
+
+    return (
+      <code className="bg-gray-800 px-2 py-1 rounded text-teal-400 text-sm" {...rest}>
+        {children}
+      </code>
+    )
+  },
+  blockquote: (props: React.ComponentPropsWithoutRef<'blockquote'>) => (
+    <blockquote className="border-l-4 border-teal-500 pl-6 italic text-gray-400 my-6" {...props} />
+  ),
+  table: (props: React.ComponentPropsWithoutRef<'table'>) => (
+    <div className="overflow-x-auto my-6">
+      <table className="min-w-full border-collapse border border-gray-700" {...props} />
+    </div>
+  ),
+  th: (props: React.ComponentPropsWithoutRef<'th'>) => (
+    <th className="border border-gray-700 px-4 py-2 bg-gray-800 text-gray-100 font-semibold text-left" {...props} />
+  ),
+  td: (props: React.ComponentPropsWithoutRef<'td'>) => (
+    <td className="border border-gray-700 px-4 py-2 text-gray-300" {...props} />
+  ),
 }
 
-export async function generateStaticParams() {
-  const slugs = getPostSlugs()
-  return slugs.map((slug) => ({ slug }))
+export function generateStaticParams() {
+  return getPostSlugs().map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -97,14 +166,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
   }
 
-  // Use request host (e.g. www.reqtec.com) so OG image and URL match the shared link; avoids broken previews when shared with www
-  const baseUrl = await getBaseUrl()
+  // Relative URLs resolve against the root metadataBase (https://reqtec.com).
+  // Request-host URLs would call headers() and make every post dynamic.
   const imagePath = post.metadata.image || DEFAULT_BACKGROUND
-  const ogImageUrl = imagePath.startsWith('http://') || imagePath.startsWith('https://')
-    ? imagePath
-    : `${baseUrl}${imagePath}`
-
-  const pageUrl = `${baseUrl}/posts/${slug}`
 
   return {
     title: post.metadata.title,
@@ -113,13 +177,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: `${post.metadata.title} | REQtec`,
       description: post.metadata.description || '',
-      url: pageUrl,
-      type: 'article',
+      url: `/posts/${slug}`,
+      type: 'article' as const,
       // Explicit primary og:image URL (string) so validators see og:image; then full metadata for size/alt
       images: [
-        ogImageUrl,
+        imagePath,
         {
-          url: ogImageUrl,
+          url: imagePath,
           width: 1200,
           height: 630,
           alt: post.metadata.title,
@@ -129,13 +193,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       ...(post.metadata.author ? { authors: [post.metadata.author] } : {}),
     },
     twitter: {
-      card: 'summary_large_image',
+      card: 'summary_large_image' as const,
       title: `${post.metadata.title} | REQtec`,
       description: post.metadata.description || `${post.metadata.title} — insights from REQtec on alternative technology, agentic AI, and building independent of Big Tech.`,
-      images: [ogImageUrl],
+      images: [imagePath],
     },
     alternates: {
-      canonical: pageUrl,
+      canonical: `/posts/${slug}`,
     },
   }
 }
@@ -153,11 +217,15 @@ export default async function MarkdownPost({ params }: { params: Promise<{ slug:
   const ctaHref = post.metadata.ctaHref || ''
   const ctaIsExternal = isExternalUrl(ctaHref) || isMailto(ctaHref)
   const { intro, sections } = splitMarkdownByH2(post.content)
-  const isProtected = Boolean(getAccessCodeForSlug(post.slug))
-  const cookieStore = await cookies()
-  const accessCookieNames = getAccessCookieNames(post.slug)
-  const hasAccess = !isProtected || accessCookieNames.some((name) => cookieStore.get(name)?.value === 'true')
-  const postUrl = `${await getBaseUrl()}/posts/${post.slug}`
+  const accessCode = getAccessCodeForSlug(post.slug)
+  const isProtected = Boolean(accessCode)
+  let hasAccess = !isProtected
+  // cookies() opts the response into dynamic rendering. Public posts skip it and stay static.
+  if (accessCode) {
+    const cookieStore = await cookies()
+    hasAccess = hasValidAccessCookie(cookieStore.get(getAccessCookieName(post.slug))?.value, post.slug, accessCode)
+  }
+  const postUrl = `${SITE_URL}/posts/${post.slug}`
   const encodedUrl = encodeURIComponent(postUrl)
   const encodedTitle = encodeURIComponent(post.metadata.title)
   const xShareUrl = `https://x.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`
@@ -221,202 +289,14 @@ export default async function MarkdownPost({ params }: { params: Promise<{ slug:
           ) : (
             <>
               {intro && (
-                <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
-                  components={{
-                    h1: (props) => (
-                      <h1 className="text-3xl md:text-4xl font-light tracking-wide mb-6 text-gray-100" {...props} />
-                    ),
-                    h2: (props) => (
-                      <h2 className="text-2xl md:text-3xl font-light tracking-wide mb-4 text-gray-100 mt-8" {...props} />
-                    ),
-                    h3: (props) => (
-                      <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-100 mt-6" {...props} />
-                    ),
-                    h4: (props) => (
-                      <h4 className="text-lg md:text-xl font-semibold mb-2 text-gray-100 mt-4" {...props} />
-                    ),
-                    p: (props) => (
-                      <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6" {...props} />
-                    ),
-                    ul: (props) => (
-                      <ul className="space-y-3 text-lg text-gray-300 ml-6 list-disc mb-6" {...props} />
-                    ),
-                    ol: (props) => (
-                      <ol className="space-y-3 text-lg text-gray-300 ml-6 list-decimal mb-6" {...props} />
-                    ),
-                    li: (props) => <li className="text-gray-300" {...props} />,
-                    a: (props) => (
-                      <a className="text-teal-400 hover:text-teal-300 transition duration-150 ease-in-out underline" {...props} />
-                    ),
-                    img: ({ src, alt }) => {
-                      if (!src) return null
-                      if (typeof src !== 'string') return null
-
-                      if (isExternalUrl(src)) {
-                        return (
-                          <span className="block my-8">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img src={src} alt={alt || ''} className="max-w-full h-auto rounded-lg mx-auto" />
-                          </span>
-                        )
-                      }
-
-                      const localSrc = isLocalPublicAsset(src) ? src : `/${src}`
-
-                      return (
-                        <span className="block my-8">
-                          <Image
-                            src={localSrc}
-                            alt={alt || ''}
-                            width={1200}
-                            height={800}
-                            className="w-full h-auto max-w-4xl rounded-lg mx-auto"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                          />
-                        </span>
-                      )
-                    },
-                    pre: (props) => (
-                      <div className="my-6">
-                        <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto" {...props} />
-                      </div>
-                    ),
-                    code: (props: any) => {
-                      const { className, children, ...rest } = props
-                      const isBlock = typeof className === 'string' && className.includes('language-')
-
-                      if (isBlock) {
-                        return (
-                          <code className={`text-gray-300 text-sm ${className}`} {...rest}>
-                            {children}
-                          </code>
-                        )
-                      }
-
-                      return (
-                        <code className="bg-gray-800 px-2 py-1 rounded text-teal-400 text-sm" {...rest}>
-                          {children}
-                        </code>
-                      )
-                    },
-                    blockquote: (props) => (
-                      <blockquote className="border-l-4 border-teal-500 pl-6 italic text-gray-400 my-6" {...props} />
-                    ),
-                    table: (props) => (
-                      <div className="overflow-x-auto my-6">
-                        <table className="min-w-full border-collapse border border-gray-700" {...props} />
-                      </div>
-                    ),
-                    th: (props) => (
-                      <th className="border border-gray-700 px-4 py-2 bg-gray-800 text-gray-100 font-semibold text-left" {...props} />
-                    ),
-                    td: (props) => (
-                      <td className="border border-gray-700 px-4 py-2 text-gray-300" {...props} />
-                    ),
-                  }}
-                >
+                <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
                   {intro}
                 </ReactMarkdown>
               )}
 
               {sections.map((section, index) => (
                 <ScrollAnimate key={`${post.slug}-section-${index}`} direction="up" delay={120} threshold={0.2}>
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    components={{
-                      h1: (props) => (
-                        <h1 className="text-3xl md:text-4xl font-light tracking-wide mb-6 text-gray-100" {...props} />
-                      ),
-                      h2: (props) => (
-                        <h2 className="text-2xl md:text-3xl font-light tracking-wide mb-4 text-gray-100 mt-8" {...props} />
-                      ),
-                      h3: (props) => (
-                        <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-100 mt-6" {...props} />
-                      ),
-                      h4: (props) => (
-                        <h4 className="text-lg md:text-xl font-semibold mb-2 text-gray-100 mt-4" {...props} />
-                      ),
-                      p: (props) => (
-                        <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6" {...props} />
-                      ),
-                      ul: (props) => (
-                        <ul className="space-y-3 text-lg text-gray-300 ml-6 list-disc mb-6" {...props} />
-                      ),
-                      ol: (props) => (
-                        <ol className="space-y-3 text-lg text-gray-300 ml-6 list-decimal mb-6" {...props} />
-                      ),
-                      li: (props) => <li className="text-gray-300" {...props} />,
-                      a: (props) => (
-                        <a className="text-teal-400 hover:text-teal-300 transition duration-150 ease-in-out underline" {...props} />
-                      ),
-                      img: ({ src, alt }) => {
-                        if (!src) return null
-                        if (typeof src !== 'string') return null
-
-                        if (isExternalUrl(src)) {
-                          return (
-                            <span className="block my-8">
-                              {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img src={src} alt={alt || ''} className="max-w-full h-auto rounded-lg mx-auto" />
-                            </span>
-                          )
-                        }
-
-                        const localSrc = isLocalPublicAsset(src) ? src : `/${src}`
-
-                        return (
-                          <span className="block my-8">
-                            <Image
-                              src={localSrc}
-                              alt={alt || ''}
-                              width={1200}
-                              height={800}
-                              className="w-full h-auto max-w-4xl rounded-lg mx-auto"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                            />
-                          </span>
-                        )
-                      },
-                      pre: (props) => (
-                        <div className="my-6">
-                          <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto" {...props} />
-                        </div>
-                      ),
-                      code: (props: any) => {
-                        const { className, children, ...rest } = props
-                        const isBlock = typeof className === 'string' && className.includes('language-')
-
-                        if (isBlock) {
-                          return (
-                            <code className={`text-gray-300 text-sm ${className}`} {...rest}>
-                              {children}
-                            </code>
-                          )
-                        }
-
-                        return (
-                          <code className="bg-gray-800 px-2 py-1 rounded text-teal-400 text-sm" {...rest}>
-                            {children}
-                          </code>
-                        )
-                      },
-                      blockquote: (props) => (
-                        <blockquote className="border-l-4 border-teal-500 pl-6 italic text-gray-400 my-6" {...props} />
-                      ),
-                      table: (props) => (
-                        <div className="overflow-x-auto my-6">
-                          <table className="min-w-full border-collapse border border-gray-700" {...props} />
-                        </div>
-                      ),
-                      th: (props) => (
-                        <th className="border border-gray-700 px-4 py-2 bg-gray-800 text-gray-100 font-semibold text-left" {...props} />
-                      ),
-                      td: (props) => (
-                        <td className="border border-gray-700 px-4 py-2 text-gray-300" {...props} />
-                      ),
-                    }}
-                  >
+                  <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
                     {section}
                   </ReactMarkdown>
                 </ScrollAnimate>
