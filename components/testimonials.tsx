@@ -32,7 +32,7 @@ export default function Testimonials() {
               </div>
               <blockquote className="text-base text-gray-400 grow">— I am incredibly grateful to Aaron for his generous contribution of time and expertise in providing software consultancy for my new nonprofit. His deep knowledge, problem-solving skills, and commitment to excellence played a crucial role in helping us establish a strong technological foundation. He went above and beyond to ensure we had the right systems in place, offering innovative solutions that streamlined our operations and improved efficiency. </blockquote>
               <div className="text-gray-500 font-medium mt-6 pt-5 border-t border-teal-500/20">
-                <cite className="text-gray-200 not-italic">Gina T. </cite> - <a className="text-teal-400 hover:text-teal-300 transition duration-150 ease-in-out" href="#0">Nonprofit Professional</a>
+                <cite className="text-gray-200 not-italic">Gina T. </cite> - <span className="text-teal-400">Nonprofit Professional</span>
               </div>
             </GlassCard>
 
@@ -48,7 +48,7 @@ export default function Testimonials() {
               </div>
               <blockquote className="text-base text-gray-400 grow">— I have known Aaron Gilliland personally and professionally for several years.  He is one of the smartest, highly talented and most professional people I know.  He eagerly supported my campaign for the Nebraska Legislature from the very beginning. I would highly recommend Aaron to my friends, family and colleagues for any and all software- or computer-based needs. I will be forever grateful for the outstanding support Aaron provided.</blockquote>
               <div className="text-gray-500 font-medium mt-6 pt-5 border-t border-teal-500/20">
-                <cite className="text-gray-200 not-italic">Bob A.</cite> - <a className="text-teal-400 hover:text-teal-300 transition duration-150 ease-in-out" href="#0">Business Owner and Legislator</a>
+                <cite className="text-gray-200 not-italic">Bob A.</cite> - <span className="text-teal-400">Business Owner and Legislator</span>
               </div>
             </GlassCard>
 
@@ -64,7 +64,7 @@ export default function Testimonials() {
               </div>
               <blockquote className="text-base text-gray-400 grow">— During my recent campaign for the school board, their expertise in web services, graphic design, and technical problem-solving played a key role in our success. In addition, his creativity, attention to detail, and ability to bring ideas to life were invaluable. His ability to leverage technology effectively, streamline processes, and deliver high-quality solutions was truly impressive. I have no doubt that his skills and professionalism will be a tremendous asset to any business in need of software and technology consulting.</blockquote>
               <div className="text-gray-500 font-medium mt-6 pt-5 border-t border-teal-500/20">
-                <cite className="text-gray-200 not-italic">Pat B.</cite> - <a className="text-teal-400 hover:text-teal-300 transition duration-150 ease-in-out" href="#0">Actuarial Professional</a>
+                <cite className="text-gray-200 not-italic">Pat B.</cite> - <span className="text-teal-400">Actuarial Professional</span>
               </div>
             </GlassCard>
 

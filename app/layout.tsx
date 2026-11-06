@@ -1,7 +1,7 @@
 import './css/style.css'
 
 import type { Metadata } from 'next'
-import { Inter, Architects_Daughter, Adamina } from 'next/font/google'
+import { Inter } from 'next/font/google'
 
 import Header from '@/components/ui/header'
 import Banner from '@/components/banner'
@@ -11,20 +11,6 @@ import ScrollIndicator from '@/components/scroll-indicator'
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-  display: 'swap'
-})
-
-const font1 = Architects_Daughter({
-  subsets: ['latin'],
-  variable: '--font-architects-daughter',
-  weight: '400',
-  display: 'swap'
-})
-
-const font2 = Adamina({
-  subsets: ['latin'],
-  variable: '--font-adamina',
-  weight: '400',
   display: 'swap'
 })
 
@@ -152,7 +138,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="overflow-x-hidden reqtec-scrollbar">
-      <body className={`${inter.variable} ${font1.variable} ${font2.variable} font-inter antialiased text-gray-200 tracking-tight overflow-x-hidden`} suppressHydrationWarning>
+      <body className={`${inter.variable} font-inter antialiased text-gray-200 tracking-tight overflow-x-hidden`} suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
