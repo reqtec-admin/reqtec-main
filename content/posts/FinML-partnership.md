@@ -4,8 +4,6 @@ description: "Partnering in Financial ML to deliver optimized models for small a
 author: "REQtec Team"
 tags: ["business", "review", "2025", "Press Release"]
 image: "/images/financials.jpg"
-# ctaLabel: "Contact Us"
-# ctaHref: "mailto:info@reqtec.com"
 ---
 
 

@@ -4,8 +4,6 @@ description: "A comprehensive review of REQtec's progress in 2025."
 author: "REQtec Team"
 tags: ["business", "review", "2025"]
 image: "/images/2025-report-desks.png"
-# ctaLabel: "Contact Us"
-# ctaHref: "mailto:info@reqtec.com"
 ---
 
 # 2025 Year in Review

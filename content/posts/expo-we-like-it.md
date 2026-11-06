@@ -4,8 +4,6 @@ description: "The Revolution of Cross-Platform Mobile Development: Why Expo and 
 author: "REQtec Team"
 tags: ["SaaS", "app", "2025", "Expo", "EAS"]
 image: "/images/expo.png"
-# ctaLabel: "Contact Us"
-# ctaHref: "mailto:info@reqtec.com"
 ---
 
 # Expo/EAS a New User's Perspective

@@ -4,8 +4,6 @@ description: "Why balance in technology matters."
 author: "REQtec Team"
 tags: ["tech culture", "bias", "software", "ai", "business risk"]
 image: "/images/the-challenge-1.png"
-# ctaLabel: "Contact Us"
-# ctaHref: "mailto:info@reqtec.com"
 ---
 
 # The Challenge: Restoring Balance in Technology

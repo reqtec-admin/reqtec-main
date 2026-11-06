@@ -4,8 +4,6 @@ description: "Big Tech's Market Turmoil and the Rise of Agentic AI."
 author: "REQtec Team"
 tags: ["big tech", "turmoil", "agents", "agentic", "AI"]
 image: "/images/market-trades.jpg"
-# ctaLabel: "Contact Us"
-# ctaHref: "mailto:info@reqtec.com"
 ---
 
 # The Great Tech Realignment
