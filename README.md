@@ -32,9 +32,9 @@ npx next build
 5. For images:
    - Local: place assets in `public/` and reference as `/images/your-image.png`
    - Remote: use full URLs (`https://...`)
-6. To protect a post with an access code, add an environment variable:
-   - `your-post-slug=your-secret-code`
-   - Or `POST_ACCESS_CODE_YOUR_POST_SLUG=your-secret-code`
+6. To protect a post with an access code, set an environment variable and redeploy. The name is read at build time, so a code added only at runtime leaves the page static and public:
+   - `POST_ACCESS_CODE_YOUR_POST_SLUG=your-secret-code`
+   - The slug is uppercased and every non-alphanumeric character becomes an underscore (`2025-report` → `POST_ACCESS_CODE_2025_REPORT`).
 
 ### Example Post
 
