@@ -2,22 +2,17 @@
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies, then run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
 ```
 
 ## Production Builds
 
-Run production builds using `npx`
-
 ```bash
-npx next build
+pnpm build
 ```
 
 ## How To Create a Post

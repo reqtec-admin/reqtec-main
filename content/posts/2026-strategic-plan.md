@@ -4,8 +4,6 @@ description: "REQtec's 2026 Strategic Plan: Empowering SMBs with Practical Agent
 author: "REQtec Team"
 tags: ["business", "plan", "agentic", "ai", "2026"]
 image: "/images/agentic-ai.jpg"
-# ctaLabel: "Contact Us"
-# ctaHref: "mailto:info@reqtec.com"
 ---
 
 # 2026 Strategic Plan
